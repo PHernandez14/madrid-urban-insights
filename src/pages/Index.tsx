@@ -16,7 +16,8 @@ import {
   expandedKpiCategories, 
   expandedMetricLabels,
   useCases,
-  availableYears 
+  availableYears,
+  type ExpandedUrbanIndicators
 } from '../data/expandedMadridData';
 
 const Index = () => {
@@ -68,7 +69,7 @@ const Index = () => {
     }
   };
 
-  const getTopDistrictsData = (metric: keyof typeof expandedUrbanIndicators[0], count: number = 5) => {
+  const getTopDistrictsData = (metric: keyof ExpandedUrbanIndicators, count: number = 5) => {
     return currentYearData
       .sort((a, b) => (b[metric] as number) - (a[metric] as number))
       .slice(0, count)

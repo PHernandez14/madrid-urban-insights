@@ -70,7 +70,7 @@ const ComparisonChart: React.FC<ComparisonChartProps> = ({ districts, metrics, t
         })}
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes slideIn {
           from {
             width: 0%;

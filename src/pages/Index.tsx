@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Users, Home, MapPin, TrendingUp, BarChart } from 'lucide-react';
+import { Users, Home, MapPin, TrendingUp } from 'lucide-react';
 import Header from '../components/Header';
 import KPICard from '../components/KPICard';
 import DistrictCard from '../components/DistrictCard';

@@ -58,13 +58,13 @@ const BarChart: React.FC<BarChartProps> = ({
         ))}
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes barGrow {
           from {
             width: 0%;
           }
           to {
-            width: ${(100)}%;
+            width: 100%;
           }
         }
       `}</style>

@@ -144,36 +144,6 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
             style={geoJsonStyle}
             onEachFeature={onEachFeature}
           />
-
-          {currentYearData.map(district => (
-            <Marker
-              key={`marker-${district.districtId}`}
-              position={district.coordinates}
-              icon={L.divIcon({
-                html: `<div style="width: 12px; height: 12px; border-radius: 50%; background-color: ${
-                  selectedDistricts.includes(district.districtId) ? '#3B82F6' : '#10B981'
-                };"></div>`,
-                className: 'custom-div-icon',
-                iconSize: [12, 12],
-                iconAnchor: [6, 6]
-              })}
-            >
-              <Popup>
-                <div className="p-2">
-                  <h4 className="font-semibold text-gray-900">{district.districtName}</h4>
-                  <p className="text-sm text-gray-600">
-                    {expandedMetricLabels[selectedMetric]?.label}: {formatValue(district[selectedMetric as keyof ExpandedUrbanIndicators] as number, selectedMetric)} {expandedMetricLabels[selectedMetric]?.unit}
-                  </p>
-                  <button
-                    onClick={() => onDistrictSelect(district.districtId)}
-                    className="mt-2 text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700"
-                  >
-                    {selectedDistricts.includes(district.districtId) ? 'Deseleccionar' : 'Seleccionar'}
-                  </button>
-                </div>
-              </Popup>
-            </Marker>
-          ))}
         </MapContainer>
       </div>
     </div>

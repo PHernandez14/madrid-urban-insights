@@ -131,7 +131,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
           />
           
           <GeoJSON
-            data={madridDistrictsGeoJSON}
+            data={madridDistrictsGeoJSON as any}
             style={geoJsonStyle}
             onEachFeature={onEachFeature}
             key={`geojson-${selectedYear}-${selectedMetric}`}

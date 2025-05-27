@@ -1,4 +1,3 @@
-
 // Datos expandidos para el Dashboard Urbano de Madrid con 5 años de historial
 
 export interface ExpandedUrbanIndicators {
@@ -250,45 +249,45 @@ export const useCases = {
   }
 };
 
-// GeoJSON simplificado de los distritos (coordenadas aproximadas)
+// GeoJSON with proper TypeScript types
 export const madridDistrictsGeoJSON = {
-  type: "FeatureCollection",
+  type: "FeatureCollection" as const,
   features: [
     {
-      type: "Feature",
+      type: "Feature" as const,
       properties: { id: "centro", name: "Centro" },
       geometry: {
-        type: "Polygon",
+        type: "Polygon" as const,
         coordinates: [[
           [-3.7150, 40.4050], [-3.6950, 40.4050], [-3.6950, 40.4250], [-3.7150, 40.4250], [-3.7150, 40.4050]
         ]]
       }
     },
     {
-      type: "Feature", 
+      type: "Feature" as const, 
       properties: { id: "salamanca", name: "Salamanca" },
       geometry: {
-        type: "Polygon",
+        type: "Polygon" as const,
         coordinates: [[
           [-3.6900, 40.4200], [-3.6700, 40.4200], [-3.6700, 40.4400], [-3.6900, 40.4400], [-3.6900, 40.4200]
         ]]
       }
     },
     {
-      type: "Feature",
+      type: "Feature" as const,
       properties: { id: "latina", name: "Latina" },
       geometry: {
-        type: "Polygon", 
+        type: "Polygon" as const, 
         coordinates: [[
           [-3.7600, 40.3800], [-3.7300, 40.3800], [-3.7300, 40.4100], [-3.7600, 40.4100], [-3.7600, 40.3800]
         ]]
       }
     },
     {
-      type: "Feature",
+      type: "Feature" as const,
       properties: { id: "carabanchel", name: "Carabanchel" },
       geometry: {
-        type: "Polygon",
+        type: "Polygon" as const,
         coordinates: [[
           [-3.7500, 40.3600], [-3.7200, 40.3600], [-3.7200, 40.3900], [-3.7500, 40.3900], [-3.7500, 40.3600]
         ]]

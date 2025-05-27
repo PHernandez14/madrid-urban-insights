@@ -134,12 +134,12 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
             data={madridDistrictsGeoJSON as any}
             style={geoJsonStyle}
             onEachFeature={onEachFeature}
-            key={selectedYear}
+            key={`geojson-${selectedYear}`}
           />
 
           {currentYearData.map(district => (
             <Marker
-              key={`${district.districtId}-${selectedYear}`}
+              key={`marker-${district.districtId}-${selectedYear}`}
               position={district.coordinates}
               icon={L.divIcon({
                 html: `<div class="w-3 h-3 rounded-full ${

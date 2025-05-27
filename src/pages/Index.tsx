@@ -204,11 +204,25 @@ const Index = () => {
           />
           
           {selectedData.length > 0 && (
-            <ComparisonChart
-              districts={selectedData}
-              metrics={selectedCategoryMetrics.slice(0, 4)}
-              title={`Comparación: ${selectedUseCase ? useCases[selectedUseCase as keyof typeof useCases]?.name : expandedKpiCategories[selectedCategory as keyof typeof expandedKpiCategories]?.name || 'Métricas'} (${selectedYear})`}
-            />
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                Comparación: {selectedUseCase ? useCases[selectedUseCase as keyof typeof useCases]?.name : expandedKpiCategories[selectedCategory as keyof typeof expandedKpiCategories]?.name || 'Métricas'} ({selectedYear})
+              </h3>
+              <div className="space-y-4">
+                {selectedData.map(district => (
+                  <div key={district.districtId} className="border-b border-gray-100 pb-2">
+                    <h4 className="font-medium">{district.districtName}</h4>
+                    <div className="grid grid-cols-2 gap-2 text-sm text-gray-600">
+                      {selectedCategoryMetrics.slice(0, 4).map(metric => (
+                        <div key={metric}>
+                          {expandedMetricLabels[metric]?.label}: {district[metric as keyof ExpandedUrbanIndicators] as number}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           )}
         </div>
 

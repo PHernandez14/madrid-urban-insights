@@ -131,21 +131,24 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
           />
           
           <GeoJSON
-            data={madridDistrictsGeoJSON as any}
+            data={madridDistrictsGeoJSON}
             style={geoJsonStyle}
             onEachFeature={onEachFeature}
-            key={`geojson-${selectedYear}-${selectedMetric}`}
           />
 
-          {currentYearData.map(district => (
+          {currentYearData.map((district, index) => (
             <Marker
-              key={`marker-${district.districtId}-${selectedYear}`}
+              key={`${district.districtId}-${district.year}`}
               position={district.coordinates}
               icon={L.divIcon({
-                html: `<div class="w-3 h-3 rounded-full ${
+                html: `<div style="width: 12px; height: 12px; border-radius: 50%; background-color: ${
                   selectedDistricts.includes(district.districtId) 
-                    ? 'bg-blue-600 ring-2 ring-blue-200' 
-                    : 'bg-green-600'
+                    ? '#3B82F6' 
+                    : '#10B981'
+                }; ${
+                  selectedDistricts.includes(district.districtId) 
+                    ? 'box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);' 
+                    : ''
                 }"></div>`,
                 className: 'custom-div-icon',
                 iconSize: [12, 12],

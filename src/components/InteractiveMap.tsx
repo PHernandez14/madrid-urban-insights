@@ -103,6 +103,43 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
     };
   };
 
+  // Create markers array outside of render
+  const markers = currentYearData.map(district => {
+    const isSelected = selectedDistricts.includes(district.districtId);
+    
+    return (
+      <Marker
+        key={district.districtId}
+        position={district.coordinates}
+        icon={L.divIcon({
+          html: `<div style="width: 12px; height: 12px; border-radius: 50%; background-color: ${
+            isSelected ? '#3B82F6' : '#10B981'
+          }; ${
+            isSelected ? 'box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);' : ''
+          }"></div>`,
+          className: 'custom-div-icon',
+          iconSize: [12, 12],
+          iconAnchor: [6, 6]
+        })}
+      >
+        <Popup>
+          <div className="p-2">
+            <h4 className="font-semibold text-gray-900">{district.districtName}</h4>
+            <p className="text-sm text-gray-600">
+              {expandedMetricLabels[selectedMetric]?.label}: {formatValue(district[selectedMetric as keyof ExpandedUrbanIndicators] as number, selectedMetric)} {expandedMetricLabels[selectedMetric]?.unit}
+            </p>
+            <button
+              onClick={() => onDistrictSelect(district.districtId)}
+              className="mt-2 text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700"
+            >
+              {isSelected ? 'Deseleccionar' : 'Seleccionar'}
+            </button>
+          </div>
+        </Popup>
+      </Marker>
+    );
+  });
+
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 h-96">
       <div className="flex items-center justify-between mb-4">
@@ -136,41 +173,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
             onEachFeature={onEachFeature}
           />
 
-          {currentYearData.map(district => {
-            const isSelected = selectedDistricts.includes(district.districtId);
-            
-            return (
-              <Marker
-                key={district.districtId}
-                position={district.coordinates}
-                icon={L.divIcon({
-                  html: `<div style="width: 12px; height: 12px; border-radius: 50%; background-color: ${
-                    isSelected ? '#3B82F6' : '#10B981'
-                  }; ${
-                    isSelected ? 'box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);' : ''
-                  }"></div>`,
-                  className: 'custom-div-icon',
-                  iconSize: [12, 12],
-                  iconAnchor: [6, 6]
-                })}
-              >
-                <Popup>
-                  <div className="p-2">
-                    <h4 className="font-semibold text-gray-900">{district.districtName}</h4>
-                    <p className="text-sm text-gray-600">
-                      {expandedMetricLabels[selectedMetric]?.label}: {formatValue(district[selectedMetric as keyof ExpandedUrbanIndicators] as number, selectedMetric)} {expandedMetricLabels[selectedMetric]?.unit}
-                    </p>
-                    <button
-                      onClick={() => onDistrictSelect(district.districtId)}
-                      className="mt-2 text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700"
-                    >
-                      {isSelected ? 'Deseleccionar' : 'Seleccionar'}
-                    </button>
-                  </div>
-                </Popup>
-              </Marker>
-            );
-          })}
+          {markers}
         </MapContainer>
       </div>
     </div>

@@ -1,9 +1,9 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { MapContainer, TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { Info, MapPin } from 'lucide-react';
+import { Info } from 'lucide-react';
 import { ExpandedUrbanIndicators, madridDistrictsGeoJSON, expandedMetricLabels } from '../data/expandedMadridData';
 
 // Fix for default markers in react-leaflet
@@ -22,45 +22,44 @@ interface InteractiveMapProps {
   selectedYear: number;
 }
 
-const InteractiveMap: React.FC<InteractiveMapProps> = ({
-  data,
-  selectedMetric,
-  selectedDistricts,
-  onDistrictSelect,
-  selectedYear
+const InteractiveMap: React.FC<InteractiveMapProps> = ({ 
+  data, 
+  selectedMetric, 
+  selectedDistricts, 
+  onDistrictSelect, 
+  selectedYear 
 }) => {
   const [hoveredDistrict, setHoveredDistrict] = useState<string | null>(null);
 
   // Filter data by selected year
   const currentYearData = data.filter(d => d.year === selectedYear);
-  
+
   // Get metric values for color scaling
   const metricValues = currentYearData.map(d => d[selectedMetric as keyof ExpandedUrbanIndicators] as number);
   const maxValue = Math.max(...metricValues);
   const minValue = Math.min(...metricValues);
 
-  const getMetricValue = (districtId: string): number => {
+  const getMetricValue = (districtId: string) => {
     const district = currentYearData.find(d => d.districtId === districtId);
-    return district ? (district[selectedMetric as keyof ExpandedUrbanIndicators] as number) : 0;
+    return district ? district[selectedMetric as keyof ExpandedUrbanIndicators] as number : 0;
   };
 
-  const getIntensity = (value: number): number => {
+  const getIntensity = (value: number) => {
     if (maxValue === minValue) return 0.5;
     return (value - minValue) / (maxValue - minValue);
   };
 
-  const getDistrictColor = (districtId: string): string => {
+  const getDistrictColor = (districtId: string) => {
     const value = getMetricValue(districtId);
     const intensity = getIntensity(value);
     
     if (selectedDistricts.includes(districtId)) {
       return `rgba(59, 130, 246, ${0.7 + intensity * 0.3})`;
     }
-    
     return `rgba(34, 197, 94, ${0.3 + intensity * 0.5})`;
   };
 
-  const formatValue = (value: number, metric: string): string => {
+  const formatValue = (value: number, metric: string) => {
     const metricInfo = expandedMetricLabels[metric];
     if (metricInfo?.format === 'percentage') {
       return `${value}%`;
@@ -90,11 +89,11 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
     }
   };
 
-  const geoJsonStyle = (feature: any) => {
+  const geoJsonStyle = (feature?: any) => {
     const districtId = feature?.properties?.id;
     const isSelected = selectedDistricts.includes(districtId);
     const isHovered = hoveredDistrict === districtId;
-    
+
     return {
       fillColor: getDistrictColor(districtId),
       weight: isSelected ? 3 : isHovered ? 2 : 1,
@@ -127,17 +126,16 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
           scrollWheelZoom={false}
         >
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           
           <GeoJSON
-            data={madridDistrictsGeoJSON as any}
+            data={madridDistrictsGeoJSON}
             style={geoJsonStyle}
             onEachFeature={onEachFeature}
           />
 
-          {/* Markers for districts with data */}
           {currentYearData.map(district => (
             <Marker
               key={district.districtId}
@@ -156,32 +154,20 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
               <Popup>
                 <div className="p-2">
                   <h4 className="font-semibold text-gray-900">{district.districtName}</h4>
-                  <div className="space-y-1 text-sm">
-                    <div>Población: {district.population.toLocaleString()}</div>
-                    <div>Renta Media: {district.averageIncome.toLocaleString()}€</div>
-                    <div>Precio m²: {district.averagePriceM2.toLocaleString()}€</div>
-                  </div>
+                  <p className="text-sm text-gray-600">
+                    {expandedMetricLabels[selectedMetric]?.label}: {formatValue(district[selectedMetric as keyof ExpandedUrbanIndicators] as number, selectedMetric)} {expandedMetricLabels[selectedMetric]?.unit}
+                  </p>
+                  <button
+                    onClick={() => onDistrictSelect(district.districtId)}
+                    className="mt-2 text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700"
+                  >
+                    {selectedDistricts.includes(district.districtId) ? 'Deseleccionar' : 'Seleccionar'}
+                  </button>
                 </div>
               </Popup>
             </Marker>
           ))}
         </MapContainer>
-      </div>
-
-      {/* Legend */}
-      <div className="mt-4 flex items-center justify-between">
-        <div className="flex items-center space-x-4">
-          <div className="text-xs font-medium text-gray-700">Intensidad</div>
-          <div className="flex items-center space-x-2">
-            <span className="text-xs text-gray-500">Bajo</span>
-            <div className="w-20 h-2 bg-gradient-to-r from-green-200 to-green-600 rounded"></div>
-            <span className="text-xs text-gray-500">Alto</span>
-          </div>
-        </div>
-        
-        <div className="text-xs text-gray-500">
-          Rango: {formatValue(minValue, selectedMetric)} - {formatValue(maxValue, selectedMetric)} {expandedMetricLabels[selectedMetric]?.unit}
-        </div>
       </div>
     </div>
   );

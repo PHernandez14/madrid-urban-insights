@@ -1,10 +1,10 @@
 
 import React from 'react';
-import { Search, BarChart, Map, Users } from 'lucide-react';
+import { Search, BarChart, Map, Users, Brain } from 'lucide-react';
 
 interface HeaderProps {
-  activeView: 'overview' | 'districts' | 'comparison';
-  onViewChange: (view: 'overview' | 'districts' | 'comparison') => void;
+  activeView: 'overview' | 'districts' | 'comparison' | 'analysis';
+  onViewChange: (view: 'overview' | 'districts' | 'comparison' | 'analysis') => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ activeView, onViewChange }) => {
@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ activeView, onViewChange }) => {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-gray-900">Dashboard Urbano</h1>
-                <p className="text-sm text-gray-600">Madrid</p>
+                <p className="text-sm text-gray-600">Madrid - Análisis Interactivo</p>
               </div>
             </div>
           </div>
@@ -62,6 +62,19 @@ const Header: React.FC<HeaderProps> = ({ activeView, onViewChange }) => {
               <div className="flex items-center space-x-2">
                 <Users className="w-4 h-4" />
                 <span>Comparar</span>
+              </div>
+            </button>
+            <button
+              onClick={() => onViewChange('analysis')}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                activeView === 'analysis'
+                  ? 'bg-blue-100 text-blue-700 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+              }`}
+            >
+              <div className="flex items-center space-x-2">
+                <Brain className="w-4 h-4" />
+                <span>Análisis</span>
               </div>
             </button>
           </nav>

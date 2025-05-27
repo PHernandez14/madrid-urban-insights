@@ -1,146 +1,336 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Users, Home, MapPin, TrendingUp } from 'lucide-react';
+import Header from './components/Header';
+import KPICard from './components/KPICard';
+import DistrictCard from './components/DistrictCard';
+import BarChart from './components/BarChart';
+import ComparisonChart from './components/ComparisonChart';
+import InteractiveMap from './components/InteractiveMap';
+import RadarChart from './components/RadarChart';
+import ScatterPlot from './components/ScatterPlot';
+import FilterPanel from './components/FilterPanel';
+import YearSelector from './components/YearSelector';
+import { 
+  expandedUrbanIndicators, 
+  expandedKpiCategories, 
+  expandedMetricLabels,
+  useCases,
+  availableYears,
+  type ExpandedUrbanIndicators
+} from './data/expandedMadridData';
 
 const App = () => {
-  const [activeTab, setActiveTab] = useState('resumen');
-
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header con navegación */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-blue-600">Dashboard Urbano Madrid</h1>
-            <nav className="flex space-x-4">
-              <button 
-                onClick={() => setActiveTab('resumen')}
-                className={`px-4 py-2 rounded ${activeTab === 'resumen' ? 'bg-blue-100 text-blue-700' : 'text-gray-600'}`}
-              >
-                Resumen
-              </button>
-              <button 
-                onClick={() => setActiveTab('distritos')}
-                className={`px-4 py-2 rounded ${activeTab === 'distritos' ? 'bg-blue-100 text-blue-700' : 'text-gray-600'}`}
-              >
-                Distritos
-              </button>
-              <button 
-                onClick={() => setActiveTab('comparar')}
-                className={`px-4 py-2 rounded ${activeTab === 'comparar' ? 'bg-blue-100 text-blue-700' : 'text-gray-600'}`}
-              >
-                Comparar
-              </button>
-            </nav>
-          </div>
-        </div>
-      </header>
-
-      {/* Contenido principal */}
-      <main className="max-w-7xl mx-auto px-4 py-8">
-        {activeTab === 'resumen' && <ResumenView />}
-        {activeTab === 'distritos' && <DistritosView />}
-        {activeTab === 'comparar' && <CompararView />}
-      </main>
-    </div>
-  );
-};
-
-// Componentes simples que funcionan garantizado
-const ResumenView = () => (
-  <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-    <div className="bg-white p-6 rounded-lg shadow">
-      <h3 className="text-lg font-semibold mb-2">Población Total</h3>
-      <p className="text-3xl font-bold text-blue-600">3.2M</p>
-      <p className="text-sm text-green-600">+2.1% vs año anterior</p>
-    </div>
-    <div className="bg-white p-6 rounded-lg shadow">
-      <h3 className="text-lg font-semibold mb-2">Precio Medio m²</h3>
-      <p className="text-3xl font-bold text-blue-600">4.2K€</p>
-      <p className="text-sm text-green-600">+3.8% vs año anterior</p>
-    </div>
-    <div className="bg-white p-6 rounded-lg shadow">
-      <h3 className="text-lg font-semibold mb-2">Distritos</h3>
-      <p className="text-3xl font-bold text-blue-600">21</p>
-      <p className="text-sm text-gray-600">distritos totales</p>
-    </div>
-    <div className="bg-white p-6 rounded-lg shadow">
-      <h3 className="text-lg font-semibold mb-2">Renta Media</h3>
-      <p className="text-3xl font-bold text-blue-600">45K€</p>
-      <p className="text-sm text-green-600">+1.5% vs año anterior</p>
-    </div>
-  </div>
-);
-
-const DistritosView = () => {
-  const distritos = [
-    { nombre: 'Centro', poblacion: '131K', precio: '5.2K€', renta: '43K€' },
-    { nombre: 'Chamartín', poblacion: '141K', precio: '5.1K€', renta: '52K€' },
-    { nombre: 'Salamanca', poblacion: '146K', precio: '6.1K€', renta: '59K€' },
-    { nombre: 'Retiro', poblacion: '118K', precio: '5.3K€', renta: '49K€' },
-    { nombre: 'Chamberí', poblacion: '143K', precio: '4.8K€', renta: '48K€' },
-    { nombre: 'Tetuán', poblacion: '155K', precio: '3.9K€', renta: '39K€' },
-    { nombre: 'Arganzuela', poblacion: '180K', precio: '4.1K€', renta: '41K€' },
-    { nombre: 'Moncloa', poblacion: '117K', precio: '4.5K€', renta: '46K€' }
-  ];
-
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {distritos.map((distrito, index) => (
-        <div key={index} className="bg-white p-6 rounded-lg shadow hover:shadow-md transition-shadow">
-          <h3 className="text-xl font-semibold mb-4 text-gray-900">{distrito.nombre}</h3>
-          <div className="space-y-2">
-            <p><span className="font-medium text-gray-700">Población:</span> <span className="text-blue-600">{distrito.poblacion}</span></p>
-            <p><span className="font-medium text-gray-700">Precio m²:</span> <span className="text-green-600">{distrito.precio}</span></p>
-            <p><span className="font-medium text-gray-700">Renta media:</span> <span className="text-purple-600">{distrito.renta}</span></p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-const CompararView = () => {
+  const [activeView, setActiveView] = useState<'overview' | 'districts' | 'comparison' | 'analysis'>('overview');
   const [selectedDistricts, setSelectedDistricts] = useState<string[]>([]);
-  
-  const distritos = ['Centro', 'Chamartín', 'Salamanca', 'Retiro', 'Chamberí', 'Tetuán'];
+  const [selectedCategory, setSelectedCategory] = useState<string>('demographics');
+  const [selectedMetric, setSelectedMetric] = useState<string>('population');
+  const [selectedUseCase, setSelectedUseCase] = useState<string>('');
+  const [selectedYear, setSelectedYear] = useState<number>(2024);
+  const [filterPanelOpen, setFilterPanelOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  const toggleDistrict = (distrito: string) => {
-    setSelectedDistricts(prev => 
-      prev.includes(distrito) 
-        ? prev.filter(d => d !== distrito)
-        : [...prev, distrito]
+  // Animation effect for year selector
+  useEffect(() => {
+    if (isAnimating) {
+      const interval = setInterval(() => {
+        setSelectedYear(prev => {
+          const currentIndex = availableYears.indexOf(prev);
+          const nextIndex = (currentIndex + 1) % availableYears.length;
+          return availableYears[nextIndex];
+        });
+      }, 2000);
+
+      return () => clearInterval(interval);
+    }
+  }, [isAnimating]);
+
+  // Get current year data
+  const currentYearData = expandedUrbanIndicators.filter(d => d.year === selectedYear);
+
+  // Calculate totals for current year
+  const totalPopulation = currentYearData.reduce((sum, d) => sum + d.population, 0);
+  const averagePrice = Math.round(currentYearData.reduce((sum, d) => sum + d.averagePriceM2, 0) / currentYearData.length);
+  const totalMetroStations = currentYearData.reduce((sum, d) => sum + d.metroStations, 0);
+  const averageIncome = Math.round(currentYearData.reduce((sum, d) => sum + d.averageIncome, 0) / currentYearData.length);
+
+  const handleDistrictSelect = (districtId: string) => {
+    if (activeView === 'comparison' || activeView === 'analysis') {
+      setSelectedDistricts(prev => {
+        if (prev.includes(districtId)) {
+          return prev.filter(id => id !== districtId);
+        } else if (prev.length < 4) {
+          return [...prev, districtId];
+        }
+        return prev;
+      });
+    } else {
+      setSelectedDistricts([districtId]);
+    }
+  };
+
+  const getTopDistrictsData = (metric: keyof ExpandedUrbanIndicators, count: number = 5) => {
+    return currentYearData
+      .sort((a, b) => (b[metric] as number) - (a[metric] as number))
+      .slice(0, count)
+      .map(d => ({
+        name: d.districtName,
+        value: d[metric] as number,
+        color: expandedKpiCategories[selectedCategory as keyof typeof expandedKpiCategories]?.color || '#3B82F6'
+      }));
+  };
+
+  const renderOverview = () => (
+    <div className="space-y-8">
+      {/* Year Selector */}
+      <YearSelector
+        selectedYear={selectedYear}
+        onYearChange={setSelectedYear}
+        isAnimating={isAnimating}
+        onToggleAnimation={() => setIsAnimating(!isAnimating)}
+      />
+
+      {/* KPI Overview */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <KPICard
+          title="Población Total"
+          value={totalPopulation}
+          unit="habitantes"
+          icon={<Users className="w-4 h-4" />}
+          color="#3B82F6"
+          trend={{ value: 2.1, isPositive: true }}
+        />
+        <KPICard
+          title="Precio Medio m²"
+          value={averagePrice}
+          unit="€"
+          icon={<Home className="w-4 h-4" />}
+          color="#10B981"
+          trend={{ value: 3.8, isPositive: true }}
+        />
+        <KPICard
+          title="Estaciones Metro"
+          value={totalMetroStations}
+          unit="estaciones"
+          icon={<MapPin className="w-4 h-4" />}
+          color="#F59E0B"
+        />
+        <KPICard
+          title="Renta Media"
+          value={averageIncome}
+          unit="€/año"
+          icon={<TrendingUp className="w-4 h-4" />}
+          color="#8B5CF6"
+          trend={{ value: 1.5, isPositive: true }}
+        />
+      </div>
+
+      {/* Interactive Map and Charts */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <InteractiveMap
+          data={expandedUrbanIndicators}
+          selectedMetric={selectedMetric}
+          selectedDistricts={selectedDistricts}
+          onDistrictSelect={handleDistrictSelect}
+          selectedYear={selectedYear}
+        />
+        <BarChart
+          data={getTopDistrictsData('population')}
+          title={`Top 5 Distritos por Población (${selectedYear})`}
+          unit=" hab"
+        />
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <BarChart
+          data={getTopDistrictsData('averagePriceM2')}
+          title={`Top 5 Distritos por Precio m² (${selectedYear})`}
+          unit="€"
+        />
+        <BarChart
+          data={getTopDistrictsData('averageIncome')}
+          title={`Top 5 Distritos por Renta Media (${selectedYear})`}
+          unit="€"
+        />
+      </div>
+    </div>
+  );
+
+  const renderDistricts = () => (
+    <div className="space-y-6">
+      <YearSelector
+        selectedYear={selectedYear}
+        onYearChange={setSelectedYear}
+      />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {currentYearData.map(district => (
+          <DistrictCard
+            key={district.districtId}
+            district={district}
+            onSelect={handleDistrictSelect}
+            isSelected={selectedDistricts.includes(district.districtId)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderComparison = () => {
+    const selectedData = currentYearData.filter(d => selectedDistricts.includes(d.districtId));
+    const selectedCategoryMetrics = selectedUseCase 
+      ? useCases[selectedUseCase as keyof typeof useCases]?.metrics || []
+      : expandedKpiCategories[selectedCategory as keyof typeof expandedKpiCategories]?.metrics || [];
+
+    return (
+      <div className="space-y-8">
+        <YearSelector
+          selectedYear={selectedYear}
+          onYearChange={setSelectedYear}
+        />
+        
+        <div className="bg-blue-50 rounded-lg p-4">
+          <p className="text-sm text-blue-800">
+            Selecciona hasta 4 distritos para comparar. Actualmente seleccionados: {selectedDistricts.length}/4
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <InteractiveMap
+            data={expandedUrbanIndicators}
+            selectedMetric={selectedMetric}
+            selectedDistricts={selectedDistricts}
+            onDistrictSelect={handleDistrictSelect}
+            selectedYear={selectedYear}
+          />
+          
+          {selectedData.length > 0 && (
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                Comparación: {selectedUseCase ? useCases[selectedUseCase as keyof typeof useCases]?.name : expandedKpiCategories[selectedCategory as keyof typeof expandedKpiCategories]?.name || 'Métricas'} ({selectedYear})
+              </h3>
+              <div className="space-y-4">
+                {selectedData.map(district => (
+                  <div key={district.districtId} className="border-b border-gray-100 pb-2">
+                    <h4 className="font-medium">{district.districtName}</h4>
+                    <div className="grid grid-cols-2 gap-2 text-sm text-gray-600">
+                      {selectedCategoryMetrics.slice(0, 4).map(metric => (
+                        <div key={metric}>
+                          {expandedMetricLabels[metric]?.label}: {district[metric as keyof ExpandedUrbanIndicators] as number}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {selectedData.length >= 2 && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <RadarChart
+              districts={selectedData}
+              metrics={selectedCategoryMetrics.slice(0, 6)}
+              title="Comparación Multidimensional"
+            />
+            
+            {selectedCategoryMetrics.length >= 2 && (
+              <ScatterPlot
+                data={selectedData}
+                xMetric={selectedCategoryMetrics[0]}
+                yMetric={selectedCategoryMetrics[1]}
+                title="Análisis de Correlación"
+                selectedDistricts={selectedDistricts}
+              />
+            )}
+          </div>
+        )}
+
+        {selectedData.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {selectedData.map(district => (
+              <DistrictCard
+                key={district.districtId}
+                district={district}
+                onSelect={handleDistrictSelect}
+                isSelected={true}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const renderAnalysis = () => {
+    const selectedData = currentYearData.filter(d => selectedDistricts.includes(d.districtId));
+    
+    return (
+      <div className="space-y-8">
+        <YearSelector
+          selectedYear={selectedYear}
+          onYearChange={setSelectedYear}
+        />
+        
+        <div className="bg-purple-50 rounded-lg p-4">
+          <h3 className="text-lg font-semibold text-purple-900 mb-2">Análisis Inteligente</h3>
+          <p className="text-sm text-purple-800">
+            Selecciona distritos y métricas para generar insights automáticos y patrones de correlación.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <InteractiveMap
+            data={expandedUrbanIndicators}
+            selectedMetric={selectedMetric}
+            selectedDistricts={selectedDistricts}
+            onDistrictSelect={handleDistrictSelect}
+            selectedYear={selectedYear}
+          />
+          
+          {currentYearData.length >= 2 && (
+            <ScatterPlot
+              data={currentYearData}
+              xMetric="averageIncome"
+              yMetric="averagePriceM2"
+              title="Renta vs Precio Vivienda"
+              selectedDistricts={selectedDistricts}
+            />
+          )}
+        </div>
+
+        {selectedData.length >= 3 && (
+          <RadarChart
+            districts={selectedData.slice(0, 4)}
+            metrics={['population', 'averageIncome', 'accessibilityScore', 'greenSpaceM2PerCapita', 'economicActivityIndex']}
+            title="Perfil Integral de Distritos Seleccionados"
+          />
+        )}
+      </div>
     );
   };
 
   return (
-    <div className="space-y-6">
-      <div className="bg-white p-6 rounded-lg shadow">
-        <h2 className="text-2xl font-semibold mb-4 text-gray-900">Comparación de Distritos</h2>
-        <p className="text-gray-600 mb-4">Selecciona distritos para comparar sus métricas.</p>
-        
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
-          {distritos.map((distrito) => (
-            <button
-              key={distrito}
-              onClick={() => toggleDistrict(distrito)}
-              className={`p-3 rounded-lg border transition-colors ${
-                selectedDistricts.includes(distrito)
-                  ? 'bg-blue-100 border-blue-500 text-blue-700'
-                  : 'bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100'
-              }`}
-            >
-              {distrito}
-            </button>
-          ))}
-        </div>
-        
-        {selectedDistricts.length > 0 && (
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-            <h3 className="font-semibold text-blue-900 mb-2">Distritos Seleccionados:</h3>
-            <p className="text-blue-700">{selectedDistricts.join(', ')}</p>
-          </div>
-        )}
-      </div>
+    <div className="min-h-screen bg-gray-50">
+      <Header activeView={activeView} onViewChange={setActiveView} />
+      
+      <FilterPanel
+        selectedCategory={selectedCategory}
+        onCategoryChange={setSelectedCategory}
+        selectedMetric={selectedMetric}
+        onMetricChange={setSelectedMetric}
+        selectedUseCase={selectedUseCase}
+        onUseCaseChange={setSelectedUseCase}
+        isOpen={filterPanelOpen}
+        onToggle={() => setFilterPanelOpen(!filterPanelOpen)}
+      />
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {activeView === 'overview' && renderOverview()}
+        {activeView === 'districts' && renderDistricts()}
+        {activeView === 'comparison' && renderComparison()}
+        {activeView === 'analysis' && renderAnalysis()}
+      </main>
     </div>
   );
 };

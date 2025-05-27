@@ -1,18 +1,7 @@
 
 import React, { useState, useMemo } from 'react';
-import { MapContainer, TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
-import { Info } from 'lucide-react';
-import { ExpandedUrbanIndicators, madridDistrictsGeoJSON, expandedMetricLabels } from '../data/expandedMadridData';
-
-// Fix for default markers in react-leaflet
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-});
+import { Info, MapPin } from 'lucide-react';
+import { ExpandedUrbanIndicators, expandedMetricLabels } from '../data/expandedMadridData';
 
 interface InteractiveMapProps {
   data: ExpandedUrbanIndicators[];
@@ -78,40 +67,6 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
     return value.toLocaleString();
   };
 
-  const onEachFeature = (feature: any, layer: any) => {
-    const districtId = feature.properties.id;
-    const districtData = currentYearData.find(d => d.districtId === districtId);
-    
-    layer.on({
-      mouseover: () => setHoveredDistrict(districtId),
-      mouseout: () => setHoveredDistrict(null),
-      click: () => onDistrictSelect(districtId)
-    });
-
-    if (districtData) {
-      const value = getMetricValue(districtId);
-      layer.bindTooltip(
-        `<div class="font-semibold">${feature.properties.name}</div>
-         <div>${expandedMetricLabels[selectedMetric]?.label}: ${formatValue(value, selectedMetric)} ${expandedMetricLabels[selectedMetric]?.unit}</div>`,
-        { sticky: true }
-      );
-    }
-  };
-
-  const geoJsonStyle = (feature?: any) => {
-    const districtId = feature?.properties?.id;
-    const isSelected = selectedDistricts.includes(districtId);
-    const isHovered = hoveredDistrict === districtId;
-
-    return {
-      fillColor: getDistrictColor(districtId),
-      weight: isSelected ? 3 : isHovered ? 2 : 1,
-      opacity: 1,
-      color: isSelected ? '#3B82F6' : isHovered ? '#059669' : '#64748B',
-      fillOpacity: 0.7
-    };
-  };
-
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 h-96">
       <div className="flex items-center justify-between mb-4">
@@ -127,24 +82,57 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
         </div>
       </div>
 
-      <div className="h-80 rounded-lg overflow-hidden">
-        <MapContainer
-          center={[40.4168, -3.7038]}
-          zoom={11}
-          style={{ height: '100%', width: '100%' }}
-          scrollWheelZoom={false}
-        >
-          <TileLayer
-            attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          
-          <GeoJSON
-            data={madridDistrictsGeoJSON}
-            style={geoJsonStyle}
-            onEachFeature={onEachFeature}
-          />
-        </MapContainer>
+      <div className="h-80 rounded-lg overflow-hidden bg-gray-50 relative">
+        <div className="absolute inset-0 grid grid-cols-4 gap-1 p-4">
+          {currentYearData.slice(0, 16).map((district, index) => {
+            const isSelected = selectedDistricts.includes(district.districtId);
+            const isHovered = hoveredDistrict === district.districtId;
+            const value = getMetricValue(district.districtId);
+            
+            return (
+              <div
+                key={district.districtId}
+                className={`relative rounded-lg border-2 transition-all duration-200 cursor-pointer flex flex-col justify-center items-center p-2 ${
+                  isSelected 
+                    ? 'border-blue-500 shadow-lg transform scale-105' 
+                    : 'border-gray-300 hover:border-blue-400'
+                } ${isHovered ? 'shadow-md' : ''}`}
+                style={{
+                  backgroundColor: getDistrictColor(district.districtId),
+                  minHeight: '60px'
+                }}
+                onClick={() => onDistrictSelect(district.districtId)}
+                onMouseEnter={() => setHoveredDistrict(district.districtId)}
+                onMouseLeave={() => setHoveredDistrict(null)}
+              >
+                <MapPin className="w-4 h-4 text-gray-700 mb-1" />
+                <span className="text-xs font-medium text-gray-900 text-center leading-tight">
+                  {district.districtName}
+                </span>
+                <span className="text-xs text-gray-600 mt-1">
+                  {formatValue(value, selectedMetric)}
+                </span>
+                
+                {isHovered && (
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-gray-900 text-white text-xs rounded px-2 py-1 whitespace-nowrap z-10">
+                    {district.districtName}: {formatValue(value, selectedMetric)} {expandedMetricLabels[selectedMetric]?.unit}
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Legend */}
+        <div className="absolute bottom-4 right-4 bg-white rounded-lg shadow-sm border p-3">
+          <div className="text-xs font-medium text-gray-700 mb-2">Intensidad</div>
+          <div className="flex items-center space-x-2">
+            <span className="text-xs text-gray-500">Bajo</span>
+            <div className="w-16 h-2 bg-gradient-to-r from-green-200 to-blue-600 rounded"></div>
+            <span className="text-xs text-gray-500">Alto</span>
+          </div>
+        </div>
       </div>
     </div>
   );

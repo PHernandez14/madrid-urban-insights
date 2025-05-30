@@ -5,7 +5,6 @@ import Header from './components/Header';
 import KPICard from './components/KPICard';
 import DistrictCard from './components/DistrictCard';
 import BarChart from './components/BarChart';
-import ComparisonChart from './components/ComparisonChart';
 import InteractiveMap from './components/InteractiveMap';
 import RadarChart from './components/RadarChart';
 import ScatterPlot from './components/ScatterPlot';
@@ -55,6 +54,7 @@ const App = () => {
   const averageIncome = Math.round(currentYearData.reduce((sum, d) => sum + d.averageIncome, 0) / currentYearData.length);
 
   const handleDistrictSelect = (districtId: string) => {
+    console.log('District selected:', districtId);
     if (activeView === 'comparison' || activeView === 'analysis') {
       setSelectedDistricts(prev => {
         if (prev.includes(districtId)) {
@@ -82,7 +82,6 @@ const App = () => {
 
   const renderOverview = () => (
     <div className="space-y-8">
-      {/* Year Selector */}
       <YearSelector
         selectedYear={selectedYear}
         onYearChange={setSelectedYear}
@@ -90,7 +89,6 @@ const App = () => {
         onToggleAnimation={() => setIsAnimating(!isAnimating)}
       />
 
-      {/* KPI Overview */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <KPICard
           title="Población Total"
@@ -125,7 +123,6 @@ const App = () => {
         />
       </div>
 
-      {/* Interactive Map and Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <InteractiveMap
           data={expandedUrbanIndicators}
@@ -309,6 +306,9 @@ const App = () => {
       </div>
     );
   };
+
+  console.log('Current activeView:', activeView);
+  console.log('Current year data length:', currentYearData.length);
 
   return (
     <div className="min-h-screen bg-gray-50">

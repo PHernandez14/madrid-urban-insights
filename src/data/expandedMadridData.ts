@@ -1,3 +1,4 @@
+
 // Datos expandidos para el Dashboard Urbano de Madrid con 5 años de historial
 
 export interface ExpandedUrbanIndicators {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Users, Home, MapPin, TrendingUp } from 'lucide-react';
+import { Users, Home, MapPin, TrendingUp, Brain } from 'lucide-react';
 import Header from './components/Header';
 import KPICard from './components/KPICard';
 import DistrictCard from './components/DistrictCard';
@@ -21,14 +21,17 @@ import MapaBarriosLeaflet from './components/MapaBarriosLeaflet';
 import { parsePiramideCSV, getEnvejecimientoPorBarrio, getDetallesEnvejecimientoPorBarrio, parsePoblacionCSV, getInmigracionPorBarrio, getInmigracionPorBarrioMapeado } from './data/utils/parseCSV';
 import * as turf from '@turf/turf';
 import NoticiasRotativas from './components/NoticiasRotativas';
+import MapaPreciosDistritos from './components/MapaPreciosDistritos';
+import EstadisticasPreciosDistritos from './components/EstadisticasPreciosDistritos';
 
 const PIRAMIDE_CSV_URL = '/ficheros/demo/estadisticas202506.csv';
 const POBLACION_CSV_URL = '/ficheros/demo/poblacion_limpio.csv';
 const INMIGRACION_CSV_URL = '/ficheros/demo/tipo_nacionalidad_hogar_limpio.csv';
+
 const GEOJSON_URL = '/barrios_madrid.geojson';
 
 const App = () => {
-  const [activeView, setActiveView] = useState<'overview' | 'districts' | 'comparison' | 'analysis'>('overview');
+  const [activeView, setActiveView] = useState<'overview' | 'analysis' | 'comparison' | 'ai'>('overview');
   const [selectedDistricts, setSelectedDistricts] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('demographics');
   const [selectedMetric, setSelectedMetric] = useState<string>('population');
@@ -41,6 +44,7 @@ const App = () => {
   const [poblacionPorBarrio, setPoblacionPorBarrio] = useState<Record<string, number>>({});
   const [superficiePorBarrio, setSuperficiePorBarrio] = useState<Record<string, number>>({});
   const [detallesEnvejecimientoPorBarrio, setDetallesEnvejecimientoPorBarrio] = useState<Record<string, { porcentaje: number, mayores65: number, total: number }>>({});
+
 
   // Usar año fijo 2024 para todos los datos
   const selectedYear = 2024;
@@ -207,6 +211,8 @@ const App = () => {
       console.error('Error cargando datos de inmigración:', error);
     });
   }, []);
+
+
 
   // Get current year data
   const currentYearData = expandedUrbanIndicators.filter(d => d.year === selectedYear);
@@ -802,17 +808,107 @@ const App = () => {
     </div>
   );
 
-  const renderDistricts = () => (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {currentYearData.map(district => (
-          <DistrictCard
-            key={district.districtId}
-            district={district}
-            onSelect={handleDistrictSelect}
-            isSelected={selectedDistricts.includes(district.districtId)}
+  const renderAnalysis = () => (
+    <div className="space-y-8">
+      {/* Cuadro descriptivo */}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
+        <div className="flex items-center mb-3">
+          <TrendingUp className="w-6 h-6 text-blue-600 mr-3" />
+          <h2 className="text-xl font-bold text-blue-900">Análisis Detallado</h2>
+        </div>
+        <p className="text-blue-800 leading-relaxed">
+          Explora los datos urbanos de Madrid organizados por categorías temáticas. 
+          En esta sección encontrarás análisis profundos de demografía, vivienda, economía y transporte, 
+          con visualizaciones interactivas y mapas detallados para cada área de estudio.
+        </p>
+      </div>
+
+      {/* Sección de Demografía */}
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+          <Users className="w-5 h-5 mr-2 text-blue-600" />
+          Demografía
+        </h2>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Pirámide Poblacional */}
+          <div className="bg-gray-50 rounded-lg p-4">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">Pirámide Poblacional</h3>
+            <PiramidePoblacional />
+          </div>
+          
+          {/* Demografía de Población */}
+          <div className="bg-gray-50 rounded-lg p-4">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">Análisis Demográfico</h3>
+            <DemografiaPoblacion 
+              poblacionPorBarrio={poblacionPorBarrio}
+              densidadPorBarrio={densidadPorBarrio}
+              envejecimientoPorBarrio={envejecimientoPorBarrio}
+            />
+          </div>
+        </div>
+        
+        {/* Mapa de barrios con datos demográficos */}
+        <div className="mt-6">
+          <h3 className="text-lg font-semibold text-gray-800 mb-4">Mapa Demográfico Interactivo</h3>
+          <MapaBarriosLeaflet
+            colorBy={colorByDensidad}
+            densidadPorBarrio={densidadPorBarrio}
+            envejecimientoPorBarrio={envejecimientoNorm}
+            detallesEnvejecimientoPorBarrio={detallesEnvejecimientoPorBarrio}
+            inmigracionPorBarrio={inmigracionPorBarrio}
+            poblacionPorBarrio={poblacionPorBarrio}
+            superficiePorBarrio={superficiePorBarrio}
           />
-        ))}
+        </div>
+      </div>
+
+      {/* Sección de Vivienda */}
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+          <Home className="w-5 h-5 mr-2 text-green-600" />
+          Vivienda y Mercado Inmobiliario
+        </h2>
+        
+        <div className="space-y-8">
+          {/* Mapa de precios de vivienda por distrito */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">Mapa de Precios por Metro Cuadrado (Datos Reales por Distrito)</h3>
+            <MapaPreciosDistritos selectedYear={selectedYear} />
+          </div>
+          
+          {/* Estadísticas de precios por distrito */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">Estadísticas del Mercado Inmobiliario (Datos Reales)</h3>
+            <EstadisticasPreciosDistritos selectedYear={selectedYear} />
+          </div>
+        </div>
+      </div>
+
+      {/* Sección de Economía - Placeholder */}
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+          <TrendingUp className="w-5 h-5 mr-2 text-purple-600" />
+          Economía
+        </h2>
+        <div className="bg-gray-50 rounded-lg p-8 text-center">
+          <TrendingUp className="w-12 h-12 mx-auto text-gray-400 mb-4" />
+          <h3 className="text-lg font-semibold text-gray-600 mb-2">Análisis Económico</h3>
+          <p className="text-gray-500">Próximamente: Análisis de renta, actividad económica y empleo</p>
+        </div>
+      </div>
+
+      {/* Sección de Transporte - Placeholder */}
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+          <MapPin className="w-5 h-5 mr-2 text-orange-600" />
+          Transporte y Movilidad
+        </h2>
+        <div className="bg-gray-50 rounded-lg p-8 text-center">
+          <MapPin className="w-12 h-12 mx-auto text-gray-400 mb-4" />
+          <h3 className="text-lg font-semibold text-gray-600 mb-2">Análisis de Transporte</h3>
+          <p className="text-gray-500">Próximamente: Análisis de estaciones de metro, accesibilidad y movilidad</p>
+        </div>
       </div>
     </div>
   );
@@ -825,6 +921,19 @@ const App = () => {
 
     return (
       <div className="space-y-8">
+        {/* Cuadro descriptivo */}
+        <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border border-green-200">
+          <div className="flex items-center mb-3">
+            <Users className="w-6 h-6 text-green-600 mr-3" />
+            <h2 className="text-xl font-bold text-green-900">Comparación de Métricas</h2>
+          </div>
+          <p className="text-green-800 leading-relaxed">
+            Compara hasta 4 distritos de Madrid simultáneamente. Selecciona los distritos que desees analizar 
+            y visualiza sus métricas en gráficos de radar, diagramas de dispersión y tablas comparativas. 
+            Ideal para identificar patrones y diferencias entre barrios.
+          </p>
+        </div>
+
         <div className="bg-blue-50 rounded-lg p-4">
           <p className="text-sm text-blue-800">
             Selecciona hasta 4 distritos para comparar. Actualmente seleccionados: {selectedDistricts.length}/4
@@ -899,15 +1008,28 @@ const App = () => {
     );
   };
 
-  const renderAnalysis = () => {
+  const renderAI = () => {
     const selectedData = currentYearData.filter(d => selectedDistricts.includes(d.districtId));
     
     return (
       <div className="space-y-8">
+        {/* Cuadro descriptivo */}
+        <div className="bg-gradient-to-r from-purple-50 to-violet-50 rounded-lg p-6 border border-purple-200">
+          <div className="flex items-center mb-3">
+            <Brain className="w-6 h-6 text-purple-600 mr-3" />
+            <h2 className="text-xl font-bold text-purple-900">Análisis Inteligente con IA</h2>
+          </div>
+          <p className="text-purple-800 leading-relaxed">
+            Descubre patrones ocultos y correlaciones entre diferentes métricas urbanas usando inteligencia artificial. 
+            Esta herramienta analiza automáticamente los datos para generar insights predictivos, 
+            identificar tendencias emergentes y proporcionar recomendaciones basadas en datos.
+          </p>
+        </div>
+
         <div className="bg-purple-50 rounded-lg p-4">
-          <h3 className="text-lg font-semibold text-purple-900 mb-2">Análisis Inteligente</h3>
+          <h3 className="text-lg font-semibold text-purple-900 mb-2">Análisis Inteligente con IA</h3>
           <p className="text-sm text-purple-800">
-            Selecciona distritos y métricas para generar insights automáticos y patrones de correlación.
+            Selecciona distritos y métricas para generar insights automáticos y patrones de correlación usando inteligencia artificial.
           </p>
         </div>
 
@@ -948,7 +1070,7 @@ const App = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header activeView={activeView} onViewChange={setActiveView} />
-      <NoticiasRotativas />
+      {activeView === 'overview' && <NoticiasRotativas />}
       <FilterPanel
         selectedCategory={selectedCategory}
         onCategoryChange={setSelectedCategory}
@@ -962,9 +1084,9 @@ const App = () => {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {activeView === 'overview' && renderOverview()}
-        {activeView === 'districts' && renderDistricts()}
-        {activeView === 'comparison' && renderComparison()}
         {activeView === 'analysis' && renderAnalysis()}
+        {activeView === 'comparison' && renderComparison()}
+        {activeView === 'ai' && renderAI()}
       </main>
     </div>
   );

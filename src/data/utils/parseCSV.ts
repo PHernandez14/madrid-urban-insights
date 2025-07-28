@@ -268,3 +268,5 @@ export function getDetallesEnvejecimientoPorBarrio(piramide: PiramidePoblacional
   });
   return resultado;
 } 
+
+ 

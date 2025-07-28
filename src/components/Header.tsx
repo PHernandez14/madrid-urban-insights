@@ -1,10 +1,10 @@
 
 import React from 'react';
-import { Search, BarChart, Map, Users, Brain } from 'lucide-react';
+import { Search, BarChart, TrendingUp, Users, Brain } from 'lucide-react';
 
 interface HeaderProps {
-  activeView: 'overview' | 'districts' | 'comparison' | 'analysis';
-  onViewChange: (view: 'overview' | 'districts' | 'comparison' | 'analysis') => void;
+  activeView: 'overview' | 'analysis' | 'comparison' | 'ai';
+  onViewChange: (view: 'overview' | 'analysis' | 'comparison' | 'ai') => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ activeView, onViewChange }) => {
@@ -39,16 +39,16 @@ const Header: React.FC<HeaderProps> = ({ activeView, onViewChange }) => {
               </div>
             </button>
             <button
-              onClick={() => onViewChange('districts')}
+              onClick={() => onViewChange('analysis')}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                activeView === 'districts'
+                activeView === 'analysis'
                   ? 'bg-blue-100 text-blue-700 shadow-sm'
                   : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
               }`}
             >
               <div className="flex items-center space-x-2">
-                <Map className="w-4 h-4" />
-                <span>Distritos</span>
+                <TrendingUp className="w-4 h-4" />
+                <span>Análisis</span>
               </div>
             </button>
             <button
@@ -65,16 +65,16 @@ const Header: React.FC<HeaderProps> = ({ activeView, onViewChange }) => {
               </div>
             </button>
             <button
-              onClick={() => onViewChange('analysis')}
+              onClick={() => onViewChange('ai')}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                activeView === 'analysis'
+                activeView === 'ai'
                   ? 'bg-blue-100 text-blue-700 shadow-sm'
                   : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
               }`}
             >
               <div className="flex items-center space-x-2">
                 <Brain className="w-4 h-4" />
-                <span>Análisis</span>
+                <span>IA</span>
               </div>
             </button>
           </nav>

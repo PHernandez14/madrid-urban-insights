@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { Info, MapPin } from 'lucide-react';
 import { ExpandedUrbanIndicators, expandedMetricLabels } from '../data/expandedMadridData';

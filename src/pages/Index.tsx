@@ -10,13 +10,11 @@ import InteractiveMap from '../components/InteractiveMap';
 import RadarChart from '../components/RadarChart';
 import ScatterPlot from '../components/ScatterPlot';
 import FilterPanel from '../components/FilterPanel';
-import YearSelector from '../components/YearSelector';
 import { 
   expandedUrbanIndicators, 
   expandedKpiCategories, 
   expandedMetricLabels,
   useCases,
-  availableYears,
   type ExpandedUrbanIndicators
 } from '../data/expandedMadridData';
 
@@ -26,24 +24,10 @@ const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('demographics');
   const [selectedMetric, setSelectedMetric] = useState<string>('population');
   const [selectedUseCase, setSelectedUseCase] = useState<string>('');
-  const [selectedYear, setSelectedYear] = useState<number>(2024);
   const [filterPanelOpen, setFilterPanelOpen] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
 
-  // Animation effect for year selector
-  useEffect(() => {
-    if (isAnimating) {
-      const interval = setInterval(() => {
-        setSelectedYear(prev => {
-          const currentIndex = availableYears.indexOf(prev);
-          const nextIndex = (currentIndex + 1) % availableYears.length;
-          return availableYears[nextIndex];
-        });
-      }, 2000);
-
-      return () => clearInterval(interval);
-    }
-  }, [isAnimating]);
+  // Usar año fijo 2024 para todos los datos
+  const selectedYear = 2024;
 
   // Get current year data
   const currentYearData = expandedUrbanIndicators.filter(d => d.year === selectedYear);
@@ -83,12 +67,7 @@ const Index = () => {
   const renderOverview = () => (
     <div className="space-y-8">
       {/* Year Selector */}
-      <YearSelector
-        selectedYear={selectedYear}
-        onYearChange={setSelectedYear}
-        isAnimating={isAnimating}
-        onToggleAnimation={() => setIsAnimating(!isAnimating)}
-      />
+      {/* Removed YearSelector */}
 
       {/* KPI Overview */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -158,10 +137,7 @@ const Index = () => {
 
   const renderDistricts = () => (
     <div className="space-y-6">
-      <YearSelector
-        selectedYear={selectedYear}
-        onYearChange={setSelectedYear}
-      />
+      {/* Removed YearSelector */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {currentYearData.map(district => (
           <DistrictCard
@@ -183,10 +159,7 @@ const Index = () => {
 
     return (
       <div className="space-y-8">
-        <YearSelector
-          selectedYear={selectedYear}
-          onYearChange={setSelectedYear}
-        />
+        {/* Removed YearSelector */}
         
         <div className="bg-blue-50 rounded-lg p-4">
           <p className="text-sm text-blue-800">
@@ -267,10 +240,7 @@ const Index = () => {
     
     return (
       <div className="space-y-8">
-        <YearSelector
-          selectedYear={selectedYear}
-          onYearChange={setSelectedYear}
-        />
+        {/* Removed YearSelector */}
         
         <div className="bg-purple-50 rounded-lg p-4">
           <h3 className="text-lg font-semibold text-purple-900 mb-2">Análisis Inteligente</h3>

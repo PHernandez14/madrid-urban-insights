@@ -1,0 +1,1072 @@
+año,cod_distrito,distrito,cod_barrio,barrio,num_personas,num_personas_hombres,num_personas_mujeres
+2018,1,Centro,1,Centro,132352,66320,66032
+2018,1,Centro,11,Palacio,22515,10978,11537
+2018,1,Centro,12,Embajadores,44630,23031,21599
+2018,1,Centro,13,Cortes,10531,5265,5266
+2018,1,Centro,14,Justicia,16578,8334,8244
+2018,1,Centro,15,Universidad,30897,15040,15857
+2018,1,Centro,16,Sol,7201,3672,3529
+2018,10,Latina,10,Latina,235785,109392,126393
+2018,10,Latina,101,Loscármenes,17192,8102,9090
+2018,10,Latina,102,Puertadelángel,41397,19061,22336
+2018,10,Latina,103,Lucero,35488,16491,18997
+2018,10,Latina,104,Aluche,65961,30254,35707
+2018,10,Latina,105,Campamento,18983,8828,10155
+2018,10,Latina,106,Cuatrovientos,5662,2870,2792
+2018,10,Latina,107,Águilas,51102,23786,27316
+2018,11,Carabanchel,11,Carabanchel,248220,115525,132695
+2018,11,Carabanchel,111,Comillas,22248,10164,12084
+2018,11,Carabanchel,112,Opañel,32492,14796,17696
+2018,11,Carabanchel,113,Sanisidro,38554,17967,20587
+2018,11,Carabanchel,114,Vistaalegre,45008,20480,24528
+2018,11,Carabanchel,115,Puertabonita,33933,15942,17991
+2018,11,Carabanchel,116,Buenavista,46216,22332,23884
+2018,11,Carabanchel,117,Abrantes,29769,13844,15925
+2018,12,Usera,12,Usera,136978,64582,72396
+2018,12,Usera,121,Orcasitas,22555,10634,11921
+2018,12,Usera,122,Orcasur,13572,6576,6996
+2018,12,Usera,123,Sanfermín,23209,11111,12098
+2018,12,Usera,124,Almendrales,20986,9824,11162
+2018,12,Usera,125,Moscardó,25726,11971,13755
+2018,12,Usera,126,Zofío,13697,6371,7326
+2018,12,Usera,127,Pradolongo,17233,8095,9138
+2018,13,Puente De Vallecas,13,Puentedevallecas,230488,109044,121444
+2018,13,Puente De Vallecas,131,Entrevías,33986,16314,17672
+2018,13,Puente De Vallecas,132,Sandiego,40267,19037,21230
+2018,13,Puente De Vallecas,133,Palomerasbajas,39669,18614,21055
+2018,13,Puente De Vallecas,134,Palomerassureste,42120,20115,22005
+2018,13,Puente De Vallecas,135,Portazgo,27908,13033,14875
+2018,13,Puente De Vallecas,136,Numancia,46538,21931,24607
+2018,14,Moratalaz,14,Moratalaz,94261,43203,51058
+2018,14,Moratalaz,141,Pavones,9081,4174,4907
+2018,14,Moratalaz,142,Horcajo,6326,3031,3295
+2018,14,Moratalaz,143,Marroquina,27378,12742,14636
+2018,14,Moratalaz,144,Medialegua,17757,8090,9667
+2018,14,Moratalaz,145,Fontarrón,16902,7730,9172
+2018,14,Moratalaz,146,Vinateros,16817,7436,9381
+2018,15,Ciudad Lineal,15,Ciudadlineal,214463,97301,117162
+2018,15,Ciudad Lineal,151,Ventas,47744,21405,26339
+2018,15,Ciudad Lineal,152,Pueblonuevo,61160,28300,32860
+2018,15,Ciudad Lineal,153,Quintana,24373,10743,13630
+2018,15,Ciudad Lineal,154,Concepción,20803,9181,11622
+2018,15,Ciudad Lineal,155,Sanpascual,18068,8100,9968
+2018,15,Ciudad Lineal,156,Sanjuanbautista,12433,5782,6651
+2018,15,Ciudad Lineal,157,Colina,6288,2835,3453
+2018,15,Ciudad Lineal,158,Atalaya,1575,656,919
+2018,15,Ciudad Lineal,159,Costillares,22019,10299,11720
+2018,16,Hortaleza,16,Hortaleza,183930,87338,96592
+2018,16,Hortaleza,161,Palomas,6738,3292,3446
+2018,16,Hortaleza,162,Piovera,14723,7042,7681
+2018,16,Hortaleza,163,Canillas,40627,18933,21694
+2018,16,Hortaleza,164,Pinardelrey,52274,24119,28155
+2018,16,Hortaleza,165,Apóstolsantiago,15271,7250,8021
+2018,16,Hortaleza,166,Valdefuentes,54297,26702,27595
+2018,17,Villaverde,17,Villaverde,145523,69552,75971
+2018,17,Villaverde,171,"Villaverdealto,Cascohistóricodevillaverde",44299,21139,23160
+2018,17,Villaverde,172,Sancristóbal,15498,7527,7971
+2018,17,Villaverde,173,Butarque,18268,8859,9409
+2018,17,Villaverde,174,Losrosales,36975,17874,19101
+2018,17,Villaverde,175,Ángeles,30483,14153,16330
+2018,18,Villa De Vallecas,18,Villadevallecas,107649,52352,55297
+2018,18,Villa De Vallecas,181,Cascohistóricodevallecas,39740,19128,20612
+2018,18,Villa De Vallecas,182,Santaeugenia,24295,11672,12623
+2018,18,Villa De Vallecas,183,Ensanchedevallecas,43614,21552,22062
+2018,19,Vicálvaro,19,Vicálvaro,70962,34461,36501
+2018,19,Vicálvaro,191,Cascohistóricodevicálvaro,34200,16585,17615
+2018,19,Vicálvaro,192,Valdebernardo,17637,8434,9203
+2018,19,Vicálvaro,193,Valderrivas,18180,8952,9228
+2018,19,Vicálvaro,194,Elcañaveral,945,490,455
+2018,2,Arganzuela,2,Arganzuela,152907,71039,81868
+2018,2,Arganzuela,21,Imperial,22719,10531,12188
+2018,2,Arganzuela,22,Acacias,36751,16926,19825
+2018,2,Arganzuela,23,Chopera,19799,8919,10880
+2018,2,Arganzuela,24,Legazpi,19252,9446,9806
+2018,2,Arganzuela,25,Delicias,27473,12736,14737
+2018,2,Arganzuela,26,Palosdemoguer,25748,11919,13829
+2018,2,Arganzuela,27,Atocha,1165,562,603
+2018,20,San Blas-Canillejas,20,Sanblas-Canillejas,156149,73922,82227
+2018,20,San Blas-Canillejas,201,Simancas,27242,12851,14391
+2018,20,San Blas-Canillejas,202,Hellín,8941,4093,4848
+2018,20,San Blas-Canillejas,203,Amposta,8346,3851,4495
+2018,20,San Blas-Canillejas,204,Arcos,23939,11203,12736
+2018,20,San Blas-Canillejas,205,Rosas,31560,15197,16363
+2018,20,San Blas-Canillejas,206,Rejas,16315,8008,8307
+2018,20,San Blas-Canillejas,207,Canillejas,28519,13371,15148
+2018,20,San Blas-Canillejas,208,Elsalvador,11287,5348,5939
+2018,21,Barajas,21,Barajas,47836,23136,24700
+2018,21,Barajas,211,Alamedadeosuna,19446,9356,10090
+2018,21,Barajas,212,Aeropuerto,1794,922,872
+2018,21,Barajas,213,Cascohistóricodebarajas,7336,3550,3786
+2018,21,Barajas,214,Timón,11750,5651,6099
+2018,21,Barajas,215,Corralejos,7510,3657,3853
+2018,3,Retiro,3,Retiro,119011,53863,65148
+2018,3,Retiro,31,Pacífico,33601,15000,18601
+2018,3,Retiro,32,Adelfas,18345,8427,9918
+2018,3,Retiro,33,Estrella,23238,10796,12442
+2018,3,Retiro,34,Ibiza,21472,9384,12088
+2018,3,Retiro,35,Losjerónimos,7075,3315,3760
+2018,3,Retiro,36,Niñojesús,15280,6941,8339
+2018,4,Salamanca,4,Salamanca,145268,63940,81328
+2018,4,Salamanca,41,Recoletos,15756,7091,8665
+2018,4,Salamanca,42,Goya,29604,12812,16792
+2018,4,Salamanca,43,Fuentedelberro,20747,9043,11704
+2018,4,Salamanca,44,Guindalera,41259,18570,22689
+2018,4,Salamanca,45,Lista,20956,9023,11933
+2018,4,Salamanca,46,Castellana,16946,7401,9545
+2018,5,Chamartín,5,Chamartín,144894,65144,79750
+2018,5,Chamartín,51,Elviso,17145,7764,9381
+2018,5,Chamartín,52,Prosperidad,36522,16302,20220
+2018,5,Chamartín,53,Ciudadjardín,18487,8146,10341
+2018,5,Chamartín,54,Hispanoamérica,31373,14006,17367
+2018,5,Chamartín,55,Nuevaespaña,24496,11124,13372
+2018,5,Chamartín,56,Castilla,16871,7802,9069
+2018,6,Tetuán,6,Tetuán,155967,70725,85242
+2018,6,Tetuán,61,Bellasvistas,28750,13056,15694
+2018,6,Tetuán,62,Cuatrocaminos,34254,15458,18796
+2018,6,Tetuán,63,Castillejos,20363,9209,11154
+2018,6,Tetuán,64,Almenara,22421,10209,12212
+2018,6,Tetuán,65,Valdeacederas,25571,11835,13736
+2018,6,Tetuán,66,Berruguete,24608,10958,13650
+2018,7,Chamberí,7,Chamberí,138418,60825,77593
+2018,7,Chamberí,71,Gaztambide,22666,9929,12737
+2018,7,Chamberí,72,Arapiles,24335,10792,13543
+2018,7,Chamberí,73,Trafalgar,24523,10922,13601
+2018,7,Chamberí,74,Almagro,19799,8737,11062
+2018,7,Chamberí,75,Ríosrosas,27049,11820,15229
+2018,7,Chamberí,76,Vallehermoso,20046,8625,11421
+2018,8,Fuencarral-El Pardo,8,Fuencarral-Elpardo,242928,114433,128495
+2018,8,Fuencarral-El Pardo,81,Elpardo,3456,1689,1767
+2018,8,Fuencarral-El Pardo,82,Fuentelarreina,3234,1437,1797
+2018,8,Fuencarral-El Pardo,83,Peñagrande,44412,20719,23693
+2018,8,Fuencarral-El Pardo,84,Pilar,46094,21107,24987
+2018,8,Fuencarral-El Pardo,85,Lapaz,33783,15826,17957
+2018,8,Fuencarral-El Pardo,86,Valverde,61941,29476,32465
+2018,8,Fuencarral-El Pardo,87,Mirasierra,32058,15329,16729
+2018,8,Fuencarral-El Pardo,88,Elgoloso,17950,8850,9100
+2018,9,Moncloa-Aravaca,9,Moncloa-Aravaca,117835,54243,63592
+2018,9,Moncloa-Aravaca,91,Casadecampo,12900,5935,6965
+2018,9,Moncloa-Aravaca,92,Argüelles,23992,10890,13102
+2018,9,Moncloa-Aravaca,93,Ciudaduniversitaria,16097,7314,8783
+2018,9,Moncloa-Aravaca,94,Valdezarza,29418,13458,15960
+2018,9,Moncloa-Aravaca,95,Valdemarín,6560,3018,3542
+2018,9,Moncloa-Aravaca,96,Elplantío,2720,1287,1433
+2018,9,Moncloa-Aravaca,97,Aravaca,26148,12341,13807
+2018,Todos,Todos,Todos,Todos,3221824,1500340,1721484
+2019,1,Centro,1,Centro,134881,67829,67052
+2019,1,Centro,11,Palacio,22923,11213,11710
+2019,1,Centro,12,Embajadores,45259,23390,21869
+2019,1,Centro,13,Cortes,10484,5235,5249
+2019,1,Centro,14,Justicia,17153,8675,8478
+2019,1,Centro,15,Universidad,31725,15567,16158
+2019,1,Centro,16,Sol,7337,3749,3588
+2019,10,Latina,10,Latina,238154,110401,127753
+2019,10,Latina,101,Loscármenes,17397,8183,9214
+2019,10,Latina,102,Puertadelángel,41730,19189,22541
+2019,10,Latina,103,Lucero,36090,16771,19319
+2019,10,Latina,104,Aluche,66351,30451,35900
+2019,10,Latina,105,Campamento,19281,8981,10300
+2019,10,Latina,106,Cuatrovientos,5748,2909,2839
+2019,10,Latina,107,Águilas,51557,23917,27640
+2019,11,Carabanchel,11,Carabanchel,253040,117802,135238
+2019,11,Carabanchel,111,Comillas,22403,10230,12173
+2019,11,Carabanchel,112,Opañel,33051,15125,17926
+2019,11,Carabanchel,113,Sanisidro,38957,18196,20761
+2019,11,Carabanchel,114,Vistaalegre,45975,20896,25079
+2019,11,Carabanchel,115,Puertabonita,34860,16318,18542
+2019,11,Carabanchel,116,Buenavista,47055,22737,24318
+2019,11,Carabanchel,117,Abrantes,30739,14300,16439
+2019,12,Usera,12,Usera,139501,65781,73720
+2019,12,Usera,121,Orcasitas,22837,10765,12072
+2019,12,Usera,122,Orcasur,13808,6697,7111
+2019,12,Usera,123,Sanfermín,23666,11310,12356
+2019,12,Usera,124,Almendrales,21439,10043,11396
+2019,12,Usera,125,Moscardó,26353,12300,14053
+2019,12,Usera,126,Zofío,13968,6509,7459
+2019,12,Usera,127,Pradolongo,17430,8157,9273
+2019,13,Puente De Vallecas,13,Puentedevallecas,234770,111183,123587
+2019,13,Puente De Vallecas,131,Entrevías,34698,16677,18021
+2019,13,Puente De Vallecas,132,Sandiego,41664,19833,21831
+2019,13,Puente De Vallecas,133,Palomerasbajas,40166,18886,21280
+2019,13,Puente De Vallecas,134,Palomerassureste,42594,20253,22341
+2019,13,Puente De Vallecas,135,Portazgo,28350,13234,15116
+2019,13,Puente De Vallecas,136,Numancia,47298,22300,24998
+2019,14,Moratalaz,14,Moratalaz,94609,43209,51400
+2019,14,Moratalaz,141,Pavones,9137,4185,4952
+2019,14,Moratalaz,142,Horcajo,6334,3030,3304
+2019,14,Moratalaz,143,Marroquina,27260,12646,14614
+2019,14,Moratalaz,144,Medialegua,17871,8166,9705
+2019,14,Moratalaz,145,Fontarrón,17139,7779,9360
+2019,14,Moratalaz,146,Vinateros,16868,7403,9465
+2019,15,Ciudad Lineal,15,Ciudadlineal,216270,98370,117900
+2019,15,Ciudad Lineal,151,Ventas,48099,21619,26480
+2019,15,Ciudad Lineal,152,Pueblonuevo,62111,28830,33281
+2019,15,Ciudad Lineal,153,Quintana,24622,10882,13740
+2019,15,Ciudad Lineal,154,Concepción,20856,9245,11611
+2019,15,Ciudad Lineal,155,Sanpascual,18130,8154,9976
+2019,15,Ciudad Lineal,156,Sanjuanbautista,12487,5810,6677
+2019,15,Ciudad Lineal,157,Colina,6387,2864,3523
+2019,15,Ciudad Lineal,158,Atalaya,1568,654,914
+2019,15,Ciudad Lineal,159,Costillares,22010,10312,11698
+2019,16,Hortaleza,16,Hortaleza,188267,89307,98960
+2019,16,Hortaleza,161,Palomas,6790,3318,3472
+2019,16,Hortaleza,162,Piovera,14911,7155,7756
+2019,16,Hortaleza,163,Canillas,40578,18919,21659
+2019,16,Hortaleza,164,Pinardelrey,52691,24277,28414
+2019,16,Hortaleza,165,Apóstolsantiago,15418,7290,8128
+2019,16,Hortaleza,166,Valdefuentes,57879,28348,29531
+2019,17,Villaverde,17,Villaverde,148883,71017,77866
+2019,17,Villaverde,171,"Villaverdealto,Cascohistóricodevillaverde",45204,21488,23716
+2019,17,Villaverde,172,Sancristóbal,16052,7834,8218
+2019,17,Villaverde,173,Butarque,18870,9110,9760
+2019,17,Villaverde,174,Losrosales,37587,18071,19516
+2019,17,Villaverde,175,Ángeles,31170,14514,16656
+2019,18,Villa De Vallecas,18,Villadevallecas,110436,53675,56761
+2019,18,Villa De Vallecas,181,Cascohistóricodevallecas,40280,19417,20863
+2019,18,Villa De Vallecas,182,Santaeugenia,24328,11692,12636
+2019,18,Villa De Vallecas,183,Ensanchedevallecas,45828,22566,23262
+2019,19,Vicálvaro,19,Vicálvaro,72126,34848,37278
+2019,19,Vicálvaro,191,Cascohistóricodevicálvaro,34816,16781,18035
+2019,19,Vicálvaro,192,Valdebernardo,17638,8388,9250
+2019,19,Vicálvaro,193,Valderrivas,18142,8894,9248
+2019,19,Vicálvaro,194,Elcañaveral,1530,785,745
+2019,2,Arganzuela,2,Arganzuela,153830,71631,82199
+2019,2,Arganzuela,21,Imperial,22766,10543,12223
+2019,2,Arganzuela,22,Acacias,36785,16943,19842
+2019,2,Arganzuela,23,Chopera,19993,9064,10929
+2019,2,Arganzuela,24,Legazpi,19652,9629,10023
+2019,2,Arganzuela,25,Delicias,27658,12880,14778
+2019,2,Arganzuela,26,Palosdemoguer,25801,11999,13802
+2019,2,Arganzuela,27,Atocha,1175,573,602
+2019,20,San Blas-Canillejas,20,Sanblas-Canillejas,158166,74743,83423
+2019,20,San Blas-Canillejas,201,Simancas,27918,13142,14776
+2019,20,San Blas-Canillejas,202,Hellín,9157,4181,4976
+2019,20,San Blas-Canillejas,203,Amposta,8575,3968,4607
+2019,20,San Blas-Canillejas,204,Arcos,24211,11327,12884
+2019,20,San Blas-Canillejas,205,Rosas,31677,15213,16464
+2019,20,San Blas-Canillejas,206,Rejas,16693,8142,8551
+2019,20,San Blas-Canillejas,207,Canillejas,28584,13404,15180
+2019,20,San Blas-Canillejas,208,Elsalvador,11351,5366,5985
+2019,21,Barajas,21,Barajas,48972,23653,25319
+2019,21,Barajas,211,Alamedadeosuna,19526,9391,10135
+2019,21,Barajas,212,Aeropuerto,1851,952,899
+2019,21,Barajas,213,Cascohistóricodebarajas,7565,3648,3917
+2019,21,Barajas,214,Timón,12388,5916,6472
+2019,21,Barajas,215,Corralejos,7642,3746,3896
+2019,3,Retiro,3,Retiro,119379,54098,65281
+2019,3,Retiro,31,Pacífico,33571,14992,18579
+2019,3,Retiro,32,Adelfas,18474,8532,9942
+2019,3,Retiro,33,Estrella,23306,10798,12508
+2019,3,Retiro,34,Ibiza,21646,9517,12129
+2019,3,Retiro,35,Losjerónimos,7039,3285,3754
+2019,3,Retiro,36,Niñojesús,15343,6974,8369
+2019,4,Salamanca,4,Salamanca,146148,64395,81753
+2019,4,Salamanca,41,Recoletos,15734,7074,8660
+2019,4,Salamanca,42,Goya,29649,12836,16813
+2019,4,Salamanca,43,Fuentedelberro,21071,9197,11874
+2019,4,Salamanca,44,Guindalera,41609,18809,22800
+2019,4,Salamanca,45,Lista,20961,9040,11921
+2019,4,Salamanca,46,Castellana,17124,7439,9685
+2019,5,Chamartín,5,Chamartín,145865,65565,80300
+2019,5,Chamartín,51,Elviso,17302,7783,9519
+2019,5,Chamartín,52,Prosperidad,36651,16374,20277
+2019,5,Chamartín,53,Ciudadjardín,18642,8233,10409
+2019,5,Chamartín,54,Hispanoamérica,31733,14218,17515
+2019,5,Chamartín,55,Nuevaespaña,24657,11166,13491
+2019,5,Chamartín,56,Castilla,16880,7791,9089
+2019,6,Tetuán,6,Tetuán,157937,71632,86305
+2019,6,Tetuán,61,Bellasvistas,29146,13292,15854
+2019,6,Tetuán,62,Cuatrocaminos,34608,15580,19028
+2019,6,Tetuán,63,Castillejos,20513,9201,11312
+2019,6,Tetuán,64,Almenara,22642,10314,12328
+2019,6,Tetuán,65,Valdeacederas,26021,12082,13939
+2019,6,Tetuán,66,Berruguete,25007,11163,13844
+2019,7,Chamberí,7,Chamberí,139448,61308,78140
+2019,7,Chamberí,71,Gaztambide,22891,10062,12829
+2019,7,Chamberí,72,Arapiles,24455,10888,13567
+2019,7,Chamberí,73,Trafalgar,24696,10958,13738
+2019,7,Chamberí,74,Almagro,19807,8726,11081
+2019,7,Chamberí,75,Ríosrosas,27382,11982,15400
+2019,7,Chamberí,76,Vallehermoso,20217,8692,11525
+2019,8,Fuencarral-El Pardo,8,Fuencarral-Elpardo,246021,115797,130224
+2019,8,Fuencarral-El Pardo,81,Elpardo,3454,1704,1750
+2019,8,Fuencarral-El Pardo,82,Fuentelarreina,3265,1481,1784
+2019,8,Fuencarral-El Pardo,83,Peñagrande,44508,20743,23765
+2019,8,Fuencarral-El Pardo,84,Pilar,46419,21206,25213
+2019,8,Fuencarral-El Pardo,85,Lapaz,33765,15800,17965
+2019,8,Fuencarral-El Pardo,86,Valverde,63201,30031,33170
+2019,8,Fuencarral-El Pardo,87,Mirasierra,32898,15704,17194
+2019,8,Fuencarral-El Pardo,88,Elgoloso,18511,9128,9383
+2019,9,Moncloa-Aravaca,9,Moncloa-Aravaca,119423,54934,64489
+2019,9,Moncloa-Aravaca,91,Casadecampo,12991,5963,7028
+2019,9,Moncloa-Aravaca,92,Argüelles,24093,10907,13186
+2019,9,Moncloa-Aravaca,93,Ciudaduniversitaria,16260,7398,8862
+2019,9,Moncloa-Aravaca,94,Valdezarza,29722,13637,16085
+2019,9,Moncloa-Aravaca,95,Valdemarín,6726,3109,3617
+2019,9,Moncloa-Aravaca,96,Elplantío,2808,1301,1507
+2019,9,Moncloa-Aravaca,97,Aravaca,26823,12619,14204
+2019,Todos,Todos,Todos,Todos,3266126,1521178,1744948
+2020,1,Centro,1,Centro,140473,71127,69346
+2020,1,Centro,11,Palacio,23593,11628,11965
+2020,1,Centro,12,Embajadores,47048,24497,22551
+2020,1,Centro,13,Cortes,10771,5365,5406
+2020,1,Centro,14,Justicia,18021,9161,8860
+2020,1,Centro,15,Universidad,33418,16581,16837
+2020,1,Centro,16,Sol,7622,3895,3727
+2020,10,Latina,10,Latina,242139,112282,129857
+2020,10,Latina,101,Loscármenes,17736,8390,9346
+2020,10,Latina,102,Puertadelángel,42362,19529,22833
+2020,10,Latina,103,Lucero,36783,17091,19692
+2020,10,Latina,104,Aluche,67418,30925,36493
+2020,10,Latina,105,Campamento,19848,9216,10632
+2020,10,Latina,106,Cuatrovientos,5881,2958,2923
+2020,10,Latina,107,Águilas,52111,24173,27938
+2020,11,Carabanchel,11,Carabanchel,260196,121317,138879
+2020,11,Carabanchel,111,Comillas,23001,10566,12435
+2020,11,Carabanchel,112,Opañel,33681,15389,18292
+2020,11,Carabanchel,113,Sanisidro,40023,18710,21313
+2020,11,Carabanchel,114,Vistaalegre,47602,21731,25871
+2020,11,Carabanchel,115,Puertabonita,35932,16822,19110
+2020,11,Carabanchel,116,Buenavista,48010,23198,24812
+2020,11,Carabanchel,117,Abrantes,31947,14901,17046
+2020,12,Usera,12,Usera,142894,67346,75548
+2020,12,Usera,121,Orcasitas,23173,10898,12275
+2020,12,Usera,122,Orcasur,14154,6846,7308
+2020,12,Usera,123,Sanfermín,24001,11441,12560
+2020,12,Usera,124,Almendrales,22179,10362,11817
+2020,12,Usera,125,Moscardó,27128,12673,14455
+2020,12,Usera,126,Zofío,14412,6773,7639
+2020,12,Usera,127,Pradolongo,17847,8353,9494
+2020,13,Puente De Vallecas,13,Puentedevallecas,240867,114235,126632
+2020,13,Puente De Vallecas,131,Entrevías,35516,17076,18440
+2020,13,Puente De Vallecas,132,Sandiego,43899,20957,22942
+2020,13,Puente De Vallecas,133,Palomerasbajas,40910,19205,21705
+2020,13,Puente De Vallecas,134,Palomerassureste,43164,20610,22554
+2020,13,Puente De Vallecas,135,Portazgo,28968,13560,15408
+2020,13,Puente De Vallecas,136,Numancia,48410,22827,25583
+2020,14,Moratalaz,14,Moratalaz,95614,43585,52029
+2020,14,Moratalaz,141,Pavones,9355,4274,5081
+2020,14,Moratalaz,142,Horcajo,6435,3074,3361
+2020,14,Moratalaz,143,Marroquina,27232,12595,14637
+2020,14,Moratalaz,144,Medialegua,17951,8185,9766
+2020,14,Moratalaz,145,Fontarrón,17519,7935,9584
+2020,14,Moratalaz,146,Vinateros,17122,7522,9600
+2020,15,Ciudad Lineal,15,Ciudadlineal,219867,99966,119901
+2020,15,Ciudad Lineal,151,Ventas,48891,21942,26949
+2020,15,Ciudad Lineal,152,Pueblonuevo,63521,29399,34122
+2020,15,Ciudad Lineal,153,Quintana,25151,11120,14031
+2020,15,Ciudad Lineal,154,Concepción,21153,9374,11779
+2020,15,Ciudad Lineal,155,Sanpascual,18107,8152,9955
+2020,15,Ciudad Lineal,156,Sanjuanbautista,12725,5923,6802
+2020,15,Ciudad Lineal,157,Colina,6519,2938,3581
+2020,15,Ciudad Lineal,158,Atalaya,1555,667,888
+2020,15,Ciudad Lineal,159,Costillares,22245,10451,11794
+2020,16,Hortaleza,16,Hortaleza,193264,91659,101605
+2020,16,Hortaleza,161,Palomas,6839,3318,3521
+2020,16,Hortaleza,162,Piovera,14939,7119,7820
+2020,16,Hortaleza,163,Canillas,40838,19028,21810
+2020,16,Hortaleza,164,Pinardelrey,53162,24529,28633
+2020,16,Hortaleza,165,Apóstolsantiago,15555,7365,8190
+2020,16,Hortaleza,166,Valdefuentes,61931,30300,31631
+2020,17,Villaverde,17,Villaverde,154318,73639,80679
+2020,17,Villaverde,171,"Villaverdealto,Cascohistóricodevillaverde",46749,22228,24521
+2020,17,Villaverde,172,Sancristóbal,16898,8222,8676
+2020,17,Villaverde,173,Butarque,20026,9704,10322
+2020,17,Villaverde,174,Losrosales,38107,18336,19771
+2020,17,Villaverde,175,Ángeles,32538,15149,17389
+2020,18,Villa De Vallecas,18,Villadevallecas,114512,55510,59002
+2020,18,Villa De Vallecas,181,Cascohistóricodevallecas,40956,19656,21300
+2020,18,Villa De Vallecas,182,Santaeugenia,24684,11833,12851
+2020,18,Villa De Vallecas,183,Ensanchedevallecas,48872,24021,24851
+2020,19,Vicálvaro,19,Vicálvaro,74048,35795,38253
+2020,19,Vicálvaro,191,Cascohistóricodevicálvaro,35666,17220,18446
+2020,19,Vicálvaro,192,Valdebernardo,17834,8478,9356
+2020,19,Vicálvaro,193,Valderrivas,18150,8867,9283
+2020,19,Vicálvaro,194,Elcañaveral,2398,1230,1168
+2020,2,Arganzuela,2,Arganzuela,155660,72600,83060
+2020,2,Arganzuela,21,Imperial,22908,10593,12315
+2020,2,Arganzuela,22,Acacias,36922,17045,19877
+2020,2,Arganzuela,23,Chopera,20287,9199,11088
+2020,2,Arganzuela,24,Legazpi,19810,9671,10139
+2020,2,Arganzuela,25,Delicias,28233,13216,15017
+2020,2,Arganzuela,26,Palosdemoguer,26289,12276,14013
+2020,2,Arganzuela,27,Atocha,1211,600,611
+2020,20,San Blas-Canillejas,20,Sanblas-Canillejas,161222,76252,84970
+2020,20,San Blas-Canillejas,201,Simancas,28698,13574,15124
+2020,20,San Blas-Canillejas,202,Hellín,9342,4260,5082
+2020,20,San Blas-Canillejas,203,Amposta,8874,4108,4766
+2020,20,San Blas-Canillejas,204,Arcos,24692,11612,13080
+2020,20,San Blas-Canillejas,205,Rosas,31794,15253,16541
+2020,20,San Blas-Canillejas,206,Rejas,17299,8395,8904
+2020,20,San Blas-Canillejas,207,Canillejas,29047,13607,15440
+2020,20,San Blas-Canillejas,208,Elsalvador,11476,5443,6033
+2020,21,Barajas,21,Barajas,50010,24149,25861
+2020,21,Barajas,211,Alamedadeosuna,19820,9533,10287
+2020,21,Barajas,212,Aeropuerto,1900,975,925
+2020,21,Barajas,213,Cascohistóricodebarajas,7683,3688,3995
+2020,21,Barajas,214,Timón,12853,6151,6702
+2020,21,Barajas,215,Corralejos,7754,3802,3952
+2020,3,Retiro,3,Retiro,120406,54517,65889
+2020,3,Retiro,31,Pacífico,33767,15108,18659
+2020,3,Retiro,32,Adelfas,18785,8655,10130
+2020,3,Retiro,33,Estrella,23354,10765,12589
+2020,3,Retiro,34,Ibiza,21993,9699,12294
+2020,3,Retiro,35,Losjerónimos,7046,3293,3753
+2020,3,Retiro,36,Niñojesús,15461,6997,8464
+2020,4,Salamanca,4,Salamanca,147854,65220,82634
+2020,4,Salamanca,41,Recoletos,15846,7132,8714
+2020,4,Salamanca,42,Goya,29945,13012,16933
+2020,4,Salamanca,43,Fuentedelberro,21249,9285,11964
+2020,4,Salamanca,44,Guindalera,42306,19146,23160
+2020,4,Salamanca,45,Lista,21211,9111,12100
+2020,4,Salamanca,46,Castellana,17297,7534,9763
+2020,5,Chamartín,5,Chamartín,147551,66424,81127
+2020,5,Chamartín,51,Elviso,17433,7843,9590
+2020,5,Chamartín,52,Prosperidad,36940,16509,20431
+2020,5,Chamartín,53,Ciudadjardín,18893,8415,10478
+2020,5,Chamartín,54,Hispanoamérica,32042,14388,17654
+2020,5,Chamartín,55,Nuevaespaña,25015,11347,13668
+2020,5,Chamartín,56,Castilla,17228,7922,9306
+2020,6,Tetuán,6,Tetuán,161313,73358,87955
+2020,6,Tetuán,61,Bellasvistas,29895,13646,16249
+2020,6,Tetuán,62,Cuatrocaminos,35192,15832,19360
+2020,6,Tetuán,63,Castillejos,20835,9391,11444
+2020,6,Tetuán,64,Almenara,23003,10551,12452
+2020,6,Tetuán,65,Valdeacederas,26545,12346,14199
+2020,6,Tetuán,66,Berruguete,25843,11592,14251
+2020,7,Chamberí,7,Chamberí,140866,62136,78730
+2020,7,Chamberí,71,Gaztambide,23329,10235,13094
+2020,7,Chamberí,72,Arapiles,24704,11025,13679
+2020,7,Chamberí,73,Trafalgar,25023,11161,13862
+2020,7,Chamberí,74,Almagro,19838,8795,11043
+2020,7,Chamberí,75,Ríosrosas,27569,12132,15437
+2020,7,Chamberí,76,Vallehermoso,20403,8788,11615
+2020,8,Fuencarral-El Pardo,8,Fuencarral-Elpardo,249973,117640,132333
+2020,8,Fuencarral-El Pardo,81,Elpardo,3472,1724,1748
+2020,8,Fuencarral-El Pardo,82,Fuentelarreina,3308,1500,1808
+2020,8,Fuencarral-El Pardo,83,Peñagrande,44938,20899,24039
+2020,8,Fuencarral-El Pardo,84,Pilar,46855,21379,25476
+2020,8,Fuencarral-El Pardo,85,Lapaz,33644,15754,17890
+2020,8,Fuencarral-El Pardo,86,Valverde,64668,30772,33896
+2020,8,Fuencarral-El Pardo,87,Mirasierra,34046,16222,17824
+2020,8,Fuencarral-El Pardo,88,Elgoloso,19042,9390,9652
+2020,9,Moncloa-Aravaca,9,Moncloa-Aravaca,121683,55975,65708
+2020,9,Moncloa-Aravaca,91,Casadecampo,13201,6114,7087
+2020,9,Moncloa-Aravaca,92,Argüelles,24423,11074,13349
+2020,9,Moncloa-Aravaca,93,Ciudaduniversitaria,16395,7483,8912
+2020,9,Moncloa-Aravaca,94,Valdezarza,30405,13918,16487
+2020,9,Moncloa-Aravaca,95,Valdemarín,6957,3197,3760
+2020,9,Moncloa-Aravaca,96,Elplantío,2799,1290,1509
+2020,9,Moncloa-Aravaca,97,Aravaca,27503,12899,14604
+2020,Todos,Todos,Todos,Todos,3334730,1554732,1779998
+2021,1,Centro,1,Centro,141236,71881,69355
+2021,1,Centro,11,Palacio,23584,11632,11952
+2021,1,Centro,12,Embajadores,47238,24767,22471
+2021,1,Centro,13,Cortes,10787,5379,5408
+2021,1,Centro,14,Justicia,18208,9291,8917
+2021,1,Centro,15,Universidad,33426,16692,16734
+2021,1,Centro,16,Sol,7993,4120,3873
+2021,10,Latina,10,Latina,240155,111209,128946
+2021,10,Latina,101,Loscármenes,17577,8338,9239
+2021,10,Latina,102,Puertadelángel,41982,19344,22638
+2021,10,Latina,103,Lucero,36576,17056,19520
+2021,10,Latina,104,Aluche,66968,30626,36342
+2021,10,Latina,105,Campamento,19579,9029,10550
+2021,10,Latina,106,Cuatrovientos,5874,2926,2948
+2021,10,Latina,107,Águilas,51599,23890,27709
+2021,11,Carabanchel,11,Carabanchel,258633,120600,138033
+2021,11,Carabanchel,111,Comillas,22695,10471,12224
+2021,11,Carabanchel,112,Opañel,33656,15385,18271
+2021,11,Carabanchel,113,Sanisidro,39728,18584,21144
+2021,11,Carabanchel,114,Vistaalegre,47082,21440,25642
+2021,11,Carabanchel,115,Puertabonita,35947,16868,19079
+2021,11,Carabanchel,116,Buenavista,48008,23176,24832
+2021,11,Carabanchel,117,Abrantes,31517,14676,16841
+2021,12,Usera,12,Usera,142454,67230,75224
+2021,12,Usera,121,Orcasitas,23095,10880,12215
+2021,12,Usera,122,Orcasur,14141,6842,7299
+2021,12,Usera,123,Sanfermín,23838,11382,12456
+2021,12,Usera,124,Almendrales,22516,10543,11973
+2021,12,Usera,125,Moscardó,26623,12435,14188
+2021,12,Usera,126,Zofío,14336,6733,7603
+2021,12,Usera,127,Pradolongo,17905,8415,9490
+2021,13,Puente De Vallecas,13,Puentedevallecas,239057,113355,125702
+2021,13,Puente De Vallecas,131,Entrevías,35239,16925,18314
+2021,13,Puente De Vallecas,132,Sandiego,43574,20793,22781
+2021,13,Puente De Vallecas,133,Palomerasbajas,40468,18959,21509
+2021,13,Puente De Vallecas,134,Palomerassureste,42924,20429,22495
+2021,13,Puente De Vallecas,135,Portazgo,28736,13508,15228
+2021,13,Puente De Vallecas,136,Numancia,48116,22741,25375
+2021,14,Moratalaz,14,Moratalaz,93810,42662,51148
+2021,14,Moratalaz,141,Pavones,8972,4081,4891
+2021,14,Moratalaz,142,Horcajo,6371,3045,3326
+2021,14,Moratalaz,143,Marroquina,26658,12289,14369
+2021,14,Moratalaz,144,Medialegua,17660,7992,9668
+2021,14,Moratalaz,145,Fontarrón,17290,7841,9449
+2021,14,Moratalaz,146,Vinateros,16859,7414,9445
+2021,15,Ciudad Lineal,15,Ciudadlineal,216818,98514,118304
+2021,15,Ciudad Lineal,151,Ventas,48411,21721,26690
+2021,15,Ciudad Lineal,152,Pueblonuevo,62731,28931,33800
+2021,15,Ciudad Lineal,153,Quintana,24621,10931,13690
+2021,15,Ciudad Lineal,154,Concepción,20727,9205,11522
+2021,15,Ciudad Lineal,155,Sanpascual,17823,8017,9806
+2021,15,Ciudad Lineal,156,Sanjuanbautista,12484,5828,6656
+2021,15,Ciudad Lineal,157,Colina,6367,2857,3510
+2021,15,Ciudad Lineal,158,Atalaya,1580,687,893
+2021,15,Ciudad Lineal,159,Costillares,22074,10337,11737
+2021,16,Hortaleza,16,Hortaleza,193228,91585,101643
+2021,16,Hortaleza,161,Palomas,6891,3360,3531
+2021,16,Hortaleza,162,Piovera,14835,7049,7786
+2021,16,Hortaleza,163,Canillas,40281,18757,21524
+2021,16,Hortaleza,164,Pinardelrey,52494,24116,28378
+2021,16,Hortaleza,165,Apóstolsantiago,15473,7338,8135
+2021,16,Hortaleza,166,Valdefuentes,63254,30965,32289
+2021,17,Villaverde,17,Villaverde,154808,73947,80861
+2021,17,Villaverde,171,"Villaverdealto,Cascohistóricodevillaverde",46637,22180,24457
+2021,17,Villaverde,172,Sancristóbal,16986,8345,8641
+2021,17,Villaverde,173,Butarque,20722,10048,10674
+2021,17,Villaverde,174,Losrosales,37790,18145,19645
+2021,17,Villaverde,175,Ángeles,32673,15229,17444
+2021,18,Villa De Vallecas,18,Villadevallecas,114733,55606,59127
+2021,18,Villa De Vallecas,181,Cascohistóricodevallecas,40241,19284,20957
+2021,18,Villa De Vallecas,182,Santaeugenia,24288,11635,12653
+2021,18,Villa De Vallecas,183,Ensanchedevallecas,50204,24687,25517
+2021,19,Vicálvaro,19,Vicálvaro,75485,36497,38988
+2021,19,Vicálvaro,191,Cascohistóricodevicálvaro,35548,17141,18407
+2021,19,Vicálvaro,192,Valdebernardo,17546,8350,9196
+2021,19,Vicálvaro,193,Valderrivas,17961,8752,9209
+2021,19,Vicálvaro,194,Elcañaveral,4430,2254,2176
+2021,2,Arganzuela,2,Arganzuela,154243,72000,82243
+2021,2,Arganzuela,21,Imperial,22596,10446,12150
+2021,2,Arganzuela,22,Acacias,36395,16741,19654
+2021,2,Arganzuela,23,Chopera,20077,9118,10959
+2021,2,Arganzuela,24,Legazpi,19572,9574,9998
+2021,2,Arganzuela,25,Delicias,28374,13352,15022
+2021,2,Arganzuela,26,Palosdemoguer,25785,12059,13726
+2021,2,Arganzuela,27,Atocha,1444,710,734
+2021,20,San Blas-Canillejas,20,Sanblas-Canillejas,160258,75788,84470
+2021,20,San Blas-Canillejas,201,Simancas,28451,13460,14991
+2021,20,San Blas-Canillejas,202,Hellín,9359,4300,5059
+2021,20,San Blas-Canillejas,203,Amposta,8885,4091,4794
+2021,20,San Blas-Canillejas,204,Arcos,24642,11610,13032
+2021,20,San Blas-Canillejas,205,Rosas,31534,15121,16413
+2021,20,San Blas-Canillejas,206,Rejas,17098,8284,8814
+2021,20,San Blas-Canillejas,207,Canillejas,28925,13556,15369
+2021,20,San Blas-Canillejas,208,Elsalvador,11364,5366,5998
+2021,21,Barajas,21,Barajas,50077,24171,25906
+2021,21,Barajas,211,Alamedadeosuna,19657,9430,10227
+2021,21,Barajas,212,Aeropuerto,1918,988,930
+2021,21,Barajas,213,Cascohistóricodebarajas,7504,3593,3911
+2021,21,Barajas,214,Timón,13334,6379,6955
+2021,21,Barajas,215,Corralejos,7664,3781,3883
+2021,3,Retiro,3,Retiro,118557,53800,64757
+2021,3,Retiro,31,Pacífico,33067,14808,18259
+2021,3,Retiro,32,Adelfas,18653,8610,10043
+2021,3,Retiro,33,Estrella,23051,10636,12415
+2021,3,Retiro,34,Ibiza,21558,9549,12009
+2021,3,Retiro,35,Losjerónimos,6928,3232,3696
+2021,3,Retiro,36,Niñojesús,15300,6965,8335
+2021,4,Salamanca,4,Salamanca,146016,64540,81476
+2021,4,Salamanca,41,Recoletos,15629,7048,8581
+2021,4,Salamanca,42,Goya,29479,12820,16659
+2021,4,Salamanca,43,Fuentedelberro,20963,9155,11808
+2021,4,Salamanca,44,Guindalera,41939,18991,22948
+2021,4,Salamanca,45,Lista,20864,9029,11835
+2021,4,Salamanca,46,Castellana,17142,7497,9645
+2021,5,Chamartín,5,Chamartín,145700,65599,80101
+2021,5,Chamartín,51,Elviso,17349,7811,9538
+2021,5,Chamartín,52,Prosperidad,36303,16219,20084
+2021,5,Chamartín,53,Ciudadjardín,18618,8306,10312
+2021,5,Chamartín,54,Hispanoamérica,31642,14214,17428
+2021,5,Chamartín,55,Nuevaespaña,24697,11150,13547
+2021,5,Chamartín,56,Castilla,17091,7899,9192
+2021,6,Tetuán,6,Tetuán,159849,72752,87097
+2021,6,Tetuán,61,Bellasvistas,29465,13461,16004
+2021,6,Tetuán,62,Cuatrocaminos,34817,15717,19100
+2021,6,Tetuán,63,Castillejos,20541,9217,11324
+2021,6,Tetuán,64,Almenara,22738,10470,12268
+2021,6,Tetuán,65,Valdeacederas,26625,12414,14211
+2021,6,Tetuán,66,Berruguete,25663,11473,14190
+2021,7,Chamberí,7,Chamberí,138667,61313,77354
+2021,7,Chamberí,71,Gaztambide,22948,10106,12842
+2021,7,Chamberí,72,Arapiles,24260,10884,13376
+2021,7,Chamberí,73,Trafalgar,24628,11029,13599
+2021,7,Chamberí,74,Almagro,19546,8667,10879
+2021,7,Chamberí,75,Ríosrosas,27216,11977,15239
+2021,7,Chamberí,76,Vallehermoso,20069,8650,11419
+2021,8,Fuencarral-El Pardo,8,Fuencarral-Elpardo,247692,116520,131172
+2021,8,Fuencarral-El Pardo,81,Elpardo,3443,1723,1720
+2021,8,Fuencarral-El Pardo,82,Fuentelarreina,3356,1511,1845
+2021,8,Fuencarral-El Pardo,83,Peñagrande,44383,20584,23799
+2021,8,Fuencarral-El Pardo,84,Pilar,45970,20963,25007
+2021,8,Fuencarral-El Pardo,85,Lapaz,33005,15368,17637
+2021,8,Fuencarral-El Pardo,86,Valverde,64042,30504,33538
+2021,8,Fuencarral-El Pardo,87,Mirasierra,34565,16520,18045
+2021,8,Fuencarral-El Pardo,88,Elgoloso,18928,9347,9581
+2021,9,Moncloa-Aravaca,9,Moncloa-Aravaca,120834,55588,65246
+2021,9,Moncloa-Aravaca,91,Casadecampo,13066,6058,7008
+2021,9,Moncloa-Aravaca,92,Argüelles,24162,10974,13188
+2021,9,Moncloa-Aravaca,93,Ciudaduniversitaria,16175,7417,8758
+2021,9,Moncloa-Aravaca,94,Valdezarza,30091,13744,16347
+2021,9,Moncloa-Aravaca,95,Valdemarín,6856,3163,3693
+2021,9,Moncloa-Aravaca,96,Elplantío,2916,1336,1580
+2021,9,Moncloa-Aravaca,97,Aravaca,27568,12896,14672
+2021,Todos,Todos,Todos,Todos,3312310,1545157,1767153
+2022,1,Centro,1,Centro,139682,70986,68696
+2022,1,Centro,11,Palacio,23417,11568,11849
+2022,1,Centro,12,Embajadores,46444,24271,22173
+2022,1,Centro,13,Cortes,10828,5345,5483
+2022,1,Centro,14,Justicia,18015,9221,8794
+2022,1,Centro,15,Universidad,32861,16349,16512
+2022,1,Centro,16,Sol,8117,4232,3885
+2022,10,Latina,10,Latina,237048,109928,127120
+2022,10,Latina,101,Loscármenes,17543,8302,9241
+2022,10,Latina,102,Puertadelángel,41401,19113,22288
+2022,10,Latina,103,Lucero,36062,16887,19175
+2022,10,Latina,104,Aluche,65833,30086,35747
+2022,10,Latina,105,Campamento,19337,8970,10367
+2022,10,Latina,106,Cuatrovientos,5966,2996,2970
+2022,10,Latina,107,Águilas,50906,23574,27332
+2022,11,Carabanchel,11,Carabanchel,255514,119381,136133
+2022,11,Carabanchel,111,Comillas,22214,10230,11984
+2022,11,Carabanchel,112,Opañel,33300,15283,18017
+2022,11,Carabanchel,113,Sanisidro,39391,18500,20891
+2022,11,Carabanchel,114,Vistaalegre,46474,21208,25266
+2022,11,Carabanchel,115,Puertabonita,35395,16647,18748
+2022,11,Carabanchel,116,Buenavista,47815,23152,24663
+2022,11,Carabanchel,117,Abrantes,30925,14361,16564
+2022,12,Usera,12,Usera,140808,66532,74276
+2022,12,Usera,121,Orcasitas,22996,10827,12169
+2022,12,Usera,122,Orcasur,14250,6915,7335
+2022,12,Usera,123,Sanfermín,23460,11185,12275
+2022,12,Usera,124,Almendrales,22499,10522,11977
+2022,12,Usera,125,Moscardó,26139,12293,13846
+2022,12,Usera,126,Zofío,14022,6571,7451
+2022,12,Usera,127,Pradolongo,17442,8219,9223
+2022,13,Puente De Vallecas,13,Puente De Vallecas,235638,111748,123890
+2022,13,Puente De Vallecas,131,Entrevías,34690,16591,18099
+2022,13,Puente De Vallecas,132,Sandiego,42910,20534,22376
+2022,13,Puente De Vallecas,133,Palomerasbajas,39935,18722,21213
+2022,13,Puente De Vallecas,134,Palomerassureste,42540,20218,22322
+2022,13,Puente De Vallecas,135,Portazgo,28249,13310,14939
+2022,13,Puente De Vallecas,136,Numancia,47314,22373,24941
+2022,14,Moratalaz,14,Moratalaz,92390,42095,50295
+2022,14,Moratalaz,141,Pavones,8719,3968,4751
+2022,14,Moratalaz,142,Horcajo,6354,3057,3297
+2022,14,Moratalaz,143,Marroquina,26297,12113,14184
+2022,14,Moratalaz,144,Medialegua,17377,7845,9532
+2022,14,Moratalaz,145,Fontarrón,17044,7746,9298
+2022,14,Moratalaz,146,Vinateros,16599,7366,9233
+2022,15,Ciudad Lineal,15,Ciudad Lineal,213905,97357,116548
+2022,15,Ciudad Lineal,151,Ventas,47801,21500,26301
+2022,15,Ciudad Lineal,152,Pueblonuevo,61935,28582,33353
+2022,15,Ciudad Lineal,153,Quintana,24183,10748,13435
+2022,15,Ciudad Lineal,154,Concepción,20440,9122,11318
+2022,15,Ciudad Lineal,155,Sanpascual,17546,7914,9632
+2022,15,Ciudad Lineal,156,Sanjuanbautista,12287,5731,6556
+2022,15,Ciudad Lineal,157,Colina,6338,2865,3473
+2022,15,Ciudad Lineal,158,Atalaya,1607,696,911
+2022,15,Ciudad Lineal,159,Costillares,21768,10199,11569
+2022,16,Hortaleza,16,Hortaleza,195017,92532,102485
+2022,16,Hortaleza,161,Palomas,6933,3387,3546
+2022,16,Hortaleza,162,Piovera,14948,7160,7788
+2022,16,Hortaleza,163,Canillas,39708,18425,21283
+2022,16,Hortaleza,164,Pinardelrey,51844,23784,28060
+2022,16,Hortaleza,165,Apóstolsantiago,15374,7343,8031
+2022,16,Hortaleza,166,Valdefuentes,66210,32433,33777
+2022,17,Villaverde,17,Villaverde,153829,73598,80231
+2022,17,Villaverde,171,"Villaverdealto,Cascohistóricodevillaverde",46156,22013,24143
+2022,17,Villaverde,172,Sancristóbal,16640,8223,8417
+2022,17,Villaverde,173,Butarque,20813,10087,10726
+2022,17,Villaverde,174,Losrosales,37319,17918,19401
+2022,17,Villaverde,175,Ángeles,32901,15357,17544
+2022,18,Villa De Vallecas,18,Villa De Vallecas,114817,55580,59237
+2022,18,Villa De Vallecas,181,Cascohistóricodevallecas,39578,18971,20607
+2022,18,Villa De Vallecas,182,Santaeugenia,24110,11515,12595
+2022,18,Villa De Vallecas,183,Ensanchedevallecas,51129,25094,26035
+2022,19,Vicálvaro,19,Vicálvaro,79328,38437,40891
+2022,19,Vicálvaro,191,Cascohistóricodevicálvaro,35086,16925,18161
+2022,19,Vicálvaro,192,Valdebernardo,17431,8321,9110
+2022,19,Vicálvaro,193,Valderrivas,17867,8666,9201
+2022,19,Vicálvaro,194,Elcañaveral,8944,4525,4419
+2022,2,Arganzuela,2,Arganzuela,152638,71466,81172
+2022,2,Arganzuela,21,Imperial,22456,10436,12020
+2022,2,Arganzuela,22,Acacias,36038,16635,19403
+2022,2,Arganzuela,23,Chopera,19734,8994,10740
+2022,2,Arganzuela,24,Legazpi,19469,9543,9926
+2022,2,Arganzuela,25,Delicias,28243,13296,14947
+2022,2,Arganzuela,26,Palosdemoguer,25078,11766,13312
+2022,2,Arganzuela,27,Atocha,1620,796,824
+2022,20,San Blas-Canillejas,20,San Blas-Canillejas,158783,75082,83701
+2022,20,San Blas-Canillejas,201,Simancas,28171,13290,14881
+2022,20,San Blas-Canillejas,202,Hellín,9274,4271,5003
+2022,20,San Blas-Canillejas,203,Amposta,8710,4062,4648
+2022,20,San Blas-Canillejas,204,Arcos,24960,11724,13236
+2022,20,San Blas-Canillejas,205,Rosas,30887,14840,16047
+2022,20,San Blas-Canillejas,206,Rejas,16971,8270,8701
+2022,20,San Blas-Canillejas,207,Canillejas,28541,13318,15223
+2022,20,San Blas-Canillejas,208,Elsalvador,11269,5307,5962
+2022,21,Barajas,21,Barajas,48404,23275,25129
+2022,21,Barajas,211,Alamedadeosuna,19662,9412,10250
+2022,21,Barajas,212,Aeropuerto,1895,967,928
+2022,21,Barajas,213,Cascohistóricodebarajas,7351,3531,3820
+2022,21,Barajas,214,Timón,11895,5622,6273
+2022,21,Barajas,215,Corralejos,7601,3743,3858
+2022,3,Retiro,3,Retiro,117672,53445,64227
+2022,3,Retiro,31,Pacífico,32745,14613,18132
+2022,3,Retiro,32,Adelfas,18715,8675,10040
+2022,3,Retiro,33,Estrella,22780,10514,12266
+2022,3,Retiro,34,Ibiza,21377,9541,11836
+2022,3,Retiro,35,Losjerónimos,6926,3237,3689
+2022,3,Retiro,36,Niñojesús,15129,6865,8264
+2022,4,Salamanca,4,Salamanca,145457,64343,81114
+2022,4,Salamanca,41,Recoletos,15647,7044,8603
+2022,4,Salamanca,42,Goya,29441,12840,16601
+2022,4,Salamanca,43,Fuentedelberro,20848,9087,11761
+2022,4,Salamanca,44,Guindalera,41721,18925,22796
+2022,4,Salamanca,45,Lista,20785,8997,11788
+2022,4,Salamanca,46,Castellana,17015,7450,9565
+2022,5,Chamartín,5,Chamartín,144371,65080,79291
+2022,5,Chamartín,51,Elviso,17181,7767,9414
+2022,5,Chamartín,52,Prosperidad,35963,16070,19893
+2022,5,Chamartín,53,Ciudadjardín,18410,8181,10229
+2022,5,Chamartín,54,Hispanoamérica,31463,14188,17275
+2022,5,Chamartín,55,Nuevaespaña,24366,11015,13351
+2022,5,Chamartín,56,Castilla,16988,7859,9129
+2022,6,Tetuán,6,Tetuán,157433,71636,85797
+2022,6,Tetuán,61,Bellasvistas,28995,13231,15764
+2022,6,Tetuán,62,Cuatrocaminos,34471,15436,19035
+2022,6,Tetuán,63,Castillejos,20282,9097,11185
+2022,6,Tetuán,64,Almenara,22594,10391,12203
+2022,6,Tetuán,65,Valdeacederas,26140,12277,13863
+2022,6,Tetuán,66,Berruguete,24951,11204,13747
+2022,7,Chamberí,7,Chamberí,137287,60867,76420
+2022,7,Chamberí,71,Gaztambide,22659,10058,12601
+2022,7,Chamberí,72,Arapiles,23972,10770,13202
+2022,7,Chamberí,73,Trafalgar,24495,11063,13432
+2022,7,Chamberí,74,Almagro,19358,8557,10801
+2022,7,Chamberí,75,Ríosrosas,26901,11798,15103
+2022,7,Chamberí,76,Vallehermoso,19902,8621,11281
+2022,8,Fuencarral-El Pardo,8,Fuencarral-El Pardo,246281,115955,130326
+2022,8,Fuencarral-El Pardo,81,Elpardo,3382,1683,1699
+2022,8,Fuencarral-El Pardo,82,Fuentelarreina,3346,1513,1833
+2022,8,Fuencarral-El Pardo,83,Peñagrande,43887,20379,23508
+2022,8,Fuencarral-El Pardo,84,Pilar,45354,20645,24709
+2022,8,Fuencarral-El Pardo,85,Lapaz,32346,15059,17287
+2022,8,Fuencarral-El Pardo,86,Valverde,63651,30328,33323
+2022,8,Fuencarral-El Pardo,87,Mirasierra,35240,16920,18320
+2022,8,Fuencarral-El Pardo,88,Elgoloso,19075,9428,9647
+2022,9,Moncloa-Aravaca,9,Moncloa-Aravaca,120360,55501,64859
+2022,9,Moncloa-Aravaca,91,Casadecampo,12804,5929,6875
+2022,9,Moncloa-Aravaca,92,Argüelles,24165,11035,13130
+2022,9,Moncloa-Aravaca,93,Ciudaduniversitaria,16220,7489,8731
+2022,9,Moncloa-Aravaca,94,Valdezarza,29802,13602,16200
+2022,9,Moncloa-Aravaca,95,Valdemarín,7048,3283,3765
+2022,9,Moncloa-Aravaca,96,Elplantío,2998,1384,1614
+2022,9,Moncloa-Aravaca,97,Aravaca,27323,12779,14544
+2022,Todos,Todos,Todos,Todos,3286662,1534824,1751838
+2023,1,Centro,1,Centro,139687,70770,68917
+2023,1,Centro,11,Palacio,23501,11557,11944
+2023,1,Centro,12,Embajadores,46204,24094,22110
+2023,1,Centro,13,Cortes,10816,5350,5466
+2023,1,Centro,14,Justicia,18219,9261,8958
+2023,1,Centro,15,Universidad,32783,16269,16514
+2023,1,Centro,16,Sol,8164,4239,3925
+2023,10,Latina,10,Latina,241672,112093,129579
+2023,10,Latina,101,Loscármenes,17903,8484,9419
+2023,10,Latina,102,Puertadelángel,43292,20165,23127
+2023,10,Latina,103,Lucero,36749,17156,19593
+2023,10,Latina,104,Aluche,66588,30384,36204
+2023,10,Latina,105,Campamento,19750,9111,10639
+2023,10,Latina,106,Cuatrovientos,6122,3068,3054
+2023,10,Latina,107,Águilas,51268,23725,27543
+2023,11,Carabanchel,11,Carabanchel,262339,122632,139707
+2023,11,Carabanchel,111,Comillas,22721,10491,12230
+2023,11,Carabanchel,112,Opañel,33883,15556,18327
+2023,11,Carabanchel,113,Sanisidro,40368,18969,21399
+2023,11,Carabanchel,114,Vistaalegre,47727,21823,25904
+2023,11,Carabanchel,115,Puertabonita,36798,17349,19449
+2023,11,Carabanchel,116,Buenavista,49151,23733,25418
+2023,11,Carabanchel,117,Abrantes,31691,14711,16980
+2023,12,Usera,12,Usera,142746,67538,75208
+2023,12,Usera,121,Orcasitas,23085,10900,12185
+2023,12,Usera,122,Orcasur,14390,6987,7403
+2023,12,Usera,123,Sanfermín,23598,11246,12352
+2023,12,Usera,124,Almendrales,22834,10755,12079
+2023,12,Usera,125,Moscardó,26579,12531,14048
+2023,12,Usera,126,Zofío,14382,6681,7701
+2023,12,Usera,127,Pradolongo,17878,8438,9440
+2023,13,Puente De Vallecas,13,Puente De Vallecas,241603,114542,127061
+2023,13,Puente De Vallecas,131,Entrevías,35399,16976,18423
+2023,13,Puente De Vallecas,132,Sandiego,45104,21593,23511
+2023,13,Puente De Vallecas,133,Palomerasbajas,40477,18947,21530
+2023,13,Puente De Vallecas,134,Palomerassureste,43162,20491,22671
+2023,13,Puente De Vallecas,135,Portazgo,28741,13471,15270
+2023,13,Puente De Vallecas,136,Numancia,48720,23064,25656
+2023,14,Moratalaz,14,Moratalaz,92814,42212,50602
+2023,14,Moratalaz,141,Pavones,8814,4035,4779
+2023,14,Moratalaz,142,Horcajo,6339,3029,3310
+2023,14,Moratalaz,143,Marroquina,26120,11962,14158
+2023,14,Moratalaz,144,Medialegua,17323,7828,9495
+2023,14,Moratalaz,145,Fontarrón,17333,7876,9457
+2023,14,Moratalaz,146,Vinateros,16885,7482,9403
+2023,15,Ciudad Lineal,15,Ciudad Lineal,220345,100759,119586
+2023,15,Ciudad Lineal,151,Ventas,50218,22868,27350
+2023,15,Ciudad Lineal,152,Pueblonuevo,62840,28982,33858
+2023,15,Ciudad Lineal,153,Quintana,25469,11449,14020
+2023,15,Ciudad Lineal,154,Concepción,20941,9402,11539
+2023,15,Ciudad Lineal,155,Sanpascual,18327,8349,9978
+2023,15,Ciudad Lineal,156,Sanjuanbautista,12445,5813,6632
+2023,15,Ciudad Lineal,157,Colina,6569,2973,3596
+2023,15,Ciudad Lineal,158,Atalaya,1622,691,931
+2023,15,Ciudad Lineal,159,Costillares,21914,10232,11682
+2023,16,Hortaleza,16,Hortaleza,198391,94100,104291
+2023,16,Hortaleza,161,Palomas,6922,3404,3518
+2023,16,Hortaleza,162,Piovera,15041,7211,7830
+2023,16,Hortaleza,163,Canillas,39786,18485,21301
+2023,16,Hortaleza,164,Pinardelrey,52031,23825,28206
+2023,16,Hortaleza,165,Apóstolsantiago,15435,7344,8091
+2023,16,Hortaleza,166,Valdefuentes,69176,33831,35345
+2023,17,Villaverde,17,Villaverde,159038,76131,82907
+2023,17,Villaverde,171,"Villaverdealto,Cascohistóricodevillaverde",47817,22826,24991
+2023,17,Villaverde,172,Sancristóbal,17270,8586,8684
+2023,17,Villaverde,173,Butarque,21316,10306,11010
+2023,17,Villaverde,174,Losrosales,37808,18121,19687
+2023,17,Villaverde,175,Ángeles,34827,16292,18535
+2023,18,Villa De Vallecas,18,Villa De Vallecas,117501,56726,60775
+2023,18,Villa De Vallecas,181,Cascohistóricodevallecas,40417,19413,21004
+2023,18,Villa De Vallecas,182,Santaeugenia,23876,11381,12495
+2023,18,Villa De Vallecas,183,Ensanchedevallecas,53208,25932,27276
+2023,19,Vicálvaro,19,Vicálvaro,83804,40580,43224
+2023,19,Vicálvaro,191,Cascohistóricodevicálvaro,35519,17009,18510
+2023,19,Vicálvaro,192,Valdebernardo,17471,8330,9141
+2023,19,Vicálvaro,193,Valderrivas,17760,8589,9171
+2023,19,Vicálvaro,194,Elcañaveral,13054,6652,6402
+2023,2,Arganzuela,2,Arganzuela,153304,71754,81550
+2023,2,Arganzuela,21,Imperial,22385,10421,11964
+2023,2,Arganzuela,22,Acacias,36069,16616,19453
+2023,2,Arganzuela,23,Chopera,19761,8992,10769
+2023,2,Arganzuela,24,Legazpi,19468,9508,9960
+2023,2,Arganzuela,25,Delicias,28575,13463,15112
+2023,2,Arganzuela,26,Palosdemoguer,25097,11797,13300
+2023,2,Arganzuela,27,Atocha,1949,957,992
+2023,20,San Blas-Canillejas,20,San Blas-Canillejas,161219,76154,85065
+2023,20,San Blas-Canillejas,201,Simancas,28765,13560,15205
+2023,20,San Blas-Canillejas,202,Hellín,9555,4375,5180
+2023,20,San Blas-Canillejas,203,Amposta,9126,4258,4868
+2023,20,San Blas-Canillejas,204,Arcos,25354,11932,13422
+2023,20,San Blas-Canillejas,205,Rosas,30751,14727,16024
+2023,20,San Blas-Canillejas,206,Rejas,17399,8495,8904
+2023,20,San Blas-Canillejas,207,Canillejas,29067,13528,15539
+2023,20,San Blas-Canillejas,208,Elsalvador,11202,5279,5923
+2023,21,Barajas,21,Barajas,48646,23332,25314
+2023,21,Barajas,211,Alamedadeosuna,19685,9397,10288
+2023,21,Barajas,212,Aeropuerto,1902,965,937
+2023,21,Barajas,213,Cascohistóricodebarajas,7384,3519,3865
+2023,21,Barajas,214,Timón,12049,5702,6347
+2023,21,Barajas,215,Corralejos,7626,3749,3877
+2023,3,Retiro,3,Retiro,117918,53458,64460
+2023,3,Retiro,31,Pacífico,33027,14809,18218
+2023,3,Retiro,32,Adelfas,18832,8699,10133
+2023,3,Retiro,33,Estrella,22649,10393,12256
+2023,3,Retiro,34,Ibiza,21492,9568,11924
+2023,3,Retiro,35,Losjerónimos,6825,3177,3648
+2023,3,Retiro,36,Niñojesús,15093,6812,8281
+2023,4,Salamanca,4,Salamanca,145702,64452,81250
+2023,4,Salamanca,41,Recoletos,15444,6966,8478
+2023,4,Salamanca,42,Goya,29477,12872,16605
+2023,4,Salamanca,43,Fuentedelberro,20929,9129,11800
+2023,4,Salamanca,44,Guindalera,41964,19006,22958
+2023,4,Salamanca,45,Lista,20969,9056,11913
+2023,4,Salamanca,46,Castellana,16919,7423,9496
+2023,5,Chamartín,5,Chamartín,144796,65245,79551
+2023,5,Chamartín,51,Elviso,17274,7810,9464
+2023,5,Chamartín,52,Prosperidad,36027,16072,19955
+2023,5,Chamartín,53,Ciudadjardín,18513,8234,10279
+2023,5,Chamartín,54,Hispanoamérica,31470,14159,17311
+2023,5,Chamartín,55,Nuevaespaña,24466,11050,13416
+2023,5,Chamartín,56,Castilla,17046,7920,9126
+2023,6,Tetuán,6,Tetuán,160002,72938,87064
+2023,6,Tetuán,61,Bellasvistas,29355,13428,15927
+2023,6,Tetuán,62,Cuatrocaminos,34753,15537,19216
+2023,6,Tetuán,63,Castillejos,20570,9239,11331
+2023,6,Tetuán,64,Almenara,23057,10688,12369
+2023,6,Tetuán,65,Valdeacederas,26573,12442,14131
+2023,6,Tetuán,66,Berruguete,25694,11604,14090
+2023,7,Chamberí,7,Chamberí,138204,61149,77055
+2023,7,Chamberí,71,Gaztambide,22959,10157,12802
+2023,7,Chamberí,72,Arapiles,24190,10831,13359
+2023,7,Chamberí,73,Trafalgar,24621,11147,13474
+2023,7,Chamberí,74,Almagro,19418,8567,10851
+2023,7,Chamberí,75,Ríosrosas,27163,11828,15335
+2023,7,Chamberí,76,Vallehermoso,19853,8619,11234
+2023,8,Fuencarral-El Pardo,8,Fuencarral-El Pardo,248443,116944,131499
+2023,8,Fuencarral-El Pardo,81,Elpardo,3421,1716,1705
+2023,8,Fuencarral-El Pardo,82,Fuentelarreina,3410,1559,1851
+2023,8,Fuencarral-El Pardo,83,Peñagrande,44341,20597,23744
+2023,8,Fuencarral-El Pardo,84,Pilar,45610,20720,24890
+2023,8,Fuencarral-El Pardo,85,Lapaz,32192,14964,17228
+2023,8,Fuencarral-El Pardo,86,Valverde,64757,30851,33906
+2023,8,Fuencarral-El Pardo,87,Mirasierra,35676,17160,18516
+2023,8,Fuencarral-El Pardo,88,Elgoloso,19036,9377,9659
+2023,9,Moncloa-Aravaca,9,Moncloa-Aravaca,121757,56357,65400
+2023,9,Moncloa-Aravaca,91,Casadecampo,12767,5958,6809
+2023,9,Moncloa-Aravaca,92,Argüelles,24497,11207,13290
+2023,9,Moncloa-Aravaca,93,Ciudaduniversitaria,16364,7603,8761
+2023,9,Moncloa-Aravaca,94,Valdezarza,30484,14001,16483
+2023,9,Moncloa-Aravaca,95,Valdemarín,7156,3339,3817
+2023,9,Moncloa-Aravaca,96,Elplantío,3044,1413,1631
+2023,9,Moncloa-Aravaca,97,Aravaca,27445,12836,14609
+2023,Todos,Todos,Todos,Todos,3339931,1559866,1780065
+2024,1,Centro,1,Centro,145411,73734,71677
+2024,1,Centro,11,Palacio,24332,12008,12324
+2024,1,Centro,12,Embajadores,48590,25475,23115
+2024,1,Centro,13,Cortes,11171,5523,5648
+2024,1,Centro,14,Justicia,18739,9497,9242
+2024,1,Centro,15,Universidad,34073,16850,17223
+2024,1,Centro,16,Sol,8506,4381,4125
+2024,10,Latina,10,Latina,250396,116437,133959
+2024,10,Latina,101,Los Cármenes,18423,8757,9666
+2024,10,Latina,102,Puerta Del Angel,45513,21325,24188
+2024,10,Latina,103,Lucero,38072,17835,20237
+2024,10,Latina,104,Aluche,68973,31619,37354
+2024,10,Latina,105,Campamento,20657,9511,11146
+2024,10,Latina,106,Cuatro Vientos,6417,3192,3225
+2024,10,Latina,107,Águilas,52341,24198,28143
+2024,11,Carabanchel,11,Carabanchel,274406,128997,145409
+2024,11,Carabanchel,111,Comillas,23466,10873,12593
+2024,11,Carabanchel,112,Opañel,35513,16394,19119
+2024,11,Carabanchel,113,San Isidro,42184,19962,22222
+2024,11,Carabanchel,114,Vista Alegre,50153,23083,27070
+2024,11,Carabanchel,115,Puerta Bonita,38781,18360,20421
+2024,11,Carabanchel,116,Buenavista,51040,24740,26300
+2024,11,Carabanchel,117,Abrantes,33269,15585,17684
+2024,12,Usera,12,Usera,149113,70801,78312
+2024,12,Usera,121,Orcasitas,23482,11010,12472
+2024,12,Usera,122,Orcasur,14851,7207,7644
+2024,12,Usera,123,San Fermín,24510,11716,12794
+2024,12,Usera,124,Almendrales,23927,11389,12538
+2024,12,Usera,125,Moscardó,27873,13169,14704
+2024,12,Usera,126,Zofío,15298,7166,8132
+2024,12,Usera,127,Pradolongo,19172,9144,10028
+2024,13,Puente De Vallecas,13,Puente De Vallecas,253048,120530,132518
+2024,13,Puente De Vallecas,131,Entrevías,36851,17711,19140
+2024,13,Puente De Vallecas,132,San Diego,49339,23856,25483
+2024,13,Puente De Vallecas,133,Palomeras Bajas,41755,19533,22222
+2024,13,Puente De Vallecas,134,Palomeras Sureste,44396,21125,23271
+2024,13,Puente De Vallecas,135,Portazgo,29746,13960,15786
+2024,13,Puente De Vallecas,136,Numancia,50961,24345,26616
+2024,14,Moratalaz,14,Moratalaz,95123,43412,51711
+2024,14,Moratalaz,141,Pavones,9208,4240,4968
+2024,14,Moratalaz,142,Horcajo,6421,3069,3352
+2024,14,Moratalaz,143,Marroquina,26378,12105,14273
+2024,14,Moratalaz,144,Media Legua,17787,8073,9714
+2024,14,Moratalaz,145,Fontarrón,18000,8189,9811
+2024,14,Moratalaz,146,Vinateros,17329,7736,9593
+2024,15,Ciudad Lineal,15,Ciudad Lineal,230035,105836,124199
+2024,15,Ciudad Lineal,151,Ventas,52223,23931,28292
+2024,15,Ciudad Lineal,152,Pueblo Nuevo,65874,30575,35299
+2024,15,Ciudad Lineal,153,Quintana,26762,12145,14617
+2024,15,Ciudad Lineal,154,La Concepción,22256,10138,12118
+2024,15,Ciudad Lineal,155,San Pascual,19019,8670,10349
+2024,15,Ciudad Lineal,156,San Juan Bautista,13120,6159,6961
+2024,15,Ciudad Lineal,157,Colina,6810,3063,3747
+2024,15,Ciudad Lineal,158,Atalaya,1672,717,955
+2024,15,Ciudad Lineal,159,Costillares,22299,10438,11861
+2024,16,Hortaleza,16,Hortaleza,205182,97439,107743
+2024,16,Hortaleza,161,Palomas,7018,3442,3576
+2024,16,Hortaleza,162,Piovera,15455,7422,8033
+2024,16,Hortaleza,163,Canillas,40440,18793,21647
+2024,16,Hortaleza,164,Pinar Del Rey,53313,24503,28810
+2024,16,Hortaleza,165,Apóstol Santiago,15842,7541,8301
+2024,16,Hortaleza,166,Valdefuentes,73114,35738,37376
+2024,17,Villaverde,17,Villaverde,167952,80563,87389
+2024,17,Villaverde,171,"Villaverde Alto, C.H. Villaverde",50266,24101,26165
+2024,17,Villaverde,172,San Cristóbal,18870,9411,9459
+2024,17,Villaverde,173,Butarque,22375,10810,11565
+2024,17,Villaverde,174,Los Rosales,39648,19005,20643
+2024,17,Villaverde,175,Ángeles,36793,17236,19557
+2024,18,Villa De Vallecas,18,Villa De Vallecas,122337,59153,63184
+2024,18,Villa De Vallecas,181,Casco Histórico De Vallecas,41984,20266,21718
+2024,18,Villa De Vallecas,182,Santa Eugenia,24168,11570,12598
+2024,18,Villa De Vallecas,183,Ensanche De Vallecas,56185,27317,28868
+2024,19,Vicálvaro,19,Vicálvaro,89772,43490,46282
+2024,19,Vicálvaro,191,Casco Histórico De Vicálvaro,37018,17760,19258
+2024,19,Vicálvaro,192,Valdebernardo,17693,8425,9268
+2024,19,Vicálvaro,193,Valderrivas,17868,8650,9218
+2024,19,Vicálvaro,194,El Cañaveral,17193,8655,8538
+2024,2,Arganzuela,2,Arganzuela,156559,73311,83248
+2024,2,Arganzuela,21,Imperial,22668,10538,12130
+2024,2,Arganzuela,22,Acacias,36475,16823,19652
+2024,2,Arganzuela,23,Chopera,20256,9242,11014
+2024,2,Arganzuela,24,Legazpi,19858,9712,10146
+2024,2,Arganzuela,25,Delicias,29465,13888,15577
+2024,2,Arganzuela,26,Palos De La Frontera,25790,12112,13678
+2024,2,Arganzuela,27,Atocha,2047,996,1051
+2024,20,San Blas-Canillejas,20,San Blas-Canillejas,166583,78823,87760
+2024,20,San Blas-Canillejas,201,Simancas,30158,14293,15865
+2024,20,San Blas-Canillejas,202,Hellín,9965,4590,5375
+2024,20,San Blas-Canillejas,203,Amposta,9749,4564,5185
+2024,20,San Blas-Canillejas,204,Arcos,26280,12416,13864
+2024,20,San Blas-Canillejas,205,Rosas,30838,14734,16104
+2024,20,San Blas-Canillejas,206,Rejas,18196,8867,9329
+2024,20,San Blas-Canillejas,207,Canillejas,29943,13922,16021
+2024,20,San Blas-Canillejas,208,El Salvador,11454,5437,6017
+2024,21,Barajas,21,Barajas,49612,23837,25775
+2024,21,Barajas,211,Alameda De Osuna,19875,9484,10391
+2024,21,Barajas,212,Aeropuerto,1949,990,959
+2024,21,Barajas,213,Casco Histórico De Barajas,7625,3658,3967
+2024,21,Barajas,214,Timón,12400,5878,6522
+2024,21,Barajas,215,Corralejos,7763,3827,3936
+2024,3,Retiro,3,Retiro,119757,54339,65418
+2024,3,Retiro,31,Pacífico,33743,15154,18589
+2024,3,Retiro,32,Adelfas,19025,8854,10171
+2024,3,Retiro,33,Estrella,22774,10454,12320
+2024,3,Retiro,34,Ibiza,22010,9723,12287
+2024,3,Retiro,35,Los Jerónimos,6934,3245,3689
+2024,3,Retiro,36,Niño Jesús,15271,6909,8362
+2024,4,Salamanca,4,Salamanca,149778,66374,83404
+2024,4,Salamanca,41,Recoletos,15845,7136,8709
+2024,4,Salamanca,42,Goya,30381,13219,17162
+2024,4,Salamanca,43,Fuente Del Berro,21449,9433,12016
+2024,4,Salamanca,44,Guindalera,42905,19531,23374
+2024,4,Salamanca,45,Lista,21506,9315,12191
+2024,4,Salamanca,46,Castellana,17692,7740,9952
+2024,5,Chamartín,5,Chamartín,148111,66860,81251
+2024,5,Chamartín,51,El Viso,17545,7917,9628
+2024,5,Chamartín,52,Prosperidad,36961,16530,20431
+2024,5,Chamartín,53,Ciudad Jardín,18928,8402,10526
+2024,5,Chamartín,54,Hispanoamérica,32014,14453,17561
+2024,5,Chamartín,55,Nueva España,25043,11312,13731
+2024,5,Chamartín,56,Castilla,17620,8246,9374
+2024,6,Tetuán,6,Tetuán,166211,76072,90139
+2024,6,Tetuán,61,Bellas Vistas,30531,14018,16513
+2024,6,Tetuán,62,Cuatro Caminos,35723,16020,19703
+2024,6,Tetuán,63,Castillejos,21256,9619,11637
+2024,6,Tetuán,64,Almenara,24090,11272,12818
+2024,6,Tetuán,65,Valdeacederas,27798,13024,14774
+2024,6,Tetuán,66,Berruguete,26813,12119,14694
+2024,7,Chamberí,7,Chamberí,141984,62918,79066
+2024,7,Chamberí,71,Gaztambide,23533,10421,13112
+2024,7,Chamberí,72,Arapiles,24931,11111,13820
+2024,7,Chamberí,73,Trafalgar,25328,11491,13837
+2024,7,Chamberí,74,Almagro,19992,8841,11151
+2024,7,Chamberí,75,Ríos Rosas,27962,12261,15701
+2024,7,Chamberí,76,Vallehermoso,20238,8793,11445
+2024,8,Fuencarral-El Pardo,8,Fuencarral-El Pardo,253898,119721,134177
+2024,8,Fuencarral-El Pardo,81,El Pardo,3460,1729,1731
+2024,8,Fuencarral-El Pardo,82,Fuentelarreina,3498,1591,1907
+2024,8,Fuencarral-El Pardo,83,Peñagrande,44844,20857,23987
+2024,8,Fuencarral-El Pardo,84,Pilar,46543,21173,25370
+2024,8,Fuencarral-El Pardo,85,La Paz,32343,15008,17335
+2024,8,Fuencarral-El Pardo,86,Valverde,66870,31990,34880
+2024,8,Fuencarral-El Pardo,87,Mirasierra,36744,17679,19065
+2024,8,Fuencarral-El Pardo,88,El Goloso,19596,9694,9902
+2024,9,Moncloa-Aravaca,9,Moncloa-Aravaca,125223,58121,67102
+2024,9,Moncloa-Aravaca,91,Casa De Campo,12946,6047,6899
+2024,9,Moncloa-Aravaca,92,Argüelles,24987,11492,13495
+2024,9,Moncloa-Aravaca,93,Ciudad Universitaria,16876,7835,9041
+2024,9,Moncloa-Aravaca,94,Valdezarza,31614,14578,17036
+2024,9,Moncloa-Aravaca,95,Valdemarín,7451,3491,3960
+2024,9,Moncloa-Aravaca,96,El Plantío,3156,1467,1689
+2024,9,Moncloa-Aravaca,97,Aravaca,28193,13211,14982
+2024,Todos,Todos,Todos,Todos,3460491,1620768,1839723

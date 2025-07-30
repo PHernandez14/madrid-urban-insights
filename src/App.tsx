@@ -23,6 +23,9 @@ import * as turf from '@turf/turf';
 import NoticiasRotativas from './components/NoticiasRotativas';
 import MapaPreciosDistritos from './components/MapaPreciosDistritos';
 import EstadisticasPreciosDistritos from './components/EstadisticasPreciosDistritos';
+import EvolucionPreciosMadrid from './components/EvolucionPreciosMadrid';
+import DatosEconomicosMadrid from './components/DatosEconomicosMadrid';
+import GraficosEconomicosMadrid from './components/GraficosEconomicosMadrid';
 
 const PIRAMIDE_CSV_URL = '/ficheros/demo/estadisticas202506.csv';
 const POBLACION_CSV_URL = '/ficheros/demo/poblacion_limpio.csv';
@@ -873,28 +876,43 @@ const App = () => {
         <div className="space-y-8">
           {/* Mapa de precios de vivienda por distrito */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Mapa de Precios por Metro Cuadrado (Datos Reales por Distrito)</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">Mapa de Precios por Metro Cuadrado</h3>
             <MapaPreciosDistritos selectedYear={selectedYear} />
           </div>
           
           {/* Estadísticas de precios por distrito */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Estadísticas del Mercado Inmobiliario (Datos Reales)</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">Estadísticas del Mercado Inmobiliario</h3>
             <EstadisticasPreciosDistritos selectedYear={selectedYear} />
+          </div>
+
+          {/* Evolución histórica de precios */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">Evolución Histórica de Precios</h3>
+            <EvolucionPreciosMadrid selectedYear={selectedYear} />
           </div>
         </div>
       </div>
 
-      {/* Sección de Economía - Placeholder */}
+      {/* Sección de Economía */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
         <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
           <TrendingUp className="w-5 h-5 mr-2 text-purple-600" />
-          Economía
+          Economía y Mercado Laboral
         </h2>
-        <div className="bg-gray-50 rounded-lg p-8 text-center">
-          <TrendingUp className="w-12 h-12 mx-auto text-gray-400 mb-4" />
-          <h3 className="text-lg font-semibold text-gray-600 mb-2">Análisis Económico</h3>
-          <p className="text-gray-500">Próximamente: Análisis de renta, actividad económica y empleo</p>
+        
+        <div className="space-y-8">
+          {/* Datos económicos principales */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">Indicadores Económicos Principales</h3>
+            <DatosEconomicosMadrid selectedYear={selectedYear} />
+          </div>
+          
+          {/* Gráficos económicos avanzados */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">Análisis Gráfico y Correlaciones</h3>
+            <GraficosEconomicosMadrid selectedYear={selectedYear} />
+          </div>
         </div>
       </div>
 

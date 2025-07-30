@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { expandedUrbanIndicators } from '../data/expandedMadridData';
+import { preciosIdealistaMadrid, getPreciosIdealistaPorDistrito } from '../data/preciosIdealistaMadrid';
 
 interface MapaPreciosDistritosProps {
   selectedYear?: number;
@@ -23,23 +23,23 @@ const MapaPreciosDistritos: React.FC<MapaPreciosDistritosProps> = ({ selectedYea
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    // Obtener datos del año seleccionado
-    const currentYearData = expandedUrbanIndicators.filter(d => d.year === selectedYear);
-    
-    // Crear mapa de precios por distrito
+    // Crear mapa de precios por código de distrito usando datos de Idealista
     const preciosPorDistrito: Record<string, number> = {};
-    currentYearData.forEach(district => {
-      preciosPorDistrito[district.districtId] = district.averagePriceM2;
+    preciosIdealistaMadrid.forEach(distrito => {
+      preciosPorDistrito[distrito.codigoDistrito] = distrito.precioVentaM2;
+      console.log(`Mapeando ${distrito.distritoNombre} (${distrito.distritoId}) -> código ${distrito.codigoDistrito}: ${distrito.precioVentaM2}€/m²`);
     });
 
-    // Función para obtener color según el precio
+    console.log('Precios Idealista por distrito:', preciosPorDistrito);
+
+    // Función para obtener color según el precio (usando los mismos colores que la leyenda)
     const getColorByPrecio = (precio: number) => {
-      if (precio >= 5000) return '#d73027'; // Rojo oscuro - muy caro
-      if (precio >= 4000) return '#fc8d59'; // Naranja - caro
-      if (precio >= 3000) return '#fee08b'; // Amarillo - medio-alto
-      if (precio >= 2000) return '#d9ef8b'; // Verde claro - medio
-      if (precio >= 1000) return '#91cf60'; // Verde - barato
-      return '#1a9850'; // Verde oscuro - muy barato
+      if (precio >= 5000) return '#dc2626'; // Rojo oscuro - muy caro
+      if (precio >= 4000) return '#f97316'; // Naranja - caro
+      if (precio >= 3000) return '#eab308'; // Amarillo - medio-alto
+      if (precio >= 2000) return '#86efac'; // Verde claro - medio
+      if (precio >= 1000) return '#22c55e'; // Verde - barato
+      return '#15803d'; // Verde oscuro - muy barato
     };
 
     // Función para obtener el estilo del polígono
@@ -47,19 +47,21 @@ const MapaPreciosDistritos: React.FC<MapaPreciosDistritosProps> = ({ selectedYea
       const codDistrito = feature.properties.CODDIS || feature.properties.COD_DIS || feature.properties.COD_DIS_TX;
       const precio = preciosPorDistrito[codDistrito];
       
+      console.log(`Distrito ${codDistrito}: precio = ${precio}€/m²`);
+      
       return {
         fillColor: precio ? getColorByPrecio(precio) : '#e5e7eb',
         weight: 2,
         opacity: 1,
         color: 'white',
-        fillOpacity: precio ? 0.7 : 0.3
+        fillOpacity: precio ? 0.8 : 0.3
       };
     };
 
-    // Función para crear el tooltip
+    // Función para crear el tooltip con datos de Idealista
     const createTooltip = (feature: any) => {
       const codDistrito = feature.properties.CODDIS || feature.properties.COD_DIS || feature.properties.COD_DIS_TX;
-      const nombreDistrito = feature.properties.NOMBRE || feature.properties.NOMBRE_DIS || feature.properties.nombre_distrito;
+      const nombreDistrito = feature.properties.NOMDIS || feature.properties.NOMBRE || feature.properties.NOMBRE_DIS || feature.properties.nombre_distrito;
       const precio = preciosPorDistrito[codDistrito];
       
       if (!precio) {
@@ -69,15 +71,22 @@ const MapaPreciosDistritos: React.FC<MapaPreciosDistritosProps> = ({ selectedYea
         </div>`;
       }
       
-      // Buscar datos completos del distrito
-      const distritoData = currentYearData.find(d => d.districtId === codDistrito);
+      // Buscar datos de Idealista del distrito
+      const distritoData = preciosIdealistaMadrid.find(d => d.codigoDistrito === codDistrito);
+      
+      if (!distritoData) {
+        return `<div class="tooltip-content">
+          <strong>${nombreDistrito}</strong><br/>
+          <span class="text-blue-600">Precio: ${precio.toLocaleString()} €/m²</span>
+        </div>`;
+      }
       
       return `<div class="tooltip-content">
         <strong>${nombreDistrito}</strong><br/>
-        <span class="text-blue-600">Precio: ${precio.toLocaleString()} €/m²</span><br/>
-        <span class="text-green-600">Alquiler: ${distritoData?.averageRentPrice?.toLocaleString() || 'N/A'} €/mes</span><br/>
-        <span class="text-purple-600">Vivienda protegida: ${distritoData?.protectedHousingPercentage?.toFixed(1) || 'N/A'}%</span><br/>
-        <span class="text-gray-600">Total viviendas: ${distritoData?.totalHousingUnits?.toLocaleString() || 'N/A'}</span>
+        <span class="text-blue-600">Precio venta: ${distritoData.precioVentaM2.toLocaleString()} €/m²</span><br/>
+        <span class="text-green-600">Alquiler: ${distritoData.precioAlquilerMensual.toLocaleString()} €/mes</span><br/>
+        <span class="text-purple-600">Variación venta: ${distritoData.variacionAnualVenta}%</span><br/>
+        <span class="text-orange-600">Variación alquiler: ${distritoData.variacionAnualAlquiler}%</span>
       </div>`;
     };
 
@@ -98,6 +107,8 @@ const MapaPreciosDistritos: React.FC<MapaPreciosDistritosProps> = ({ selectedYea
           }
           distritosAgrupados[codDistrito].features.push(feature);
         });
+
+        console.log('Distritos agrupados:', Object.keys(distritosAgrupados));
 
         // Crear capas para cada distrito
         Object.entries(distritosAgrupados).forEach(([codDistrito, geojsonDistrito]) => {

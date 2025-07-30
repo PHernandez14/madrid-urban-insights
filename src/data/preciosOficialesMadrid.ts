@@ -3,256 +3,146 @@
 // Datos actualizados a 2024
 
 export interface PrecioViviendaOficial {
-  distritoId: string;
-  distritoNombre: string;
   codigoDistrito: string;
+  distritoNombre: string;
   precioVentaM2: number;
   precioAlquilerM2: number;
-  precioAlquilerMensual: number;
-  variacionAnual: number;
-  fuente: string;
-  fechaActualizacion: string;
 }
 
-// Datos oficiales de precios de vivienda por distrito en Madrid (2024)
-// Fuentes: INE, Sociedad de Tasación, Ministerio de Transportes, Movilidad y Agenda Urbana
 export const preciosOficialesMadrid: PrecioViviendaOficial[] = [
+  // Datos extraídos del portal de datos abiertos del Ayuntamiento de Madrid
+  // Fuente: https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9f149b3b31084f1a5a0/
+  // Sección: "Distritos en cifras" -> "Características generales"
   {
-    distritoId: "centro",
+    codigoDistrito: "01",
     distritoNombre: "Centro",
-    codigoDistrito: "1",
-    precioVentaM2: 4850,
-    precioAlquilerM2: 18.5,
-    precioAlquilerMensual: 1450,
-    variacionAnual: 2.8,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    precioVentaM2: 5890,
+    precioAlquilerM2: 22.5,
   },
   {
-    distritoId: "arganzuela",
+    codigoDistrito: "02",
     distritoNombre: "Arganzuela",
-    codigoDistrito: "2",
-    precioVentaM2: 3200,
-    precioAlquilerM2: 12.8,
-    precioAlquilerMensual: 980,
-    variacionAnual: 3.2,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    precioVentaM2: 4410,
+    precioAlquilerM2: 18.2,
   },
   {
-    distritoId: "retiro",
+    codigoDistrito: "03",
     distritoNombre: "Retiro",
-    codigoDistrito: "3",
-    precioVentaM2: 4200,
-    precioAlquilerM2: 15.2,
-    precioAlquilerMensual: 1180,
-    variacionAnual: 2.5,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    precioVentaM2: 5620,
+    precioAlquilerM2: 19.5,
   },
   {
-    distritoId: "salamanca",
+    codigoDistrito: "04",
     distritoNombre: "Salamanca",
-    codigoDistrito: "4",
-    precioVentaM2: 5670,
-    precioAlquilerM2: 22.1,
-    precioAlquilerMensual: 1850,
-    variacionAnual: 4.1,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    precioVentaM2: 7050,
+    precioAlquilerM2: 23.1,
   },
   {
-    distritoId: "chamartin",
+    codigoDistrito: "05",
     distritoNombre: "Chamartín",
-    codigoDistrito: "5",
-    precioVentaM2: 5200,
-    precioAlquilerM2: 19.8,
-    precioAlquilerMensual: 1650,
-    variacionAnual: 3.8,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    precioVentaM2: 6350,
+    precioAlquilerM2: 21.5,
   },
   {
-    distritoId: "tetuan",
+    codigoDistrito: "06",
     distritoNombre: "Tetuán",
-    codigoDistrito: "6",
-    precioVentaM2: 3800,
-    precioAlquilerM2: 14.5,
-    precioAlquilerMensual: 1120,
-    variacionAnual: 3.5,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    precioVentaM2: 4350,
+    precioAlquilerM2: 19.8,
   },
   {
-    distritoId: "chamberi",
+    codigoDistrito: "07",
     distritoNombre: "Chamberí",
-    codigoDistrito: "7",
-    precioVentaM2: 4500,
-    precioAlquilerM2: 17.2,
-    precioAlquilerMensual: 1380,
-    variacionAnual: 3.0,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    precioVentaM2: 6410,
+    precioAlquilerM2: 22.8,
   },
   {
-    distritoId: "fuencarral-el-pardo",
+    codigoDistrito: "08",
     distritoNombre: "Fuencarral-El Pardo",
-    codigoDistrito: "8",
-    precioVentaM2: 2800,
-    precioAlquilerM2: 11.5,
-    precioAlquilerMensual: 890,
-    variacionAnual: 2.8,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    precioVentaM2: 4210,
+    precioAlquilerM2: 16.5,
   },
   {
-    distritoId: "moncloa-aravaca",
+    codigoDistrito: "09",
     distritoNombre: "Moncloa-Aravaca",
-    codigoDistrito: "9",
-    precioVentaM2: 3500,
-    precioAlquilerM2: 13.8,
-    precioAlquilerMensual: 1080,
-    variacionAnual: 3.2,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    precioVentaM2: 4780,
+    precioAlquilerM2: 18.9,
   },
   {
-    distritoId: "latina",
-    distritoNombre: "Latina",
     codigoDistrito: "10",
-    precioVentaM2: 2400,
-    precioAlquilerM2: 10.2,
-    precioAlquilerMensual: 780,
-    variacionAnual: 2.5,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    distritoNombre: "Latina",
+    precioVentaM2: 2650,
+    precioAlquilerM2: 14.5,
   },
   {
-    distritoId: "carabanchel",
-    distritoNombre: "Carabanchel",
     codigoDistrito: "11",
-    precioVentaM2: 2200,
-    precioAlquilerM2: 9.8,
-    precioAlquilerMensual: 750,
-    variacionAnual: 2.8,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    distritoNombre: "Carabanchel",
+    precioVentaM2: 2580,
+    precioAlquilerM2: 14.2,
   },
   {
-    distritoId: "usera",
-    distritoNombre: "Usera",
     codigoDistrito: "12",
-    precioVentaM2: 2000,
-    precioAlquilerM2: 9.2,
-    precioAlquilerMensual: 680,
-    variacionAnual: 3.1,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    distritoNombre: "Usera",
+    precioVentaM2: 2450,
+    precioAlquilerM2: 14.8,
   },
   {
-    distritoId: "puente-vallecas",
-    distritoNombre: "Puente de Vallecas",
     codigoDistrito: "13",
-    precioVentaM2: 1800,
-    precioAlquilerM2: 8.5,
-    precioAlquilerMensual: 620,
-    variacionAnual: 2.9,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    distritoNombre: "Puente de Vallecas",
+    precioVentaM2: 2410,
+    precioAlquilerM2: 14.1,
   },
   {
-    distritoId: "moratalaz",
-    distritoNombre: "Moratalaz",
     codigoDistrito: "14",
-    precioVentaM2: 2100,
-    precioAlquilerM2: 9.5,
-    precioAlquilerMensual: 720,
-    variacionAnual: 2.7,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    distritoNombre: "Moratalaz",
+    precioVentaM2: 3050,
+    precioAlquilerM2: 13.9,
   },
   {
-    distritoId: "ciudad-lineal",
-    distritoNombre: "Ciudad Lineal",
     codigoDistrito: "15",
-    precioVentaM2: 2600,
-    precioAlquilerM2: 10.8,
-    precioAlquilerMensual: 820,
-    variacionAnual: 3.0,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    distritoNombre: "Ciudad Lineal",
+    precioVentaM2: 3820,
+    precioAlquilerM2: 17.1,
   },
   {
-    distritoId: "hortaleza",
-    distritoNombre: "Hortaleza",
     codigoDistrito: "16",
-    precioVentaM2: 2400,
-    precioAlquilerM2: 10.5,
-    precioAlquilerMensual: 780,
-    variacionAnual: 2.6,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    distritoNombre: "Hortaleza",
+    precioVentaM2: 4380,
+    precioAlquilerM2: 16.9,
   },
   {
-    distritoId: "villaverde",
-    distritoNombre: "Villaverde",
     codigoDistrito: "17",
-    precioVentaM2: 1600,
-    precioAlquilerM2: 7.8,
-    precioAlquilerMensual: 580,
-    variacionAnual: 3.3,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    distritoNombre: "Villaverde",
+    precioVentaM2: 2150,
+    precioAlquilerM2: 13.5,
   },
   {
-    distritoId: "villa-vallecas",
-    distritoNombre: "Villa de Vallecas",
     codigoDistrito: "18",
-    precioVentaM2: 1700,
-    precioAlquilerM2: 8.2,
-    precioAlquilerMensual: 610,
-    variacionAnual: 2.9,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    distritoNombre: "Villa de Vallecas",
+    precioVentaM2: 3120,
+    precioAlquilerM2: 14.6,
   },
   {
-    distritoId: "vicalvaro",
-    distritoNombre: "Vicálvaro",
     codigoDistrito: "19",
-    precioVentaM2: 1900,
-    precioAlquilerM2: 8.8,
-    precioAlquilerMensual: 650,
-    variacionAnual: 3.1,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    distritoNombre: "Vicálvaro",
+    precioVentaM2: 2980,
+    precioAlquilerM2: 13.8,
   },
   {
-    distritoId: "san-blas-canillejas",
-    distritoNombre: "San Blas-Canillejas",
     codigoDistrito: "20",
-    precioVentaM2: 2000,
-    precioAlquilerM2: 9.0,
-    precioAlquilerMensual: 670,
-    variacionAnual: 2.8,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    distritoNombre: "San Blas-Canillejas",
+    precioVentaM2: 3350,
+    precioAlquilerM2: 15.2,
   },
   {
-    distritoId: "barajas",
-    distritoNombre: "Barajas",
     codigoDistrito: "21",
-    precioVentaM2: 1800,
-    precioAlquilerM2: 8.0,
-    precioAlquilerMensual: 590,
-    variacionAnual: 2.5,
-    fuente: "INE - Estadísticas de Precios de Vivienda 2024",
-    fechaActualizacion: "2024-01"
+    distritoNombre: "Barajas",
+    precioVentaM2: 4150,
+    precioAlquilerM2: 16.1,
   }
 ];
 
-// Función para obtener datos por distrito
-export const getPreciosPorDistrito = (distritoId: string): PrecioViviendaOficial | undefined => {
-  return preciosOficialesMadrid.find(d => d.distritoId === distritoId);
+export const getPrecioOficialPorDistrito = (codigoDistrito: string): PrecioViviendaOficial | undefined => {
+  return preciosOficialesMadrid.find(d => d.codigoDistrito === codigoDistrito);
 };
 
 // Función para obtener todos los datos

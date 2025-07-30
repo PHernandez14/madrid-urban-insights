@@ -26,6 +26,7 @@ import EstadisticasPreciosDistritos from './components/EstadisticasPreciosDistri
 import EvolucionPreciosMadrid from './components/EvolucionPreciosMadrid';
 import DatosEconomicosMadrid from './components/DatosEconomicosMadrid';
 import GraficosEconomicosMadrid from './components/GraficosEconomicosMadrid';
+import ViviendasTuristicas from './components/ViviendasTuristicas';
 
 const PIRAMIDE_CSV_URL = '/ficheros/demo/estadisticas202506.csv';
 const POBLACION_CSV_URL = '/ficheros/demo/poblacion_limpio.csv';
@@ -890,6 +891,11 @@ const App = () => {
           <div>
             <h3 className="text-lg font-semibold text-gray-800 mb-4">Evolución Histórica de Precios</h3>
             <EvolucionPreciosMadrid selectedYear={selectedYear} />
+          </div>
+
+          {/* Análisis de Viviendas Turísticas */}
+          <div className="mt-8">
+            <ViviendasTuristicas />
           </div>
         </div>
       </div>

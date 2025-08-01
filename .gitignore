@@ -1,27 +1,18 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+/dist
 
 # misc
 .DS_Store
@@ -30,4 +21,39 @@ dist-ssr
 .env.test.local
 .env.production.local
 
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ficheros grandes
+ficheros/locales202507.csv
+ficheros/actividadeconomica202507.csv
+ficheros/licencias202507.csv
+ficheros/emt_gtfs.zip
+ficheros/2025_Accidentalidad.csv
+ficheros/accidentes_trafico.csv
+ficheros/accidentes_trafico_2022.csv
+ficheros/aparcamientosPublicos.csv
+ficheros/aparcamientos_temp.csv
+ficheros/emt_paradas.csv
+ficheros/emt_stops.csv
+ficheros/emt_stops.geojson
+ficheros/metro_accesos.geojson
+ficheros/puntosRecargaElectricos.csv
+ficheros/puntosdecarga.csv
+ficheros/terrazas202507.csv
+ficheros/google_transit_M4
+ficheros/EMT
+
+# data generated
+src/data/accidentesMadrid.json
+src/data/aparcamientosMadrid.json
+src/data/datosComercialesMadrid.json
+src/data/emtLineas.json
+src/data/emtParadas.json
+src/data/localesComerciales.json
+src/data/metroEstaciones.json
+src/data/puntosRecargaMadrid.json
+
+# temp files
 .temp

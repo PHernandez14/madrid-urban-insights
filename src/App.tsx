@@ -25,8 +25,15 @@ import MapaPreciosDistritos from './components/MapaPreciosDistritos';
 import EstadisticasPreciosDistritos from './components/EstadisticasPreciosDistritos';
 import EvolucionPreciosMadrid from './components/EvolucionPreciosMadrid';
 import DatosEconomicosMadrid from './components/DatosEconomicosMadrid';
+import IndicadoresMacro from './components/IndicadoresMacro';
 import GraficosEconomicosMadrid from './components/GraficosEconomicosMadrid';
 import ViviendasTuristicas from './components/ViviendasTuristicas';
+import ActividadComercialDistrito from './components/ActividadComercialDistrito';
+import LicenciasDistrito from './components/LicenciasDistrito';
+import TerrazasDistrito from './components/TerrazasDistrito';
+import MapaDeCalorActividad from './components/MapaDeCalorActividad';
+import MapaMovilidad from './components/MapaMovilidad';
+import EstadisticasBiciMAD from './components/EstadisticasBiciMAD';
 
 const PIRAMIDE_CSV_URL = '/ficheros/demo/estadisticas202506.csv';
 const POBLACION_CSV_URL = '/ficheros/demo/poblacion_limpio.csv';
@@ -908,6 +915,9 @@ const App = () => {
         </h2>
         
         <div className="space-y-8">
+          {/* Datos Macroeconómicos */}
+          <IndicadoresMacro />
+          
           {/* Datos económicos principales */}
           <div>
             <h3 className="text-lg font-semibold text-gray-800 mb-4">Indicadores Económicos Principales</h3>
@@ -919,19 +929,29 @@ const App = () => {
             <h3 className="text-lg font-semibold text-gray-800 mb-4">Análisis Gráfico y Correlaciones</h3>
             <GraficosEconomicosMadrid selectedYear={selectedYear} />
           </div>
+
+          {/* Nueva sección de Actividad Comercial */}
+          <div className="mt-8">
+             <h3 className="text-lg font-semibold text-gray-800 mb-4">Análisis de Actividad Comercial</h3>
+             <div className="space-y-8">
+               <MapaDeCalorActividad />
+               <ActividadComercialDistrito />
+               <LicenciasDistrito />
+               <TerrazasDistrito />
+             </div>
+           </div>
         </div>
       </div>
 
-      {/* Sección de Transporte - Placeholder */}
+      {/* Sección de Transporte */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
         <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
           <MapPin className="w-5 h-5 mr-2 text-orange-600" />
           Transporte y Movilidad
         </h2>
-        <div className="bg-gray-50 rounded-lg p-8 text-center">
-          <MapPin className="w-12 h-12 mx-auto text-gray-400 mb-4" />
-          <h3 className="text-lg font-semibold text-gray-600 mb-2">Análisis de Transporte</h3>
-          <p className="text-gray-500">Próximamente: Análisis de estaciones de metro, accesibilidad y movilidad</p>
+        <div className="space-y-8">
+          <MapaMovilidad />
+          <EstadisticasBiciMAD />
         </div>
       </div>
     </div>

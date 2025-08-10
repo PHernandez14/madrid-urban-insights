@@ -47,3 +47,6 @@ export const datosMacroMadrid: DatoMacroAnual[] = [
 // Fuente: Instituto Nacional de Estadística (INE), Contabilidad Regional de España.
 // Los datos pueden tener ligeras variaciones con respecto a otras fuentes debido a revisiones.
 
+
+
+

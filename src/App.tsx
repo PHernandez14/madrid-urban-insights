@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Users, Home, MapPin, TrendingUp, Brain } from 'lucide-react';
+import { Users, Home, MapPin, TrendingUp, Brain, ChevronDown, Bot, Send, AlertTriangle, Sparkles, MessageSquare, Wand2 } from 'lucide-react';
+import { chatWithOllama, listOllamaModels, pingOllama } from './lib/aiClient';
 import Header from './components/Header';
 import KPICard from './components/KPICard';
 import DistrictCard from './components/DistrictCard';
@@ -34,6 +35,7 @@ import TerrazasDistrito from './components/TerrazasDistrito';
 import MapaDeCalorActividad from './components/MapaDeCalorActividad';
 import MapaMovilidad from './components/MapaMovilidad';
 import EstadisticasBiciMAD from './components/EstadisticasBiciMAD';
+
 
 const PIRAMIDE_CSV_URL = '/ficheros/demo/estadisticas202506.csv';
 const POBLACION_CSV_URL = '/ficheros/demo/poblacion_limpio.csv';
@@ -736,85 +738,169 @@ const App = () => {
   }, []);
 
   const renderOverview = () => (
-    <div className="space-y-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <KPICard
-          title="Población Total"
-          value={totalPopulation}
-          unit="habitantes"
-          icon={<Users className="w-4 h-4" />}
-          color="#3B82F6"
-          trend={{ value: 2.1, isPositive: true }}
-        />
-        <KPICard
-          title="Precio Medio m²"
-          value={averagePrice}
-          unit="€"
-          icon={<Home className="w-4 h-4" />}
-          color="#10B981"
-          trend={{ value: 3.8, isPositive: true }}
-        />
-        <KPICard
-          title="Estaciones Metro"
-          value={totalMetroStations}
-          unit="estaciones"
-          icon={<MapPin className="w-4 h-4" />}
-          color="#F59E0B"
-        />
-        <KPICard
-          title="Renta Media"
-          value={averageIncome}
-          unit="€/año"
-          icon={<TrendingUp className="w-4 h-4" />}
-          color="#8B5CF6"
-          trend={{ value: 1.5, isPositive: true }}
-        />
-      </div>
-
-      {/* Mapa de barrios de Madrid */}
-      <div className="mt-8">
-        <h2 className="text-xl font-bold mb-4 text-blue-700">Mapa interactivo de barrios de Madrid</h2>
-        <MapaBarriosLeaflet
-          colorBy={colorByDensidad}
-          densidadPorBarrio={densidadPorBarrio}
-          envejecimientoPorBarrio={envejecimientoNorm}
-          detallesEnvejecimientoPorBarrio={detallesEnvejecimientoPorBarrio}
-          inmigracionPorBarrio={inmigracionPorBarrio}
-          poblacionPorBarrio={poblacionPorBarrio}
-          superficiePorBarrio={superficiePorBarrio}
-        />
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Gráfico de población - constante */}
-        <BarChart
-          data={getTopBarriosPoblacion()}
-          title="Top 5 Barrios por Población"
-        />
-        
-        {/* Gráfico variable - inmigración/envejecimiento */}
-        <div className="relative">
-          <div className={`transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
-            <BarChart
-              data={mostrarInmigracion ? getTopBarriosInmigracion() : getTopBarriosEnvejecimiento()}
-              title={mostrarInmigracion ? "Top 5 Barrios por Inmigración" : "Top 5 Barrios por Envejecimiento"}
-              isPercentage={true}
-            />
+    <div className="space-y-10">
+      {/* Héroe */}
+      <section className="rounded-2xl bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 border border-indigo-100 p-8 md:p-12">
+        <div className="max-w-3xl relative">
+          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900 mb-4">
+            Madrid Urban Insights
+          </h1>
+          <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-6">
+            Plataforma de inteligencia urbana para explorar, comparar y entender Madrid con datos. 
+            Descubre patrones demográficos, mercado inmobiliario, actividad económica y movilidad.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <button type="button" onClick={() => setActiveView('analysis')} className="inline-flex items-center gap-2 rounded-md bg-blue-600 text-white px-4 py-2 text-sm font-medium hover:bg-blue-700 transition">
+              <TrendingUp className="w-4 h-4" /> Explorar análisis
+            </button>
+            <button type="button" onClick={() => setActiveView('comparison')} className="inline-flex items-center gap-2 rounded-md bg-white text-gray-900 border border-gray-200 px-4 py-2 text-sm font-medium hover:bg-gray-50 transition">
+              <Users className="w-4 h-4" /> Comparar distritos
+            </button>
+            <button type="button" onClick={() => setActiveView('ai')} className="inline-flex items-center gap-2 rounded-md bg-purple-600 text-white px-4 py-2 text-sm font-medium hover:bg-purple-700 transition">
+              <Brain className="w-4 h-4" /> IA para insights
+            </button>
           </div>
-          <div className="absolute top-2 right-2">
-            <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium transition-all duration-300 ${
-              mostrarInmigracion 
-                ? 'bg-red-100 text-red-800' 
-                : 'bg-yellow-100 text-yellow-800'
-            }`}>
-              {mostrarInmigracion ? '🌍 Inmigración' : '👴 Envejecimiento'}
-            </span>
+
+          {/* Indicador de scroll sutil */}
+          <div className="hidden md:flex absolute -bottom-6 left-0 right-0 justify-start">
+            <div className="inline-flex items-center gap-2 text-gray-600 text-sm animate-bounce">
+              <ChevronDown className="w-4 h-4" />
+              Desliza para descubrir más
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="bg-white rounded-lg shadow p-6">
-        <PiramidePoblacional />
+      {/* Banda de métricas con contador */}
+      <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <MetricCard label="Población total" value={3527924} suffix=" hab." color="text-blue-700" />
+        <MetricCard label="Precio medio m²" value={4103} suffix=" €/m²" color="text-emerald-700" />
+        <MetricCard label="Estaciones de metro" value={303} color="text-orange-700" />
+        <MetricCard label="Renta media" value={17648} suffix=" €" color="text-violet-700" />
+      </section>
+
+      {/* Objetivos del proyecto */}
+      <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+        <h2 className="text-xl font-bold text-gray-900 mb-4">Fines del proyecto</h2>
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
+          <li className="flex items-start gap-3">
+            <span className="mt-1 inline-block h-2 w-2 rounded-full bg-blue-600" />
+            Facilitar una visión integrada de datos urbanos clave de Madrid.
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="mt-1 inline-block h-2 w-2 rounded-full bg-green-600" />
+            Ayudar a la toma de decisiones públicas y privadas con visualizaciones claras.
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="mt-1 inline-block h-2 w-2 rounded-full bg-orange-500" />
+            Detectar patrones y desigualdades territoriales entre barrios y distritos.
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="mt-1 inline-block h-2 w-2 rounded-full bg-purple-600" />
+            Experimentar con técnicas de IA para descubrir correlaciones e insights.
+          </li>
+        </ul>
+      </section>
+
+      {/* Funcionalidades */}
+      <section>
+        <h2 className="text-xl font-bold text-gray-900 mb-4">Qué puedes hacer aquí</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="flex items-center gap-2 mb-2 text-blue-700 font-semibold">
+              <MapPin className="w-4 h-4" /> Mapas interactivos
+            </div>
+            <p className="text-sm text-gray-700 mb-4">Explora barrios y distritos con capas de densidad, envejecimiento e inmigración.</p>
+            <button type="button" onClick={() => setActiveView('analysis')} className="text-sm font-medium text-blue-700 hover:text-blue-800">Abrir mapas →</button>
+          </div>
+
+          <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="flex items-center gap-2 mb-2 text-green-700 font-semibold">
+              <Home className="w-4 h-4" /> Vivienda y precios
+            </div>
+            <p className="text-sm text-gray-700 mb-4">Consulta precios m², evolución histórica y distribución por distritos.</p>
+            <button type="button" onClick={() => setActiveView('analysis')} className="text-sm font-medium text-green-700 hover:text-green-800">Ver vivienda →</button>
+          </div>
+
+          <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="flex items-center gap-2 mb-2 text-purple-700 font-semibold">
+              <TrendingUp className="w-4 h-4" /> Economía y empleo
+            </div>
+            <p className="text-sm text-gray-700 mb-4">Indicadores macro, renta media y análisis de actividad comercial.</p>
+            <button type="button" onClick={() => setActiveView('analysis')} className="text-sm font-medium text-purple-700 hover:text-purple-800">Ver economía →</button>
+          </div>
+
+          <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="flex items-center gap-2 mb-2 text-emerald-700 font-semibold">
+              <Users className="w-4 h-4" /> Demografía
+            </div>
+            <p className="text-sm text-gray-700 mb-4">Pirámide poblacional, envejecimiento, densidad y composición.</p>
+            <button type="button" onClick={() => setActiveView('analysis')} className="text-sm font-medium text-emerald-700 hover:text-emerald-800">Ver demografía →</button>
+          </div>
+
+          <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="flex items-center gap-2 mb-2 text-gray-800 font-semibold">
+              <Users className="w-4 h-4" /> Comparador de distritos
+            </div>
+            <p className="text-sm text-gray-700 mb-4">Selecciona hasta 4 distritos y compara sus métricas en paralelo.</p>
+            <button type="button" onClick={() => setActiveView('comparison')} className="text-sm font-medium text-gray-800 hover:text-black">Comparar →</button>
+          </div>
+
+          <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="flex items-center gap-2 mb-2 text-fuchsia-700 font-semibold">
+              <Brain className="w-4 h-4" /> IA para descubrimiento
+            </div>
+            <p className="text-sm text-gray-700 mb-4">Explora correlaciones y patrones avanzados asistidos por IA.</p>
+            <button type="button" onClick={() => setActiveView('ai')} className="text-sm font-medium text-fuchsia-700 hover:text-fuchsia-800">Probar IA →</button>
+          </div>
+        </div>
+      </section>
+
+      {/* Cómo usar / notas */}
+      <section className="rounded-xl border border-gray-200 bg-white p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-3">Cómo usar esta plataforma</h3>
+        <ol className="list-decimal list-inside space-y-1 text-sm text-gray-700">
+          <li>Revisa las noticias de la parte inferior para contexto actualizado.</li>
+          <li>Usa los accesos directos para ir a Análisis, Comparación o IA.</li>
+          <li>Desde Análisis, explora mapas y gráficos temáticos por secciones.</li>
+        </ol>
+      </section>
+
+      {/* Noticias al final de la landing */}
+      <section className="space-y-4">
+        <h2 className="text-xl font-bold text-gray-900">Actualidad</h2>
+        <NoticiasRotativas />
+      </section>
+    </div>
+  );
+
+  // Contador simple para números (landing)
+  const CountUp: React.FC<{ value: number; duration?: number; prefix?: string; suffix?: string; className?: string }> = ({ value, duration = 1200, prefix = '', suffix = '', className = '' }) => {
+    const [displayValue, setDisplayValue] = useState(0);
+    useEffect(() => {
+      let rafId: number;
+      const start = performance.now();
+      const formatter = new Intl.NumberFormat('es-ES');
+      const animate = (now: number) => {
+        const elapsed = now - start;
+        const progress = Math.min(1, elapsed / duration);
+        const current = Math.round(value * progress);
+        setDisplayValue(current);
+        if (progress < 1) {
+          rafId = requestAnimationFrame(animate);
+        }
+      };
+      rafId = requestAnimationFrame(animate);
+      return () => cancelAnimationFrame(rafId);
+    }, [value, duration]);
+    return <span className={className}>{prefix}{new Intl.NumberFormat('es-ES').format(displayValue)}{suffix}</span>;
+  };
+
+  const MetricCard: React.FC<{ label: string; value: number; prefix?: string; suffix?: string; color?: string }> = ({ label, value, prefix, suffix, color = 'text-gray-900' }) => (
+    <div className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+      <div className="text-xs uppercase tracking-wide text-gray-500 mb-1">{label}</div>
+      <div className={`text-2xl font-extrabold ${color}`}>
+        <CountUp value={value} prefix={prefix} suffix={suffix} />
       </div>
     </div>
   );
@@ -954,6 +1040,8 @@ const App = () => {
           <EstadisticasBiciMAD />
         </div>
       </div>
+
+
     </div>
   );
 
@@ -1052,58 +1140,168 @@ const App = () => {
     );
   };
 
+  // --- Estado e interfaz para la pestaña de IA (chat estilo LLM)
+  type AIRole = 'user' | 'assistant';
+  type AIMessage = { id: string; role: AIRole; content: string };
+  const [aiMessages, setAiMessages] = useState<AIMessage[]>([
+    {
+      id: 'welcome',
+      role: 'assistant',
+      content:
+        '¡Hola! Soy la IA de Madrid Urban Insights (beta). Puedo ayudarte a explorar datos de demografía, vivienda, economía y movilidad. Escríbeme una pregunta o elige una sugerencia para empezar.'
+    }
+  ]);
+  const [aiInput, setAiInput] = useState('');
+  const [aiIsSending, setAiIsSending] = useState(false);
+
+  const aiSuggestions: string[] = [
+    'Resume las diferencias entre Salamanca y Tetuán',
+    '¿Qué distritos tienen mayor porcentaje de inmigración?',
+    'Explica la evolución del precio del m² en la última década',
+    '¿Qué relación hay entre renta media y precio de vivienda?'
+  ];
+
+  const [availableModels, setAvailableModels] = useState<string[]>([]);
+  const [selectedModel, setSelectedModel] = useState<string>(import.meta.env.VITE_OLLAMA_MODEL || 'llama3.1');
+  const [ollamaOnline, setOllamaOnline] = useState<boolean>(false);
+
+  useEffect(() => {
+    // detectar conectividad y modelos
+    (async () => {
+      const online = await pingOllama();
+      setOllamaOnline(online);
+      if (online) {
+        const models = await listOllamaModels();
+        setAvailableModels(models);
+        // si el modelo por defecto no está en lista, conservar el seleccionado
+      }
+    })();
+  }, []);
+
+  const handleSendAI = async () => {
+    const trimmed = aiInput.trim();
+    if (!trimmed) return;
+    const userMsg: AIMessage = { id: `u-${Date.now()}`, role: 'user', content: trimmed };
+    setAiMessages(prev => [...prev, userMsg]);
+    setAiInput('');
+    setAiIsSending(true);
+    try {
+      const history = aiMessages.map(m => ({ role: m.role, content: m.content }));
+      const reply = await chatWithOllama([...history, { role: 'user', content: trimmed }], selectedModel);
+      const assistantMsg: AIMessage = { id: `a-${Date.now()}`, role: 'assistant', content: reply || 'Respuesta vacía.' };
+      setAiMessages(prev => [...prev, assistantMsg]);
+    } catch (err: any) {
+      const assistantMsg: AIMessage = { id: `e-${Date.now()}`, role: 'assistant', content: `No se pudo conectar con Ollama: ${err?.message || err}` };
+      setAiMessages(prev => [...prev, assistantMsg]);
+    } finally {
+      setAiIsSending(false);
+    }
+  };
+
   const renderAI = () => {
-    const selectedData = currentYearData.filter(d => selectedDistricts.includes(d.districtId));
-    
     return (
-      <div className="space-y-8">
-        {/* Cuadro descriptivo */}
-        <div className="bg-gradient-to-r from-purple-50 to-violet-50 rounded-lg p-6 border border-purple-200">
-          <div className="flex items-center mb-3">
-            <Brain className="w-6 h-6 text-purple-600 mr-3" />
-            <h2 className="text-xl font-bold text-purple-900">Análisis Inteligente con IA</h2>
+      <div className="space-y-6">
+        {/* Banner Beta */}
+        <div className="rounded-xl border border-yellow-200 bg-yellow-50 p-4 flex items-start gap-3">
+          <AlertTriangle className="w-5 h-5 text-yellow-700 mt-0.5" />
+          <div>
+            <h2 className="text-sm font-semibold text-yellow-900">IA en fase beta</h2>
+            <p className="text-sm text-yellow-900/90">La funcionalidad de chat está en desarrollo. La interfaz emula asistentes como ChatGPT, Claude o Gemini.</p>
           </div>
-          <p className="text-purple-800 leading-relaxed">
-            Descubre patrones ocultos y correlaciones entre diferentes métricas urbanas usando inteligencia artificial. 
-            Esta herramienta analiza automáticamente los datos para generar insights predictivos, 
-            identificar tendencias emergentes y proporcionar recomendaciones basadas en datos.
-          </p>
         </div>
 
-        <div className="bg-purple-50 rounded-lg p-4">
-          <h3 className="text-lg font-semibold text-purple-900 mb-2">Análisis Inteligente con IA</h3>
-          <p className="text-sm text-purple-800">
-            Selecciona distritos y métricas para generar insights automáticos y patrones de correlación usando inteligencia artificial.
-          </p>
+        {/* Sugerencias rápidas */}
+        <div className="rounded-xl border border-gray-200 bg-white p-4">
+          <div className="flex items-center gap-2 text-gray-900 font-semibold mb-3">
+            <Sparkles className="w-4 h-4 text-purple-600" />
+            Empieza con una sugerencia
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {aiSuggestions.map((s) => (
+              <button
+                key={s}
+                type="button"
+                onClick={() => setAiInput(s)}
+                className="text-sm rounded-full border border-gray-200 px-3 py-1 bg-white hover:bg-gray-50"
+              >
+                {s}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <InteractiveMap
-            data={expandedUrbanIndicators}
-            selectedMetric={selectedMetric}
-            selectedDistricts={selectedDistricts}
-            onDistrictSelect={handleDistrictSelect}
-            selectedYear={selectedYear}
-          />
-          
-          {currentYearData.length >= 2 && (
-            <ScatterPlot
-              data={currentYearData}
-              xMetric="averageIncome"
-              yMetric="averagePriceM2"
-              title="Renta vs Precio Vivienda"
-              selectedDistricts={selectedDistricts}
-            />
-          )}
-        </div>
+        {/* Zona de chat */}
+        <div className="rounded-xl border border-gray-200 bg-white p-0 overflow-hidden">
+          {/* Cabecera con selector de modelo y estado */}
+          <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 bg-gray-50">
+            <div className="flex items-center gap-2">
+              <Bot className="w-5 h-5 text-purple-700" />
+              <span className="font-medium text-gray-900">Asistente IA</span>
+              <span className="ml-2 inline-flex items-center rounded-full bg-yellow-100 text-yellow-800 px-2 py-0.5 text-xs">Beta</span>
+              <span className={`ml-3 inline-flex items-center rounded-full px-2 py-0.5 text-xs ${ollamaOnline ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                {ollamaOnline ? 'Ollama: Online' : 'Ollama: Offline'}
+              </span>
+            </div>
+            <div className="flex items-center gap-2 text-sm">
+              <label className="text-gray-600">Modelo</label>
+              <select
+                value={selectedModel}
+                onChange={(e) => setSelectedModel(e.target.value)}
+                className="border border-gray-200 rounded-md bg-white px-2 py-1 text-gray-900"
+              >
+                {[selectedModel, ...availableModels.filter(m => m !== selectedModel)].map((m) => (
+                  <option key={m} value={m}>{m}</option>
+                ))}
+              </select>
+            </div>
+          </div>
 
-        {selectedData.length >= 3 && (
-          <RadarChart
-            districts={selectedData.slice(0, 4)}
-            metrics={['population', 'averageIncome', 'accessibilityScore', 'greenSpaceM2PerCapita', 'economicActivityIndex']}
-            title="Perfil Integral de Distritos Seleccionados"
-          />
-        )}
+          {/* Mensajes */}
+          <div className="h-[420px] overflow-y-auto px-4 py-4 space-y-4">
+            {aiMessages.map((m) => (
+              <div key={m.id} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div className={`max-w-[85%] md:max-w-[70%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm border ${m.role === 'user' ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-gray-900 border-gray-200'}`}>
+                  {m.content}
+                </div>
+              </div>
+            ))}
+            {aiIsSending && (
+              <div className="flex justify-start">
+                <div className="max-w-[85%] md:max-w-[70%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm border bg-white text-gray-900 border-gray-200">
+                  Escribiendo…
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Input */}
+          <div className="border-t border-gray-100 p-3">
+            <div className="flex items-end gap-2">
+              <div className="flex-1">
+                <textarea
+                  value={aiInput}
+                  onChange={(e) => setAiInput(e.target.value)}
+                  placeholder="Pregunta algo sobre Madrid…"
+                  rows={1}
+                  className="w-full resize-none rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-200"
+                />
+              </div>
+              <button
+                type="button"
+                onClick={handleSendAI}
+                disabled={!aiInput.trim() || aiIsSending}
+                className="inline-flex items-center gap-2 rounded-md bg-purple-600 text-white px-3 py-2 text-sm font-medium hover:bg-purple-700 disabled:opacity-50"
+              >
+                <Send className="w-4 h-4" />
+                Enviar
+              </button>
+            </div>
+            <div className="mt-2 text-[11px] text-gray-500 flex items-center gap-1">
+              <MessageSquare className="w-3 h-3" />
+              Evita datos sensibles. Las respuestas pueden contener errores.
+            </div>
+          </div>
+        </div>
       </div>
     );
   };
@@ -1114,17 +1312,18 @@ const App = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header activeView={activeView} onViewChange={setActiveView} />
-      {activeView === 'overview' && <NoticiasRotativas />}
-      <FilterPanel
-        selectedCategory={selectedCategory}
-        onCategoryChange={setSelectedCategory}
-        selectedMetric={selectedMetric}
-        onMetricChange={setSelectedMetric}
-        selectedUseCase={selectedUseCase}
-        onUseCaseChange={setSelectedUseCase}
-        isOpen={filterPanelOpen}
-        onToggle={() => setFilterPanelOpen(!filterPanelOpen)}
-      />
+      {activeView !== 'overview' && (
+        <FilterPanel
+          selectedCategory={selectedCategory}
+          onCategoryChange={setSelectedCategory}
+          selectedMetric={selectedMetric}
+          onMetricChange={setSelectedMetric}
+          selectedUseCase={selectedUseCase}
+          onUseCaseChange={setSelectedUseCase}
+          isOpen={filterPanelOpen}
+          onToggle={() => setFilterPanelOpen(!filterPanelOpen)}
+        />
+      )}
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {activeView === 'overview' && renderOverview()}

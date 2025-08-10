@@ -65,7 +65,24 @@ const GraficosEconomicosMadrid: React.FC<GraficosEconomicosMadridProps> = ({ sel
             <YAxis type="number" dataKey="y" name="Tasa de Paro" unit="%">
               <Label value="Tasa de Paro (%)" angle={-90} position="insideLeft" />
             </YAxis>
-            <Tooltip cursor={{ strokeDasharray: '3 3' }} formatter={(value, name) => (name === 'Renta Media por Persona' ? `${(value as number).toLocaleString()} €` : `${value}%`)} />
+            <Tooltip 
+              cursor={{ strokeDasharray: '3 3' }} 
+              content={({ active, payload }) => {
+                if (!active || !payload || !payload.length) return null;
+                const punto = payload[0].payload as { x: number; y: number; name: string };
+                return (
+                  <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg">
+                    <p className="font-semibold text-gray-900">{punto.name}</p>
+                    <p className="text-sm text-gray-600">
+                      Renta Media por Persona: {punto.x.toLocaleString('es-ES')} €
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Tasa de Paro: {punto.y.toFixed(1)}%
+                    </p>
+                  </div>
+                );
+              }}
+            />
             <Scatter name="Distritos" data={correlacionData} fill="#7C3AED" />
           </ScatterChart>
         </ResponsiveContainer>

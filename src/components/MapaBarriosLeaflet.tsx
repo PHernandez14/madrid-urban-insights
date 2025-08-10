@@ -39,6 +39,8 @@ function getClaveBarrioEnvejecimiento(nombre: string, detalles: Record<string, a
     .normalize('NFD')
     .replace(/\p{Diacritic}/gu, '')
     .replace(/\s+/g, ' ')
+    .replace(/\./g, '') // quitar puntos abreviaturas H.
+    .replace(/\s*h\s*/g, ' historico ')
     .trim();
   
   console.log('🔤 Nombre normalizado:', nombreNormalizado);
@@ -49,6 +51,9 @@ function getClaveBarrioEnvejecimiento(nombre: string, detalles: Record<string, a
     'casco historico de barajas': 'CASCO H.BARAJAS',
     'penagrande': 'PEÑA GRANDE',
     'peñagrande': 'PEÑA GRANDE',
+    'pena grande': 'PEÑA GRANDE',
+    // Alias habituales
+    'villaverde alto': 'san andres',
   };
   
   // 1. Normalizado
@@ -475,29 +480,7 @@ const MapaBarriosLeaflet: React.FC<MapaBarriosLeafletProps> = ({
             </Popover>
           </div>
           
-          {/* Panel informativo sobre cobertura de datos */}
-          <div className="mt-3 p-2 bg-yellow-50 border border-yellow-200 rounded">
-            <p className="text-xs text-yellow-800 font-medium mb-1">
-              📊 Cobertura de datos:
-            </p>
-            <p className="text-xs text-yellow-700">
-              Los datos de inmigración solo están disponibles para algunos distritos. 
-              Los barrios sin datos aparecerán en gris.
-            </p>
-            <details className="mt-2">
-              <summary className="text-xs text-yellow-700 cursor-pointer">
-                Ver distritos con datos disponibles
-              </summary>
-              <div className="mt-1 text-xs text-yellow-700">
-                {getDistritosConDatosInmigracion().map(distrito => (
-                  <div key={distrito} className="flex justify-between">
-                    <span>{getNombreDistrito(distrito)}</span>
-                    <span className="text-green-600">✓</span>
-                  </div>
-                ))}
-              </div>
-            </details>
-          </div>
+          {/* Nota sobre disponibilidad de datos eliminada a petición del usuario */}
         </div>
       );
     }

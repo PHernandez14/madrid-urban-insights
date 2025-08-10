@@ -105,15 +105,18 @@ export function getInmigracionPorBarrioMapeado(csvText: string, estadisticasText
     if (line.trim()) {
       const campos = line.split(';');
       if (campos.length >= 8) {
-        const codDistrito = campos[0];
-        const codBarrio = campos[4];
-        const codSeccion = campos[6]; // El código de sección está en la posición 6 (COD_SECCION)
-        const nombreBarrio = campos[3].trim(); // Nombre del barrio (DESC_BARRIO) - limpiar espacios
-        
-        // Crear clave de sección y barrio
-        const claveSeccion = `${codDistrito}_${codSeccion}`;
-        const claveBarrio = `${codDistrito}_${codBarrio}`;
-        
+        const codDistrito = String(campos[0]).trim(); // COD_DISTRITO (2 dígitos)
+        const codBarrio = String(campos[4]).trim();   // COD_BARRIO (3 dígitos)
+        const codDistSeccion = String(campos[5]).trim(); // COD_DIST_SECCION (a veces 4 dígitos)
+        const codSeccion = String(campos[6]).trim();     // COD_SECCION (3 dígitos)
+        const nombreBarrio = String(campos[3]).trim(); // DESC_BARRIO
+
+        // Normalizar clave de sección a DDSSS usando COD_DISTRITO (DD) + COD_SECCION (SSS)
+        const claveSeccion = `${codDistrito.padStart(2, '0')}${codSeccion.padStart(3, '0')}`;
+        // Construir código de barrio de 3 dígitos como DDx (p.ej., 08 + 3 => 083; 10 + 7 => 107)
+        const barrio3 = `${codDistrito.padStart(2, '0')}${String(codBarrio).trim()}`; 
+        const claveBarrio = `${codDistrito.padStart(2, '0')}_${barrio3}`;
+
         mapeoSeccionBarrio[claveSeccion] = { claveBarrio, nombreBarrio };
       }
     }
@@ -140,10 +143,9 @@ export function getInmigracionPorBarrioMapeado(csvText: string, estadisticasText
       
       const codDistrito = distrito.split('.')[0].trim();
       distritosInmigracion.add(codDistrito);
-      
-      // El código de sección en el archivo de inmigración tiene formato 19001, necesitamos extraer solo la sección
-      const seccion = codigo_seccion.substring(2); // Extraer los últimos 3 dígitos (001, 002, etc.)
-      const claveSeccion = `${codDistrito}_${seccion}`;
+
+      // Usar directamente el código combinado de distrito+sección (DDSSS)
+      const claveSeccion = String(codigo_seccion).trim().padStart(5, '0');
       
       const totalHabitantes = parseFloat(habitantes);
       const totalExtranjeros = parseFloat(todos_extranjeros) + (parseFloat(mixto) / 2);
@@ -193,7 +195,16 @@ export function getInmigracionPorBarrioMapeado(csvText: string, estadisticasText
     // Buscar el nombre del barrio correspondiente
     const mapeoEncontrado = Object.values(mapeoSeccionBarrio).find(m => m.claveBarrio === claveBarrio);
     if (mapeoEncontrado) {
-      const nombreBarrio = mapeoEncontrado.nombreBarrio;
+      let nombreBarrio = mapeoEncontrado.nombreBarrio.trim();
+      // Normalizaciones y alias para mejorar cobertura
+      const alias: Record<string, string> = {
+        'CASCO H.VALLECAS': 'CASCO HISTORICO DE VALLECAS',
+        'CASCO H.VICALVARO': 'CASCO HISTORICO DE VICALVARO',
+        'CASCO H.BARAJAS': 'CASCO HISTORICO DE BARAJAS',
+        'PEÑA GRANDE': 'PEÑA GRANDE',
+        'SAN ANDRES': 'VILLAVERDE ALTO',
+      };
+      if (alias[nombreBarrio]) nombreBarrio = alias[nombreBarrio];
       
       // Agregar con nombre del barrio (normalizado)
       const nombreNormalizado = nombreBarrio
@@ -201,6 +212,8 @@ export function getInmigracionPorBarrioMapeado(csvText: string, estadisticasText
         .normalize('NFD')
         .replace(/\p{Diacritic}/gu, '')
         .replace(/\s+/g, ' ')
+        .replace(/\./g, '')
+        .replace(/\s*h\s*/g, ' historico ')
         .trim();
       resultado[nombreNormalizado] = porcentaje;
       

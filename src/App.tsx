@@ -8,7 +8,6 @@ import BarChart from './components/BarChart';
 import InteractiveMap from './components/InteractiveMap';
 import RadarChart from './components/RadarChart';
 import ScatterPlot from './components/ScatterPlot';
-import FilterPanel from './components/FilterPanel';
 import { 
   expandedUrbanIndicators, 
   expandedKpiCategories, 
@@ -57,6 +56,7 @@ const App = () => {
   const [poblacionPorBarrio, setPoblacionPorBarrio] = useState<Record<string, number>>({});
   const [superficiePorBarrio, setSuperficiePorBarrio] = useState<Record<string, number>>({});
   const [detallesEnvejecimientoPorBarrio, setDetallesEnvejecimientoPorBarrio] = useState<Record<string, { porcentaje: number, mayores65: number, total: number }>>({});
+  const [barriosMeta, setBarriosMeta] = useState<Array<{ clave: string; nombre: string; distrito: string }>>([]);
 
 
   // Usar año fijo 2024 para todos los datos
@@ -144,12 +144,16 @@ const App = () => {
       
       // Calcular superficie de cada barrio por clave compuesta
       const superficies = {};
+      const meta: Array<{ clave: string; nombre: string; distrito: string }> = [];
       geojson.features.forEach((feature) => {
         const cod_distrito = feature.properties.CODDIS || feature.properties.COD_DIS || feature.properties.COD_DIS_TX;
         const cod_barrio = feature.properties.COD_BAR || feature.properties.CODBAR || feature.properties.COD_BARRIO || feature.properties.cod_barrio;
         const clave = claveBarrio(cod_distrito, cod_barrio);
         const area = turf.area(feature) / 1e6; // m² a km²
         superficies[clave] = area;
+        const nombre = feature.properties.NOMBRE || feature.properties.NOM_BARRIO || feature.properties.NOMBRE_BARRIO || '';
+        const distritoNombre = feature.properties.NOMDIS || feature.properties.NOMBRE_DISTRITO || feature.properties.DISTRITO || '';
+        meta.push({ clave, nombre, distrito: distritoNombre });
         
         // Debug: verificar algunos barrios específicos
         if (cod_distrito === '16' && cod_barrio === '164') {
@@ -172,6 +176,7 @@ const App = () => {
       console.log('🔍 Distritos disponibles en superficie:', distritosEnSuperficie);
       
       setSuperficiePorBarrio(superficies);
+      setBarriosMeta(meta);
       
       // Calcular densidad por clave compuesta
       const densidad = {};
@@ -759,14 +764,14 @@ const App = () => {
             <button type="button" onClick={() => setActiveView('ai')} className="inline-flex items-center gap-2 rounded-md bg-purple-600 text-white px-4 py-2 text-sm font-medium hover:bg-purple-700 transition">
               <Brain className="w-4 h-4" /> IA para insights
             </button>
-          </div>
+      </div>
 
           {/* Indicador de scroll sutil */}
           <div className="hidden md:flex absolute -bottom-6 left-0 right-0 justify-start">
             <div className="inline-flex items-center gap-2 text-gray-600 text-sm animate-bounce">
               <ChevronDown className="w-4 h-4" />
               Desliza para descubrir más
-            </div>
+      </div>
           </div>
         </div>
       </section>
@@ -809,7 +814,7 @@ const App = () => {
           <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
             <div className="flex items-center gap-2 mb-2 text-blue-700 font-semibold">
               <MapPin className="w-4 h-4" /> Mapas interactivos
-            </div>
+          </div>
             <p className="text-sm text-gray-700 mb-4">Explora barrios y distritos con capas de densidad, envejecimiento e inmigración.</p>
             <button type="button" onClick={() => setActiveView('analysis')} className="text-sm font-medium text-blue-700 hover:text-blue-800">Abrir mapas →</button>
           </div>
@@ -817,10 +822,10 @@ const App = () => {
           <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
             <div className="flex items-center gap-2 mb-2 text-green-700 font-semibold">
               <Home className="w-4 h-4" /> Vivienda y precios
-            </div>
+        </div>
             <p className="text-sm text-gray-700 mb-4">Consulta precios m², evolución histórica y distribución por distritos.</p>
             <button type="button" onClick={() => setActiveView('analysis')} className="text-sm font-medium text-green-700 hover:text-green-800">Ver vivienda →</button>
-          </div>
+      </div>
 
           <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
             <div className="flex items-center gap-2 mb-2 text-purple-700 font-semibold">
@@ -864,6 +869,48 @@ const App = () => {
           <li>Usa los accesos directos para ir a Análisis, Comparación o IA.</li>
           <li>Desde Análisis, explora mapas y gráficos temáticos por secciones.</li>
         </ol>
+      </section>
+
+      {/* Aviso y fuentes de datos (landing) */}
+      <section className="rounded-xl border border-amber-200 bg-white p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-3">Aviso y fuentes de datos</h3>
+        <p className="text-gray-700 mb-4">
+          Esta es una versión provisional. Existen muchos más datos oficiales de la Comunidad y del
+          Ayuntamiento de Madrid. Aquí se han incorporado algunos datasets de ejemplo para mostrar la interfaz
+          y cómo se visualizarían los indicadores. El objetivo es integrar el máximo de fuentes oficiales con
+          actualización periódica.
+        </p>
+        <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
+          <li>
+            <span className="font-semibold">Demografía</span>: pirámide y métricas de barrios.
+            Fuentes objetivo: Padrón Municipal y datasets del Portal de Datos Abiertos del Ayuntamiento
+            (<a className="text-blue-700 hover:underline" href="https://datos.madrid.es/portal/site/egob/" target="_blank" rel="noreferrer">datos.madrid.es</a>).
+          </li>
+          <li>
+            <span className="font-semibold">Vivienda</span>: evolución de precios oficiales (IPV) Comunidad de Madrid — INE
+            (<a className="text-blue-700 hover:underline" href="https://www.ine.es/jaxiT3/Datos.htm?t=25171" target="_blank" rel="noreferrer">enlace</a>).
+          </li>
+          <li>
+            <span className="font-semibold">Economía</span>: Contabilidad Regional (INE) y “Distritos en cifras” del Ayuntamiento
+            (<a className="text-blue-700 hover:underline" href="https://www.ine.es/" target="_blank" rel="noreferrer">ine.es</a>,
+            <a className="text-blue-700 hover:underline ml-1" href="https://datos.madrid.es/portal/site/egob/" target="_blank" rel="noreferrer">datos.madrid.es</a>).
+          </li>
+          <li>
+            <span className="font-semibold">Transporte y movilidad</span>: CRTM (GTFS y cartografía) y EMT/BiciMAD (datos abiertos)
+            <a className="text-blue-700 hover:underline ml-1" href="https://www.crtm.es/atencion-al-cliente/area-de-descargas/datos-abiertos.aspx" target="_blank" rel="noreferrer">CRTM</a>,
+            <a className="text-blue-700 hover:underline ml-1" href="https://datos.emtmadrid.es/" target="_blank" rel="noreferrer">EMT</a>.
+          </li>
+        </ul>
+        <div className="mt-4 border-t pt-4">
+          <h4 className="text-base font-semibold text-gray-900 mb-2">Sobre la pestaña de IA</h4>
+          <p className="text-sm text-gray-700">
+            Actualmente la IA funciona en local con Ollama (modelo configurable mediante <code className="bg-gray-100 px-1 py-0.5 rounded">VITE_OLLAMA_MODEL</code>).
+            Las respuestas se basan en el conocimiento preentrenado del modelo y en el contexto que le aporta la propia
+            aplicación; no accede automáticamente a Internet ni a los datos del panel a menos que se le inyecten.
+            Uno de los objetivos a futuro es alimentar la IA con nuestros propios datos (RAG local) para ofrecer
+            respuestas trazables y alineadas con las visualizaciones.
+          </p>
+        </div>
       </section>
 
       {/* Noticias al final de la landing */}
@@ -941,6 +988,7 @@ const App = () => {
               poblacionPorBarrio={poblacionPorBarrio}
               densidadPorBarrio={densidadPorBarrio}
               envejecimientoPorBarrio={envejecimientoPorBarrio}
+              barriosMeta={barriosMeta}
             />
           </div>
         </div>
@@ -1206,7 +1254,7 @@ const App = () => {
           <AlertTriangle className="w-5 h-5 text-yellow-700 mt-0.5" />
           <div>
             <h2 className="text-sm font-semibold text-yellow-900">IA en fase beta</h2>
-            <p className="text-sm text-yellow-900/90">La funcionalidad de chat está en desarrollo. La interfaz emula asistentes como ChatGPT, Claude o Gemini.</p>
+            <p className="text-sm text-yellow-900/90">La funcionalidad de chat está en desarrollo.</p>
           </div>
         </div>
 
@@ -1271,8 +1319,8 @@ const App = () => {
                   Escribiendo…
                 </div>
               </div>
-            )}
-          </div>
+          )}
+        </div>
 
           {/* Input */}
           <div className="border-t border-gray-100 p-3">
@@ -1312,18 +1360,7 @@ const App = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header activeView={activeView} onViewChange={setActiveView} />
-      {activeView !== 'overview' && (
-        <FilterPanel
-          selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
-          selectedMetric={selectedMetric}
-          onMetricChange={setSelectedMetric}
-          selectedUseCase={selectedUseCase}
-          onUseCaseChange={setSelectedUseCase}
-          isOpen={filterPanelOpen}
-          onToggle={() => setFilterPanelOpen(!filterPanelOpen)}
-        />
-      )}
+      
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {activeView === 'overview' && renderOverview()}

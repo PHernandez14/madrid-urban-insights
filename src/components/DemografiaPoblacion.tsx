@@ -16,17 +16,19 @@ interface DemografiaPoblacionProps {
   poblacionPorBarrio: Record<string, number>;
   densidadPorBarrio: Record<string, number>;
   envejecimientoPorBarrio: Record<string, number>;
+  barriosMeta: Array<{ clave: string; nombre: string; distrito: string }>;
 }
 
 const DemografiaPoblacion: React.FC<DemografiaPoblacionProps> = ({
   poblacionPorBarrio,
   densidadPorBarrio,
-  envejecimientoPorBarrio
+  envejecimientoPorBarrio,
+  barriosMeta,
 }) => {
   const [barrioSeleccionado, setBarrioSeleccionado] = useState<string>('');
   const [barrioInfo, setBarrioInfo] = useState<BarrioInfo | null>(null);
 
-  // Mapeo de nombres de barrios a claves del mapa (usando las claves correctas del App.tsx)
+  // Mapeo de nombres de barrios a claves (referencia legacy; ya no se usa para buscar ni contar)
   const mapeoBarrios: Record<string, string> = {
     // Centro (01)
     'palacio': '01_001',
@@ -393,30 +395,36 @@ const DemografiaPoblacion: React.FC<DemografiaPoblacionProps> = ({
     'corralejos': 'Barrio residencial moderno con amplias avenidas y espacios verdes.'
   };
 
+  const normalizar = (s: string) => s
+    .toLocaleLowerCase('es-ES')
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
   const buscarBarrio = (termino: string) => {
-    const terminoNormalizado = termino.toLowerCase().trim();
-    const barrioEncontrado = Object.keys(mapeoBarrios).find(barrio => 
-      barrio.includes(terminoNormalizado) || 
-      terminoNormalizado.includes(barrio)
-    );
-    
-    if (barrioEncontrado) {
-      const clave = mapeoBarrios[barrioEncontrado];
-      const distrito = clave.split('_')[0];
-      const nombreBarrio = barrioEncontrado.charAt(0).toUpperCase() + barrioEncontrado.slice(1);
-      const nombreDistrito = nombresDistritos[distrito] || `Distrito ${distrito}`;
+    const terminoNorm = normalizar(termino);
+    const candidato = barriosMeta.find(b => {
+      const nombreNorm = normalizar(b.nombre || '');
+      return nombreNorm.includes(terminoNorm) || terminoNorm.includes(nombreNorm);
+    });
+
+    if (candidato) {
+      const clave = candidato.clave;
+      const nombreBarrio = candidato.nombre;
+      const nombreDistrito = candidato.distrito;
       
       // Obtener datos reales del mapa
       const poblacion = poblacionPorBarrio[clave] || 0;
       const densidad = densidadPorBarrio[clave] || 0;
       
-      // Usar edad media realista específica del barrio
-      const edadMedia = edadesMedias[barrioEncontrado] || 40; // Valor por defecto
+      const nombreNorm = normalizar(nombreBarrio);
+      const edadMedia = edadesMedias[nombreNorm] || 40;
       
       setBarrioInfo({
         nombre: nombreBarrio,
         distrito: `${nombreDistrito}`,
-        descripcion: descripcionesBarrios[barrioEncontrado] || 'Barrio de Madrid con características urbanas propias.',
+        descripcion: descripcionesBarrios[nombreNorm] || 'Barrio de Madrid con características urbanas propias.',
         datosClave: {
           poblacion,
           densidad,
@@ -438,10 +446,11 @@ const DemografiaPoblacion: React.FC<DemografiaPoblacionProps> = ({
     }
   };
 
-  // Obtener lista de barrios disponibles
-  const barriosDisponibles = Object.keys(mapeoBarrios).map(barrio => 
-    barrio.charAt(0).toUpperCase() + barrio.slice(1)
-  ).sort();
+  // Lista de barrios disponibles basada en GeoJSON (fuente única de verdad)
+  const barriosDisponibles = barriosMeta
+    .map(b => b.nombre)
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b, 'es'));
 
   return (
     <div className="space-y-6">

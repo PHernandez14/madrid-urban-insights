@@ -5,10 +5,10 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Loader2, Bike, Zap, ParkingSquare, AlertTriangle, TrainFront } from 'lucide-react';
 
-import puntosRecargaData from '../data/puntosRecargaMadrid.json';
-import aparcamientosData from '../data/aparcamientosMadrid.json';
-import accidentesData from '../data/accidentesMadrid.json';
-import metroData from '../data/metroEstaciones.json';
+import puntosRecargaData from '../data/puntosRecargaMadrid';
+import aparcamientosData from '../data/aparcamientosMadrid';
+import accidentesData from '../data/accidentesMadrid';
+import metroData from '../data/metroEstaciones';
 
 
 // Solución para el problema del icono por defecto en Leaflet

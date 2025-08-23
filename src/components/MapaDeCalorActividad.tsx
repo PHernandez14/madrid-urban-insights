@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.heat'; // Import for side-effects, it extends L
-import localesData from '../data/localesComerciales.json';
+import localesData from '../data/localesComerciales';
 
 // Solución para el problema del icono por defecto en Leaflet con Webpack/Vite
 import icon from 'leaflet/dist/images/marker-icon.png';

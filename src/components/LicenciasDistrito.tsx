@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import datosComerciales from '../data/datosComercialesMadrid.json';
+import datosComerciales from '../data/datosComercialesMadrid';
 
 const LicenciasDistrito: React.FC = () => {
   const chartData = datosComerciales.map(d => ({

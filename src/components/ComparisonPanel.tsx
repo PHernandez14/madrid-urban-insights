@@ -4,7 +4,7 @@ import { datosEconomicosOficialesMadrid } from '../data/datosEconomicosOficiales
 import { preciosOficialesMadrid } from '../data/preciosOficialesMadrid';
 import BarChart from './BarChart';
 import ScatterPlot from './ScatterPlot';
-import datosComerciales from '../data/datosComercialesMadrid.json';
+import datosComerciales from '../data/datosComercialesMadrid';
 
 type CategoryKey = keyof typeof expandedKpiCategories;
 

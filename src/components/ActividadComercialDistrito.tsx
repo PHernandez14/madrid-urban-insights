@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import datosComerciales from '../data/datosComercialesMadrid.json';
+import datosComerciales from '../data/datosComercialesMadrid';
 
 const ActividadComercialDistrito: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);

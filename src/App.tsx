@@ -1112,6 +1112,8 @@ const App = () => {
     );
   };
 
+
+
   // --- Estado e interfaz para la pestaña de IA (chat estilo LLM)
   type AIRole = 'user' | 'assistant';
   type AIMessage = { id: string; role: AIRole; content: string };

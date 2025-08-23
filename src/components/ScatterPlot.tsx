@@ -9,6 +9,10 @@ interface ScatterPlotProps {
   yMetric: string;
   title: string;
   selectedDistricts?: string[];
+  // Etiquetas opcionales para métricas no definidas en expandedMetricLabels
+  metricLabels?: Record<string, { label: string; unit: string; format?: string }>;
+  // Permite pasar puntos ya calculados (por ejemplo, desde datasets oficiales)
+  points?: Array<{ name: string; x: number; y: number; isSelected?: boolean }>;
 }
 
 const ScatterPlot: React.FC<ScatterPlotProps> = ({ 
@@ -16,10 +20,12 @@ const ScatterPlot: React.FC<ScatterPlotProps> = ({
   xMetric, 
   yMetric, 
   title,
-  selectedDistricts = []
+  selectedDistricts = [],
+  metricLabels,
+  points
 }) => {
   const formatValue = (value: number, metric: string): string => {
-    const metricInfo = expandedMetricLabels[metric];
+    const metricInfo = metricLabels?.[metric] || expandedMetricLabels[metric];
     if (metricInfo?.format === 'percentage') {
       return `${value}%`;
     }
@@ -28,12 +34,14 @@ const ScatterPlot: React.FC<ScatterPlotProps> = ({
     return value.toLocaleString();
   };
 
-  const scatterData = data.map(district => ({
-    x: district[xMetric as keyof ExpandedUrbanIndicators] as number,
-    y: district[yMetric as keyof ExpandedUrbanIndicators] as number,
-    name: district.districtName,
-    isSelected: selectedDistricts.includes(district.districtId)
-  }));
+  const scatterData = points && points.length
+    ? points.map(p => ({ ...p, isSelected: !!p.isSelected }))
+    : data.map(district => ({
+        x: district[xMetric as keyof ExpandedUrbanIndicators] as number,
+        y: district[yMetric as keyof ExpandedUrbanIndicators] as number,
+        name: district.districtName,
+        isSelected: selectedDistricts.includes(district.districtId)
+      }));
 
   // Calculate correlation coefficient
   const calculateCorrelation = () => {
@@ -96,11 +104,11 @@ const ScatterPlot: React.FC<ScatterPlotProps> = ({
             <XAxis 
               type="number" 
               dataKey="x"
-              name={expandedMetricLabels[xMetric]?.label}
+              name={(metricLabels?.[xMetric] || expandedMetricLabels[xMetric])?.label}
               tick={{ fontSize: 12, fill: '#6B7280' }}
             >
               <Label 
-                value={`${expandedMetricLabels[xMetric]?.label} (${expandedMetricLabels[xMetric]?.unit})`}
+                value={`${(metricLabels?.[xMetric] || expandedMetricLabels[xMetric])?.label} (${(metricLabels?.[xMetric] || expandedMetricLabels[xMetric])?.unit || ''})`}
                 position="bottom"
                 style={{ textAnchor: 'middle', fontSize: '12px', fill: '#6B7280' }}
               />
@@ -108,11 +116,11 @@ const ScatterPlot: React.FC<ScatterPlotProps> = ({
             <YAxis 
               type="number" 
               dataKey="y"
-              name={expandedMetricLabels[yMetric]?.label}
+              name={(metricLabels?.[yMetric] || expandedMetricLabels[yMetric])?.label}
               tick={{ fontSize: 12, fill: '#6B7280' }}
             >
               <Label 
-                value={`${expandedMetricLabels[yMetric]?.label} (${expandedMetricLabels[yMetric]?.unit})`}
+                value={`${(metricLabels?.[yMetric] || expandedMetricLabels[yMetric])?.label} (${(metricLabels?.[yMetric] || expandedMetricLabels[yMetric])?.unit || ''})`}
                 angle={-90}
                 position="insideLeft"
                 style={{ textAnchor: 'middle', fontSize: '12px', fill: '#6B7280' }}

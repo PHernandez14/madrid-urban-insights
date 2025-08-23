@@ -34,6 +34,7 @@ import TerrazasDistrito from './components/TerrazasDistrito';
 import MapaDeCalorActividad from './components/MapaDeCalorActividad';
 import MapaMovilidad from './components/MapaMovilidad';
 import EstadisticasBiciMAD from './components/EstadisticasBiciMAD';
+import ComparisonPanel from './components/ComparisonPanel';
 
 
 const PIRAMIDE_CSV_URL = '/ficheros/demo/estadisticas202506.csv';
@@ -1094,97 +1095,20 @@ const App = () => {
   );
 
   const renderComparison = () => {
-    const selectedData = currentYearData.filter(d => selectedDistricts.includes(d.districtId));
-    const selectedCategoryMetrics = selectedUseCase 
-      ? useCases[selectedUseCase as keyof typeof useCases]?.metrics || []
-      : expandedKpiCategories[selectedCategory as keyof typeof expandedKpiCategories]?.metrics || [];
-
     return (
-      <div className="space-y-8">
-        {/* Cuadro descriptivo */}
-        <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border border-green-200">
-          <div className="flex items-center mb-3">
-            <Users className="w-6 h-6 text-green-600 mr-3" />
-            <h2 className="text-xl font-bold text-green-900">Comparación de Métricas</h2>
-          </div>
-          <p className="text-green-800 leading-relaxed">
-            Compara hasta 4 distritos de Madrid simultáneamente. Selecciona los distritos que desees analizar 
-            y visualiza sus métricas en gráficos de radar, diagramas de dispersión y tablas comparativas. 
-            Ideal para identificar patrones y diferencias entre barrios.
-          </p>
-        </div>
-
-        <div className="bg-blue-50 rounded-lg p-4">
-          <p className="text-sm text-blue-800">
-            Selecciona hasta 4 distritos para comparar. Actualmente seleccionados: {selectedDistricts.length}/4
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <InteractiveMap
-            data={expandedUrbanIndicators}
-            selectedMetric={selectedMetric}
-            selectedDistricts={selectedDistricts}
-            onDistrictSelect={handleDistrictSelect}
-            selectedYear={selectedYear}
-          />
-          
-          {selectedData.length > 0 && (
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Comparación: {selectedUseCase ? useCases[selectedUseCase as keyof typeof useCases]?.name : expandedKpiCategories[selectedCategory as keyof typeof expandedKpiCategories]?.name || 'Métricas'} ({selectedYear})
-              </h3>
-              <div className="space-y-4">
-                {selectedData.map(district => (
-                  <div key={district.districtId} className="border-b border-gray-100 pb-2">
-                    <h4 className="font-medium">{district.districtName}</h4>
-                    <div className="grid grid-cols-2 gap-2 text-sm text-gray-600">
-                      {selectedCategoryMetrics.slice(0, 4).map(metric => (
-                        <div key={metric}>
-                          {expandedMetricLabels[metric]?.label}: {district[metric as keyof ExpandedUrbanIndicators] as number}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-
-        {selectedData.length >= 2 && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <RadarChart
-              districts={selectedData}
-              metrics={selectedCategoryMetrics.slice(0, 6)}
-              title="Comparación Multidimensional"
-            />
-            
-            {selectedCategoryMetrics.length >= 2 && (
-              <ScatterPlot
-                data={selectedData}
-                xMetric={selectedCategoryMetrics[0]}
-                yMetric={selectedCategoryMetrics[1]}
-                title="Análisis de Correlación"
-                selectedDistricts={selectedDistricts}
-              />
-            )}
-          </div>
-        )}
-
-        {selectedData.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {selectedData.map(district => (
-              <DistrictCard
-                key={district.districtId}
-                district={district}
-                onSelect={handleDistrictSelect}
-                isSelected={true}
-              />
-            ))}
-          </div>
-        )}
-      </div>
+      <ComparisonPanel
+        data={currentYearData}
+        year={selectedYear}
+        selectedDistricts={selectedDistricts}
+        onDistrictSelect={handleDistrictSelect}
+        selectedCategory={selectedCategory}
+        onCategoryChange={setSelectedCategory}
+        barriosMeta={barriosMeta}
+        poblacionPorBarrio={poblacionPorBarrio}
+        densidadPorBarrio={densidadPorBarrio}
+        envejecimientoPorBarrio={envejecimientoPorBarrio}
+        inmigracionPorBarrio={inmigracionPorBarrio}
+      />
     );
   };
 

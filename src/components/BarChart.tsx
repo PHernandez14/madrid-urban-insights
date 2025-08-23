@@ -11,6 +11,7 @@ interface BarChartProps {
   height?: number;
   unit?: string;
   isPercentage?: boolean;
+  referenceLines?: Array<{ value: number; color?: string; label?: string }>; // líneas verticales (media/mediana)
 }
 
 const BarChart: React.FC<BarChartProps> = ({ 
@@ -18,10 +19,11 @@ const BarChart: React.FC<BarChartProps> = ({
   title, 
   height = 300, 
   unit = '',
-  isPercentage = false
+  isPercentage = false,
+  referenceLines = []
 }) => {
   console.log('📈 BarChart recibió:', { title, isPercentage, data });
-  const maxValue = isPercentage ? 100 : Math.max(...data.map(d => d.value));
+  const maxValue = isPercentage ? 100 : Math.max(1, ...data.map(d => d.value));
   
   const formatValue = (value: number) => {
     if (isPercentage) {
@@ -61,6 +63,14 @@ const BarChart: React.FC<BarChartProps> = ({
                       animation: `barGrow${index} 0.7s ease-out both`
                     }}
                   />
+                  {referenceLines.map((ref, i) => {
+                    const pct = Math.min(100, Math.max(0, (ref.value / maxValue) * 100));
+                    return (
+                      <div key={i} className="absolute top-0 bottom-0" style={{ left: `${pct}%` }}>
+                        <div className="h-full w-[2px]" style={{ backgroundColor: ref.color || '#111827' }} />
+                      </div>
+                    );
+                  })}
                   <div className="absolute inset-0 flex items-center justify-end pr-2">
                     <span className="text-xs font-medium text-gray-900">
                       {formatValue(item.value)}
@@ -72,6 +82,17 @@ const BarChart: React.FC<BarChartProps> = ({
           );
         })}
       </div>
+
+      {referenceLines.length > 0 && (
+        <div className="mt-2 flex flex-wrap gap-3 text-xs text-gray-600">
+          {referenceLines.map((ref, i) => (
+            <span key={i} className="inline-flex items-center gap-1">
+              <span className="inline-block w-3 h-[2px]" style={{ backgroundColor: ref.color || '#111827' }} />
+              {ref.label ? `${ref.label}: ${formatValue(ref.value)}` : formatValue(ref.value)}
+            </span>
+          ))}
+        </div>
+      )}
 
       <style>{`
         ${data.map((item, index) => {
